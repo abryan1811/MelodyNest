@@ -1,0 +1,12 @@
+{% extends "base.html" %}
+{% block content %}
+
+    {% for piece in music %}
+        {{ piece.title }}<br>
+        {{ piece.artist }}<br>
+        {{ piece.sound }}<br>
+        {{ piece.sheetmusic }}<br>
+        {{ piece.genre }}<br>
+    {% endfor %}
+
+{% endblock %}
