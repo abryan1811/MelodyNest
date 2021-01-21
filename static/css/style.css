@@ -34,3 +34,59 @@
     background-color: black;
 }
 
+@media screen and (max-width: 1024px){
+.main-image{
+        padding-right: 0px;
+		object-fit: cover;
+		height: 1200px;
+        background-position-x: 20%;
+}
+}
+
+@media screen and (max-width: 768px){
+
+.main-image{
+		height: 780px;
+}
+}
+
+@media screen and (max-width: 640px) {
+
+    .main-image{
+		height: 650px;
+}
+
+}
+
+@media screen and (max-width: 540px) {
+     .main-image{
+		height: 530px;
+}
+
+}
+
+@media screen and (max-width: 480px) {
+    .main-image{
+		height: 500px;
+}
+
+}
+
+@media screen and (max-width: 411px) {
+    .main-image{
+		height: 450px;
+}
+}
+
+@media screen and (max-width: 320px) {
+        .main-image{
+		height: 350px;
+}
+}
+
+@media screen and (max-width: 280px) {
+        .main-image{
+		height: 400px;
+}
+}
+
