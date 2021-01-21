@@ -1,14 +1,36 @@
 .navbarNavAuthentication {
-    background-color:red;
+    background-color:#575352;
 }
 
 .mainNavbarNav{
-    background-color:orange;
+    background-color:rgb(241, 240, 237);
     font-size: 50px;
 }
 
+.baseContent{
+    max-height: 100vh;
+    left:0;
+    padding:0px;
+}
+
+.main-image{
+    background: url("/static/images/piano-rose.jpg");
+    background-position: center;
+	background-size: cover;
+    background-repeat: no-repeat;    
+    height:710px;
+}
 
 .navbar-home{
     font-size:50px;
+}
+
+#footer{
+    width:100%;
+    height:80px;
+    position:absolute;
+    bottom:0;
+    left:0;
+    background-color: black;
 }
 
