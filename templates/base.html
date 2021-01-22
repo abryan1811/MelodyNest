@@ -18,7 +18,7 @@
             <div class="navbar" id="navbarNavAuthentication">
                 <ul class="navbar-nav navbar-authentication ml-auto">
                     <li class="nav-item">
-                        <a class="nav-link text-white" aria-current="page" href="#">Login/Register</a><!--Will switch with Users username if logged in-->
+                        <a class="nav-link text-white" aria-current="page" href="{{ url_for('login') }}">Login/Register</a><!--Will switch with Users username if logged in-->
                     </li>
                     <li class="nav-item">
                         <a class="nav-link text-white" href="#">UserName</a>
@@ -54,7 +54,6 @@
             </div>
         </div>
     </nav>
-    
 
     <div class="container-fluid baseContent">
         {% block content %}
