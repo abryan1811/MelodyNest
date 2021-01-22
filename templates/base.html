@@ -17,12 +17,20 @@
         <div class="container-fluid navbarNavAuthentication">
             <div class="navbar" id="navbarNavAuthentication">
                 <ul class="navbar-nav navbar-authentication ml-auto">
+                    {% if session.user %}
                     <li class="nav-item">
-                        <a class="nav-link text-white" aria-current="page" href="{{ url_for('login') }}">Login/Register</a><!--Will switch with Users username if logged in-->
-                    </li>
+                        <a class="nav-link text-white" href="#">{{username}}</a>
                     <li class="nav-item">
-                        <a class="nav-link text-white" href="#">UserName</a>
+                        <a class="nav-link text-white" aria-current="page" href="#">Logout</a>
                     </li>
+                    </li>
+                    {% else %}
+                    <li class="nav-item">
+                        <a class="nav-link text-white" aria-current="page" href="{{ url_for('login') }}">Login/Register</a>
+                    </li>
+                    
+                    {% endif %}
+                    
                     
                 </ul>
             </div>
