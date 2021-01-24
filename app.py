@@ -89,6 +89,10 @@ def logout():
 def user_profile():
     return render_template("user_profile.html")
 
+@app.route("/share", methods=["GET", "POST"])
+def share():
+
+    return render_template("share.html")
 
 if __name__ == "__main__":
     app.run(host=os.environ.get("IP"),
