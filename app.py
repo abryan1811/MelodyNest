@@ -91,6 +91,19 @@ def user_profile():
 
 @app.route("/share", methods=["GET", "POST"])
 def share():
+    if request.method == "POST":
+        piece={
+            "title": request.form.get("inputTitle"),
+            "artist": request.form.get("inputArtist"),
+            "sound": request.form.get("inputSoundFile"),
+            "sheetmusic": request.form.get("inputSheetMusic"),
+            "genre": request.form.get("inputGenre"),
+            "image": request.form.get("inputImageArtwork"),
+            "instrument": request.form.get("inputInstrument"),
+            "user": session["user"]
+        }
+        mongo.db.music.insert_one(piece)
+        flash("Music upload shared")
 
     return render_template("share.html")
 
