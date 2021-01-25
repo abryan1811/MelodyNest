@@ -107,6 +107,12 @@ def share():
 
     return render_template("share.html")
 
+@app.route("/delete_piece/<piece_id>")
+def delete_piece(piece_id):
+    mongo.db.music.remove({"_id": ObjectId(piece_id)})
+    flash("Your music share has been deleted")
+    return redirect(url_for("music_collection"))
+
 if __name__ == "__main__":
     app.run(host=os.environ.get("IP"),
             port=int(os.environ.get("PORT")),
