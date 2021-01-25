@@ -89,6 +89,7 @@ def logout():
 def user_profile():
     return render_template("user_profile.html")
 
+
 @app.route("/share", methods=["GET", "POST"])
 def share():
     if request.method == "POST":
@@ -98,14 +99,18 @@ def share():
             "sound": request.form.get("inputSoundFile"),
             "sheetmusic": request.form.get("inputSheetMusic"),
             "genre": request.form.get("inputGenre"),
-            "image": request.form.get("inputImageArtwork"),
             "instrument": request.form.get("inputInstrument"),
             "user": session["user"]
         }
         mongo.db.music.insert_one(piece)
         flash("Music upload shared")
-
+    if "inputImageArtwork" in request.files:
+        print("artwork")
+        inputImageArtwork = request.files["inputImageArtwork"]
+        mongo.save_file(inputImageArtwork.filename, inputImageArtwork)
+        print("functioning")
     return render_template("share.html")
+
 
 @app.route("/delete_piece/<piece_id>")
 def delete_piece(piece_id):

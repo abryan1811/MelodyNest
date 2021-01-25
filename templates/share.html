@@ -1,13 +1,25 @@
 {% extends "base.html" %}
 {% block content %}
 
+{% with messages = get_flashed_messages() %}
+{% if messages %}
+{% for message in messages %}
+<div class="row">
+    <div class="col d-flex justify-content-center">
+        <h4 class="center-align">{{ message }}</h4>
+    </div>
+</div>
+{% endfor %}
+{% endif %}
+{% endwith %}
+
 <div class="card shareCard">
     <div class="row">
 
         <div class="col col-9 card-body">
 
 
-            <form class="col d-flex justify-content-center" method="POST" action="{{ url_for('share') }}">
+            <form class="col d-flex justify-content-center" method="POST" action="{{ url_for('share') }}" enctype="multipart/form-data">
                 <div class="col col-6">
 
                     <div class="row">
@@ -26,7 +38,7 @@
                     </div>
                     <div class="row">
                         <div class="input-group mb-3">
-                            <select class="form-select" id="inputGenre" name="inputGenre" 
+                            <select class="form-select" id="inputGenre" name="inputGenre"
                                 aria-label="Example select with button addon">
                                 <option selected>Genre</option>
                                 <option value="1">One</option>
