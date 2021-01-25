@@ -39,6 +39,9 @@
     background-color:rgb(233, 230, 230);
 }
 
+.musicCard {
+    margin:10px;
+}
 
 /* Media Queries for screen sizes */
 @media screen and (max-width: 1024px){
