@@ -24,11 +24,10 @@
                         <a class="nav-link text-white" aria-current="page" href="{{ url_for('logout') }}">Logout</a>
                     </li>
                     </li>
-                    {% else %}
-                    <li class="nav-item">
-                        <a class="nav-link text-white" aria-current="page" href="{{ url_for('login') }}">Login/Register</a>
+                        {% else %}
+                        <li class="Title text-white">
+                        <p>Welcome to MelodyNest</p>
                     </li>
-                    
                     {% endif %}
                     
                     
@@ -47,6 +46,7 @@
             <div class="collapse navbar-collapse" id="navbarNav">
                 <ul class="navbar-nav ml-auto px-5">
                     <li class="nav-item">
+                    {% if session.user %}    
                         <a class="nav-link" aria-current="page" href="{{ url_for('music_collection') }}">Music</a>
                     </li>
                     <li class="nav-item">
@@ -57,6 +57,11 @@
                     </li>
                     <li class="nav-item">
                         <a class="nav-link" href="#">Reviews</a>
+                        {% else %}
+                        <li class="nav-item">
+                            <a class="nav-link" aria-current="page" href="{{ url_for('login') }}">Login/Register</a>
+                        </li>
+                    {% endif %}
                     </li>
                 </ul>
             </div>
