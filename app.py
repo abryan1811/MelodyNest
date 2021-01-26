@@ -90,9 +90,16 @@ def user_profile():
     return render_template("user_profile.html")
 
 
+@app.route("/file/<filename>")
+def file(filename):
+    print(filename)
+    return mongo.send_file(filename)
+
+
 @app.route("/share", methods=["GET", "POST"])
 def share():
     if request.method == "POST":
+        print(request.files["inputImageArtwork"].filename)
         piece={
             "title": request.form.get("inputTitle"),
             "artist": request.form.get("inputArtist"),
@@ -100,15 +107,14 @@ def share():
             "sheetmusic": request.form.get("inputSheetMusic"),
             "genre": request.form.get("inputGenre"),
             "instrument": request.form.get("inputInstrument"),
-            "user": session["user"]
+            "user": session["user"],
+            "image": request.files["inputImageArtwork"].filename
         }
         mongo.db.music.insert_one(piece)
         flash("Music upload shared")
     if "inputImageArtwork" in request.files:
-        print("artwork")
         inputImageArtwork = request.files["inputImageArtwork"]
         mongo.save_file(inputImageArtwork.filename, inputImageArtwork)
-        print("functioning")
     return render_template("share.html")
 
 
@@ -117,6 +123,7 @@ def delete_piece(piece_id):
     mongo.db.music.remove({"_id": ObjectId(piece_id)})
     flash("Your music share has been deleted")
     return redirect(url_for("music_collection"))
+
 
 if __name__ == "__main__":
     app.run(host=os.environ.get("IP"),

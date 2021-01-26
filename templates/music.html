@@ -2,8 +2,21 @@
 {% block content %}
 
 
+
 <h3 class="d-flex justify-content-center">Music Share</h3>
 <h4 class="d-flex justify-content-center">A place to share music with others</h4>
+
+{% with messages = get_flashed_messages() %}
+{% if messages %}
+{% for message in messages %}
+<div class="row">
+    <div class="col d-flex justify-content-center">
+        <h4 class="center-align">{{ message }}</h4>
+    </div>
+</div>
+{% endfor %}
+{% endif %}
+{% endwith %}
 
 <div class="row">
     <div class="col col-3 d-flex text-center musicCard">
@@ -16,7 +29,7 @@
                 <a href="#" class="btn-large btn-warning text-white">Write a Review</a>
                 <a href="#" class="btn-large btn-info text-white">Read Reviews</a>
             {% endif %}
-        <img src="{{piece.image}}" class="card-img-top border " style="height:10rem;" alt="">
+        <img src="{{ url_for('file', filename=piece.image)}}" class="card-img-top border " style="height:10rem;" alt="{{ piece.image }}">
         <div class="card-body">
             <h5 class="card-title">{{ piece.title}} </h5>
             <p class="card-text">{{ piece.artist }}</p>
