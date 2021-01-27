@@ -37,18 +37,17 @@
                 <p class="card-text">{{ piece.genre }}</p>
                 <p class="card-text">Performed by: {{ piece.user }}</p>
                 <a href="#" class="btn btn-primary">Sheet Music</a>
-                <audio id="music" preload="true">
-                    <source src="{{ url_for('file', filename=piece.sound)}}">
-                </audio>
-                <div id="audioplayer">
-                    
-                    <i id="playButton" class="fas fa-play"></i>
-                    <i id="stopButton" class="fas fa-square"></i>
-                </div>
+                <audio id="music{{ piece._id }}" class="music" preload="true">
+                    <source src="{{ url_for('file', filename=piece.sound)}}"> 
+                </audio>               
+                <div id="audioplayer">                    
+                    <i id="play{{ piece._id }}" data-id="{{ piece._id }}" class="playButton fas fa-play"></i>
+                    <i id="stop{{ piece._id }}" data-id="{{ piece._id }}" class="stopButton fas fa-square"></i>
+                </div>                
             </div>
-        </div>
-    </div>
+        </div>    
     {% endfor %}
+    </div>
 </div>
 
 
