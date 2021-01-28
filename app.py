@@ -74,7 +74,6 @@ def register():
         session["userLog"] = request.form.get("username").lower()
         flash("You are registered! Please log in")
         return redirect(url_for("login", username=session["userLog"]))
-    
     return render_template("register.html")
 
 
