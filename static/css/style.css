@@ -19,7 +19,7 @@
     background-position: center;
 	background-size: cover;
     background-repeat: no-repeat;    
-    height:710px;
+    height:750px;
 }
 
 .navbar-home{
@@ -28,12 +28,14 @@
 
 #footer{
     width:100%;
-    height:80px;
-    position:absolute;
+    height:50px;
+    position:fixed;
     bottom:0;
     left:0;
     background-color: black;
 }
+
+
 
 .shareCard {
     background-color:rgb(233, 230, 230);
@@ -54,6 +56,7 @@ padding-left:6px; }
 
 
 /* Media Queries for screen sizes */
+
 @media screen and (max-width: 1024px){
 .main-image{
         padding-right: 0px;
