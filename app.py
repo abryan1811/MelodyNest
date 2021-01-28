@@ -103,7 +103,7 @@ def share():
             "title": request.form.get("inputTitle"),
             "artist": request.form.get("inputArtist"),
             "sound": request.files["inputSoundFile"].filename,
-            "sheetmusic": request.form.get("inputSheetMusic"),
+            "sheetmusic": request.files["inputSheetMusic"].filename,
             "genre": request.form.get("inputGenre"),
             "instrument": request.form.get("inputInstrument"),
             "user": session["user"],
@@ -117,6 +117,9 @@ def share():
     if "inputSoundFile" in request.files:
         inputSoundFile = request.files["inputSoundFile"]
         mongo.save_file(inputSoundFile.filename, inputSoundFile)
+    if "inputSheetMusic" in request.files:
+        inputSheetMusic = request.files["inputSheetMusic"]
+        mongo.save_file(inputSheetMusic.filename, inputSheetMusic)
     return render_template("share.html")
 
 

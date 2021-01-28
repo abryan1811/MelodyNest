@@ -36,7 +36,7 @@
                 <p class="card-text">{{ piece.artist }}</p>
                 <p class="card-text">{{ piece.genre }}</p>
                 <p class="card-text">Performed by: {{ piece.user }}</p>
-                <a href="#" class="btn btn-primary">Sheet Music</a>
+                <a href="{{ url_for('file', filename=piece.sheetmusic)}}" target="_blank" class="btn btn-primary">Sheet Music</a>
                 <audio id="music{{ piece._id }}" class="music" preload="true">
                     <source src="{{ url_for('file', filename=piece.sound)}}"> 
                 </audio>               
