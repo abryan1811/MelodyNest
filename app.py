@@ -120,7 +120,12 @@ def share():
     if "inputSheetMusic" in request.files:
         inputSheetMusic = request.files["inputSheetMusic"]
         mongo.save_file(inputSheetMusic.filename, inputSheetMusic)
-    return render_template("share.html")
+    genres = []
+    genresDB = list(mongo.db.genres.find().sort("genre"))
+    for genre in genresDB:
+        genres.append(genre)
+
+    return render_template("share.html", genres=genres)
 
 
 @app.route("/delete_piece/<piece_id>")

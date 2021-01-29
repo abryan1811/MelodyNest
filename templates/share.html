@@ -40,10 +40,10 @@
                         <div class="input-group mb-3">
                             <select class="form-select" id="inputGenre" name="inputGenre"
                                 aria-label="Example select with button addon">
-                                <option selected>Genre</option>
-                                <option value="1">One</option>
-                                <option value="2">Two</option>
-                                <option value="3">Three</option>
+                                <option value="" disabled selected>(Genre)</option>
+                                {% for genre in genres %}
+                                    <option value="{{genre._id}}">{{genre.genre}}</option>
+                                {% endfor %}
                             </select>
                         </div>
                     </div>
