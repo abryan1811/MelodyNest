@@ -113,35 +113,57 @@ def file(filename):
 
 @app.route("/share", methods=["GET", "POST"])
 def share():
-    if request.method == "POST":
-        print(request.files["inputImageArtwork"].filename)
-        piece={
+    if request.method == "GET":
+        genres = []
+        genresDB = list(mongo.db.genres.find().sort("genre"))
+        for genre in genresDB:
+            genres.append(genre)
+        instruments = []
+        instrumentsDB = list(mongo.db.instruments.find().sort("instrument"))
+        for instrument in instrumentsDB:
+            instruments.append(instrument)
+        return render_template("share.html", genres=genres, instruments=instruments)
+    elif request.method == "POST":
+        if "inputImageArtwork" in request.files:
+            inputImageArtwork = request.files["inputImageArtwork"]
+            mongo.save_file(inputImageArtwork.filename, inputImageArtwork)
+        if "inputSoundFile" in request.files:
+            inputSoundFile = request.files["inputSoundFile"]
+            mongo.save_file(inputSoundFile.filename, inputSoundFile)
+        if "inputSheetMusic" in request.files:
+            inputSheetMusic = request.files["inputSheetMusic"]
+            mongo.save_file(inputSheetMusic.filename, inputSheetMusic)
+        musicGenreId = ""
+        if (request.form.get("inputGenre") == "addNew"):
+            genre = {
+                "genre": request.form.get("newGenreText")
+            }
+            musicGenreId = mongo.db.genres.insert(genre)
+            print("musicGenreId: ", musicGenreId)
+        else:
+            musicGenreId = request.form.get("inputGenre")
+        instrId = ""
+        if (request.form.get("inputInstrument") == "addNew"):
+            instr = {
+                "instrument": request.form.get("newInstrumentText")
+            }
+            instrId = mongo.db.instruments.insert(instr)
+            print("instrId: ", instrId)
+        else:
+            instrId = request.form.get("inputInstrument")
+        piece = {
+            "genre": musicGenreId,
             "title": request.form.get("inputTitle"),
             "artist": request.form.get("inputArtist"),
+            "instrument": instrId,
+            "user": session["user"],
             "sound": request.files["inputSoundFile"].filename,
             "sheetmusic": request.files["inputSheetMusic"].filename,
-            "genre": request.form.get("inputGenre"),
-            "instrument": request.form.get("inputInstrument"),
-            "user": session["user"],
             "image": request.files["inputImageArtwork"].filename
         }
         mongo.db.music.insert_one(piece)
         flash("Music upload shared")
-    if "inputImageArtwork" in request.files:
-        inputImageArtwork = request.files["inputImageArtwork"]
-        mongo.save_file(inputImageArtwork.filename, inputImageArtwork)
-    if "inputSoundFile" in request.files:
-        inputSoundFile = request.files["inputSoundFile"]
-        mongo.save_file(inputSoundFile.filename, inputSoundFile)
-    if "inputSheetMusic" in request.files:
-        inputSheetMusic = request.files["inputSheetMusic"]
-        mongo.save_file(inputSheetMusic.filename, inputSheetMusic)
-    genres = []
-    genresDB = list(mongo.db.genres.find().sort("genre"))
-    for genre in genresDB:
-        genres.append(genre)
-
-    return render_template("share.html", genres=genres)
+        return redirect(url_for('music_collection'))
 
 
 @app.route("/delete_piece/<piece_id>")

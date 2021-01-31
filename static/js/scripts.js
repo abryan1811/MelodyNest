@@ -41,3 +41,25 @@ function stop() {
     music.currentTime = 0
     music.pause();
 }
+
+//$("#inputGenre").on('change', newGenre());
+function newGenre(){
+    //alert("fire genre");
+    if ($("#inputGenre").val() == "addNew") {
+        $("#newGenreText").removeClass("d-none");
+   }
+    else {
+        $("#newGenreText").addClass("d-none");
+    }
+}
+
+//$("#inputInstrument").on('change', newInstrument());
+function newInstrument(){
+    //alert("fire instrument");
+    if ($("#inputInstrument").val() == "addNew") {
+        $("#newInstrumentText").removeClass("d-none");
+    }
+    else {
+        $("#newInstrumentText").addClass("d-none");
+    }
+}
