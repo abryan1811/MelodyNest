@@ -27,7 +27,23 @@ def home():
 @app.route("/music_collection")
 def music_collection():
     music = mongo.db.music.find()
-    return render_template("music.html", music=music)
+    musicPieces = []
+    for piece in music:
+        musicGenreId = mongo.db.genres.find_one({"_id": ObjectId(piece["genre"])}).get("genre")
+        musicInstrumentId = mongo.db.instruments.find_one({"_id": ObjectId(piece["instrument"])}).get("instrument")
+        piece = {
+            "_id": piece["_id"],
+            "genre": musicGenreId,
+            "title": piece["title"],
+            "artist": piece["artist"],
+            "instrument": musicInstrumentId,
+            "user": piece["user"],
+            "sound": piece["sound"],
+            "sheetmusic": piece["sheetmusic"],
+            "image": piece["image"]
+        }
+        musicPieces.append(piece)
+    return render_template("music.html", music=musicPieces)
 
 
 @app.route("/login", methods=["GET", "POST"])
