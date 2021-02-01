@@ -31,13 +31,14 @@ def music_collection():
     for piece in music:
         musicGenreId = mongo.db.genres.find_one({"_id": ObjectId(piece["genre"])}).get("genre")
         musicInstrumentId = mongo.db.instruments.find_one({"_id": ObjectId(piece["instrument"])}).get("instrument")
+        userId = mongo.db.users.find_one({"_id": ObjectId(piece["user"])}).get("username")
         piece = {
             "_id": piece["_id"],
             "genre": musicGenreId,
             "title": piece["title"],
             "artist": piece["artist"],
             "instrument": musicInstrumentId,
-            "user": piece["user"],
+            "user": userId,
             "sound": piece["sound"],
             "sheetmusic": piece["sheetmusic"],
             "image": piece["image"]
@@ -57,6 +58,7 @@ def login():
             if check_password_hash(
                     existing_user["password"], request.form.get("password")):
                         session["user"] = request.form.get("username").lower()
+                        session["userId"] = str(existing_user["_id"])
                         return redirect(url_for(
                             "home", username=session["user"]))
             else:
@@ -81,15 +83,17 @@ def register():
             return redirect(url_for("register"))
 
         register = {
+            "firstName": request.form.get("firstName"),
+            "surname": request.form.get("surname"),
             "email": request.form.get("email").lower(),
             "username": request.form.get("username").lower(),
             "password": generate_password_hash(request.form.get("password"))
         }
         mongo.db.users.insert_one(register)
 
-        session["userLog"] = request.form.get("username").lower()
+        session["user"] = request.form.get("username").lower()
         flash("You are registered! Please log in")
-        return redirect(url_for("login", username=session["userLog"]))
+        return redirect(url_for("login", username=session["user"]))
     return render_template("register.html")
 
 
@@ -152,11 +156,11 @@ def share():
         else:
             instrId = request.form.get("inputInstrument")
         piece = {
-            "genre": musicGenreId,
+            "genre": ObjectId(musicGenreId),
             "title": request.form.get("inputTitle"),
             "artist": request.form.get("inputArtist"),
-            "instrument": instrId,
-            "user": session["user"],
+            "instrument": ObjectId(instrId),
+            "user": ObjectId(session["userId"]),
             "sound": request.files["inputSoundFile"].filename,
             "sheetmusic": request.files["inputSheetMusic"].filename,
             "image": request.files["inputImageArtwork"].filename
@@ -164,6 +168,11 @@ def share():
         mongo.db.music.insert_one(piece)
         flash("Music upload shared")
         return redirect(url_for('music_collection'))
+
+
+@app.route("/edit_profile", methods=["GET", "POST"])
+def edit_profile():
+    mongo.db.music.insert_one(piece)
 
 
 @app.route("/delete_piece/<piece_id>")
