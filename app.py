@@ -29,9 +29,12 @@ def music_collection():
     music = mongo.db.music.find()
     musicPieces = []
     for piece in music:
-        musicGenreId = mongo.db.genres.find_one({"_id": ObjectId(piece["genre"])}).get("genre")
-        musicInstrumentId = mongo.db.instruments.find_one({"_id": ObjectId(piece["instrument"])}).get("instrument")
-        userId = mongo.db.users.find_one({"_id": ObjectId(piece["user"])}).get("username")
+        musicGenreId = mongo.db.genres.find_one(
+            {"_id": ObjectId(piece["genre"])}).get("genre")
+        musicInstrumentId = mongo.db.instruments.find_one(
+            {"_id": ObjectId(piece["instrument"])}).get("instrument")
+        userId = mongo.db.users.find_one(
+            {"_id": ObjectId(piece["user"])}).get("username")
         piece = {
             "_id": piece["_id"],
             "genre": musicGenreId,
@@ -57,10 +60,10 @@ def login():
         if existing_user:
             if check_password_hash(
                     existing_user["password"], request.form.get("password")):
-                        session["user"] = request.form.get("username").lower()
-                        session["userId"] = str(existing_user["_id"])
-                        return redirect(url_for(
-                            "home", username=session["user"]))
+                session["user"] = request.form.get("username").lower()
+                session["userId"] = str(existing_user["_id"])
+                return redirect(url_for(
+                    "home", username=session["user"]))
             else:
                 flash("Incorrect Username and/or Password")
                 return redirect(url_for("login"))
@@ -126,7 +129,8 @@ def share():
         instrumentsDB = list(mongo.db.instruments.find().sort("instrument"))
         for instrument in instrumentsDB:
             instruments.append(instrument)
-        return render_template("share.html", genres=genres, instruments=instruments)
+        return render_template(
+            "share.html", genres=genres, instruments=instruments)
     elif request.method == "POST":
         if "inputImageArtwork" in request.files:
             inputImageArtwork = request.files["inputImageArtwork"]
@@ -168,11 +172,6 @@ def share():
         mongo.db.music.insert_one(piece)
         flash("Music upload shared")
         return redirect(url_for('music_collection'))
-
-
-@app.route("/edit_profile", methods=["GET", "POST"])
-def edit_profile():
-    mongo.db.music.insert_one(piece)
 
 
 @app.route("/delete_piece/<piece_id>")
