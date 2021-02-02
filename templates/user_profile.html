@@ -1,5 +1,33 @@
 {% extends "base.html" %}
 {% block content %}
 
+<h3 class="d-flex justify-content-center">{{userName}}'s Profile Page</h3>
+&nbsp
+
+<form class="container-fluid">
+    <div class="row d-flex text-center">
+        <div class="card col-3 col mb-4">
+            &nbsp
+            <p class="d-flex justify-content-center"><u>{{userName}}</u></p>
+            <p>Name: {{firstname}} {{surname}}</p>
+            <p>Instrument: {{preferredInstrument}}</p>
+        </div>
+        <div class="card col-9 col mb-4">
+            &nbsp
+            <p class="d-flex justify-content-center"><u>About Me</u></p>
+            <!-- <div onchange="updateProfile()">
+                <p>#</p>
+            </div> -->
+            <div class="updatingProfile">
+                <label for="comment"></label>
+                <textarea class="form-control" rows="5" placeholder="..." id="aboutMeText"
+                    name="aboutMeText">{{aboutMe}}</textarea>
+                {% if session.user == userName %}
+                <a href="#" class="btn btn-success" role="button">Edit Profile</a>
+                {% endif %}
+            </div>
+        </div>
+    </div>
+</form>
 
 {% endblock %}

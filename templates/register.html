@@ -49,7 +49,11 @@
                             <input type="password" name="password" class="form-control validate" id="passwordLogin"
                                 minlength="4" maxlength="15" pattern="^[a-zA-Z0-9]{4,15}$">
                         </div>
-
+                        <div class="mb-3">
+                                <label for="instrumentLogin" class="form-label">Preferred Instrument</label>
+                                <input type="text" name="instrumentLogin" class="form-control required" id="instrumentLogin"
+                                    pattern="^[A-Za-z]+$" aria-describedby="instrumentLoginHelp">
+                            </div>
                     </form>
                 </div>
                 <div class="card-footer text-muted">

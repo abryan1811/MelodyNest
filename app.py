@@ -90,13 +90,14 @@ def register():
             "surname": request.form.get("surname"),
             "email": request.form.get("email").lower(),
             "username": request.form.get("username").lower(),
-            "password": generate_password_hash(request.form.get("password"))
+            "password": generate_password_hash(request.form.get("password")),
+            "instrumentLogin": request.form.get("instrumentLogin"),
+            "aboutme": "About me..."
         }
         mongo.db.users.insert_one(register)
 
-        session["user"] = request.form.get("username").lower()
         flash("You are registered! Please log in")
-        return redirect(url_for("login", username=session["user"]))
+        return redirect(url_for("login"))
     return render_template("register.html")
 
 
@@ -109,7 +110,18 @@ def logout():
 
 @app.route("/user_profile")
 def user_profile():
-    return render_template("user_profile.html")
+    user = mongo.db.users.find_one(
+        {"_id": ObjectId(session["userId"])})
+    userName = user.get("username")
+    aboutMe = user.get("aboutme")
+    firstname = user.get("firstName")
+    surname = user.get("surname")
+    preferredInstrument = user.get("instrumentLogin")
+
+    return render_template(
+        "user_profile.html", userName=userName, aboutMe=aboutMe,
+        firstname=firstname, surname=surname,
+        preferredInstrument=preferredInstrument)
 
 
 @app.route("/file/<filename>")
@@ -172,6 +184,21 @@ def share():
         mongo.db.music.insert_one(piece)
         flash("Music upload shared")
         return redirect(url_for('music_collection'))
+
+
+@app.route("/update_about", methods=["GET", "POST"])
+def update_about():
+    mongo.db.users.insert_one("aboutMeText")
+    flash("Your profile information has been updated.")
+    return redirect(url_for('"user_profile.html"'))
+
+
+# @app.route("/user_about", methods=["GET", "POST"])
+# def user_about():
+#     if request.method=="GET":
+#          aboutInfo = {
+#             "aboutme": 
+#          }
 
 
 @app.route("/delete_piece/<piece_id>")
