@@ -117,11 +117,26 @@ def user_profile():
     firstname = user.get("firstName")
     surname = user.get("surname")
     preferredInstrument = user.get("instrumentLogin")
-
+    useruploads = mongo.db.music.find(
+        {"user": ObjectId(session["userId"])})
+    
+    useruploadstitle = []
+    for upload in useruploads:
+        useruploadstitle.append(upload)
+        print("************")
+        print(upload.get("genre"))
+        musicGenreId = mongo.db.genres.find_one(
+            {"_id": ObjectId(upload["genre"])}).get("genre")
+        musicInstrumentId = mongo.db.instruments.find_one(
+            {"_id": ObjectId(upload["instrument"])}).get("instrument")
+    upload = {
+        "genre": musicGenreId,
+        "instrument": musicInstrumentId,
+    }
     return render_template(
         "user_profile.html", userName=userName, aboutMe=aboutMe,
-        firstname=firstname, surname=surname,
-        preferredInstrument=preferredInstrument)
+        firstname=firstname, surname=surname, upload=upload,
+        preferredInstrument=preferredInstrument, useruploads=useruploadstitle)
 
 
 @app.route("/file/<filename>")

@@ -7,27 +7,101 @@
 <form class="container-fluid">
     <div class="row d-flex text-center">
         <div class="card col-3 col mb-4">
-            &nbsp
-            <p class="d-flex justify-content-center"><u>{{userName}}</u></p>
-            <p>Name: {{firstname}} {{surname}}</p>
-            <p>Instrument: {{preferredInstrument}}</p>
+            <img src="#" class="card-img-top border " style="height:15rem;" alt="">
         </div>
-        <div class="card col-9 col mb-4">
-            &nbsp
-            <p class="d-flex justify-content-center"><u>About Me</u></p>
-            <!-- <div onchange="updateProfile()">
-                <p>#</p>
-            </div> -->
+        <div class="card col-9 col mb-4 ">
+            <div class="updateProfileSection" onchange="updateProfile()"></div>
+            <div>
+                &nbsp
+                <p class="d-flex justify-content-center"><u>About Me</u></p>
+                <div class="profileText " id="aboutMeText">
+                    <p>{{aboutMe}}</p>
+                </div>
+            </div>
+
             <div class="updatingProfile">
                 <label for="comment"></label>
-                <textarea class="form-control" rows="5" placeholder="..." id="aboutMeText"
+                <textarea class="form-control d-none" rows="5" placeholder="{{aboutMe}}..." id="updateAboutText"
                     name="aboutMeText">{{aboutMe}}</textarea>
-                {% if session.user == userName %}
-                <a href="#" class="btn btn-success" role="button">Edit Profile</a>
-                {% endif %}
             </div>
+
+
         </div>
     </div>
 </form>
+<div class="container-fluid">
+    <div class="row d-flex text-center">
+        <div class="card col-3 col mb-4">
+            &nbsp
+            <p class="d-flex justify-content-center"><u>{{userName}}'s Information</u></p>
+            <p>Name: {{firstname}} {{surname}}</p>
+            <p>Instrument: {{preferredInstrument}}</p>
+            {% if session.user == userName %}
+            <a href="#" class="btn btn-success" id="editProfile" role="button">Edit Profile</a>
+            {% endif %}
+        </div>
+        <div class="card col-9 col mb-4 ">
+            {% for piece in useruploads %}
+            <div class="card col-3 mb-4">
+                {% if session.user|lower == piece.user|lower %}
+                <a href="{{ url_for('delete_piece', piece_id=piece._id) }}" class="btn-small btn-danger">Delete</a>
+                <a href="#" class="btn-small btn-success">Edit</a>
+                {% else %}
+                <a href="#" class="btn-large btn-warning text-white">Write a Review</a>
+                <a href="#" class="btn-large btn-info text-white">Read Reviews</a>
+                {% endif %}
+                <img src="{{ url_for('file', filename=piece.image)}}" class="card-img-top border " style="height:10rem;"
+                    alt="{{ piece.image }}">
+                <div class="card-body">
+                    <h5 class="card-title">{{ piece.title}} </h5>
+                    <p class="card-text">{{ piece.artist }}</p>
+                    <p class="card-text">{{ upload.genre }}</p>
+                    <p class="card-text">{{ upload.instrument }}</p>
+                    <a href="{{ url_for('file', filename=piece.sheetmusic)}}" target="_blank" class="btn btn-primary">Sheet Music</a>
+                    <audio id="music{{ piece._id }}" class="music" preload="true">
+                        <source src="{{ url_for('file', filename=piece.sound)}}"> 
+                    </audio>               
+                    <div id="audioplayer">                    
+                        <i id="play{{ piece._id }}" data-id="{{ piece._id }}" class="playButton fas fa-play"></i>
+                        <i id="stop{{ piece._id }}" data-id="{{ piece._id }}" class="stopButton fas fa-square"></i>
+                    </div>                
+                </div>
+            </div>    
+        {% endfor %}
+        </div>
+    </div>
+</div>
+<div class="container-fluid">
+    <div class="row row-cols-1 row-cols-sm-2 row-cols-md-3 row-cols-lg-4 row-cols-xl-5 d-flex text-center">
+        {% for piece in music %}
+            <div class="card col mb-4">
+                {% if session.user|lower == piece.user|lower %}
+                <a href="{{ url_for('delete_piece', piece_id=piece._id) }}" class="btn-small btn-danger">Delete</a>
+                <a href="#" class="btn-small btn-success">Edit</a>
+                {% else %}
+                <a href="#" class="btn-large btn-warning text-white">Write a Review</a>
+                <a href="#" class="btn-large btn-info text-white">Read Reviews</a>
+                {% endif %}
+                <img src="{{ url_for('file', filename=piece.image)}}" class="card-img-top border " style="height:10rem;"
+                    alt="{{ piece.image }}">
+                <div class="card-body">
+                    <h5 class="card-title">{{ piece.title}} </h5>
+                    <p class="card-text">{{ piece.artist }}</p>
+                    <p class="card-text">{{ piece.genre }}</p>
+                    <p class="card-text">{{ piece.instrument }}</p>
+                    <p class="card-text">Performed by: {{ piece.user }}</p>
+                    <a href="{{ url_for('file', filename=piece.sheetmusic)}}" target="_blank" class="btn btn-primary">Sheet Music</a>
+                    <audio id="music{{ piece._id }}" class="music" preload="true">
+                        <source src="{{ url_for('file', filename=piece.sound)}}"> 
+                    </audio>               
+                    <div id="audioplayer">                    
+                        <i id="play{{ piece._id }}" data-id="{{ piece._id }}" class="playButton fas fa-play"></i>
+                        <i id="stop{{ piece._id }}" data-id="{{ piece._id }}" class="stopButton fas fa-square"></i>
+                    </div>                
+                </div>
+            </div>    
+        {% endfor %}
+    </div>
+</div>
 
 {% endblock %}
