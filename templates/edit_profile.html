@@ -1,0 +1,103 @@
+{% extends "base.html" %}
+{% block content %}
+
+<h3 class="d-flex justify-content-center">{{userName}}'s Profile Page</h3>
+&nbsp;
+
+{% with messages = get_flashed_messages() %}
+{% if messages %}
+{% for message in messages %}
+<div class="row">
+    <div class="col d-flex justify-content-center">
+        <h4 class="center-align">{{ message }}</h4>
+    </div>
+</div>
+{% endfor %}
+{% endif %}
+{% endwith %}
+
+<div class="container-fluid">
+    <div class="row d-flex text-center">
+        <form class="card col-3 col mb-4"  method="POST" action="{{url_for('edit_profile')}}">
+            <img src="#" class="card-img-top border " style="height:15rem;" alt="">
+            <div class="row">
+                <div class="input-group mb-3">
+                    <label class="input-group-text" for="inputProfileImage">Upload Profile Image</label>
+                    <input type="file" class="form-control" name="inputProfileImage" id="inputProfileImage">
+                    <a href="{{url_for('edit_profile')}}" class="btn btn-success editProfile" type="submit"
+                        role="button">Update</a>
+                </div>
+            </div>
+        </form>
+        <form class="card col-9 col mb-4" method="POST" action="{{url_for('edit_profile')}}">
+            <p class="d-flex justify-content-center"><u>About Me</u></p>            
+                <label for="aboutMeText"></label>
+                <textarea class="form-control d-none" rows="5" placeholder="{{aboutMe}}..." id="updateAboutText"
+                    name="aboutMeText">{{aboutMe}}</textarea> 
+                <button class="btn btn-success editProfile" type="submit"
+                    role="button">Update</button>          
+        </form>
+    </div>
+</div>
+
+<div class="container-fluid">
+    <div class="row d-flex text-center">
+        <div class="card col-3 col mb-4">
+            &nbsp
+            <p class="d-flex justify-content-center"><u>{{userName}}'s Information</u></p>
+            <form method="POST">
+                <div class="row">
+                    <div class="mb-3">
+                        <label for="firstName" class="form-label">First Name</label>
+                        <input type="text" name="firstName" class="form-control required" id="firstNameLogin"
+                            pattern="^[A-Za-z]+$" aria-describedby="firstNameHelp" value="{{firstname}}">
+                    </div>
+                    <div class="mb-3">
+                        <label for="surname" class="form-label">Surname</label>
+                        <input type="text" name="surname" class="form-control required" id="surnameLogin"
+                            pattern="^[A-Za-z]+$" aria-describedby="surnameHelp" value="{{surname}}">
+                    </div>
+                </div>
+                <div class="mb-3">
+                    <label for="InputEmail" class="form-label">Email address</label>
+                    <input type="email" class="form-control validate" name="email" id="InputEmail"
+                        aria-describedby="emailHelp" value="{{email}}">
+                    <div id="emailHelp" class="form-text">We'll never share your email with anyone else.</div>
+                </div>
+                <div class="mb-3">
+                    <label for="InputPassword" class="form-label">Password</label>
+                    <input type="password" name="password" class="form-control validate" id="passwordLogin"
+                        minlength="4" maxlength="15" pattern="^[a-zA-Z0-9]{4,15}$">
+                </div>
+                <div class="mb-3">
+                    <label for="instrumentLogin" class="form-label">Preferred Instrument</label>
+                    <input type="text" name="instrumentLogin" class="form-control required" id="instrumentLogin"
+                        pattern="^[A-Za-z]+$" aria-describedby="instrumentLoginHelp"
+                        value="{{preferredInstrument}}">
+                </div>
+                <button class="btn btn-success editProfile" type="submit"
+                    role="button">Update</button>
+            </form>
+        </div>
+        <div class="card col-9 col mb-4 ">
+            {% for piece in useruploads %}
+            <div class="card col-3 mb-4">
+                {% if session.user == userName %}
+                <a href="{{ url_for('delete_piece', piece_id=piece._id) }}" class="btn btn-small btn-danger">Delete</a>
+                <a href="#" class="btn btn-small btn-success">Edit</a>
+                {% else %}
+                <a href="#" class="btn btn-large btn-warning text-white">Write a Review</a>
+                <a href="#" class="btn btn-large btn-info text-white">Read Reviews</a>
+                {% endif %}
+                <img src="{{ url_for('file', filename=piece.image)}}" class="card-img-top border " style="height:10rem;"
+                    alt="{{ piece.image }}">
+                <div class="card-body">
+                    <h5 class="card-title">{{ piece.title}} </h5>
+
+                </div>
+            </div>
+            {% endfor %}
+        </div>
+    </div>
+</div>
+{% endblock %}

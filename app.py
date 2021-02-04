@@ -116,10 +116,10 @@ def user_profile():
     aboutMe = user.get("aboutme")
     firstname = user.get("firstName")
     surname = user.get("surname")
+    email = user.get("email")
     preferredInstrument = user.get("instrumentLogin")
     useruploads = mongo.db.music.find(
         {"user": ObjectId(session["userId"])})
-    
     useruploadstitle = []
     for upload in useruploads:
         useruploadstitle.append(upload)
@@ -135,7 +135,7 @@ def user_profile():
     }
     return render_template(
         "user_profile.html", userName=userName, aboutMe=aboutMe,
-        firstname=firstname, surname=surname, upload=upload,
+        firstname=firstname, surname=surname, upload=upload, email=email,
         preferredInstrument=preferredInstrument, useruploads=useruploadstitle)
 
 
@@ -201,19 +201,55 @@ def share():
         return redirect(url_for('music_collection'))
 
 
-@app.route("/update_about", methods=["GET", "POST"])
-def update_about():
-    mongo.db.users.insert_one("aboutMeText")
-    flash("Your profile information has been updated.")
-    return redirect(url_for('"user_profile.html"'))
+@app.route("/edit_profile", methods=["GET", "POST"])
+def edit_profile():
+    user = mongo.db.users.find_one(
+            {"_id": ObjectId(session["userId"])})
+    if request.method == "GET":
+        userName = user.get("username")
+        aboutMe = user.get("aboutme")
+        firstname = user.get("firstName")
+        surname = user.get("surname")
+        email = user.get("email")
+        preferredInstrument = user.get("instrumentLogin")
+        useruploads = mongo.db.music.find(
+            {"user": ObjectId(session["userId"])})
+        useruploadstitle = []
+        for upload in useruploads:
+            useruploadstitle.append(upload)
+            musicGenreId = mongo.db.genres.find_one(
+                {"_id": ObjectId(upload["genre"])}).get("genre")
+            musicInstrumentId = mongo.db.instruments.find_one(
+                {"_id": ObjectId(upload["instrument"])}).get("instrument")
+        upload = {
+            "genre": musicGenreId,
+            "instrument": musicInstrumentId,
+        }
 
+        print("Username: ")
+        print(userName)
 
-# @app.route("/user_about", methods=["GET", "POST"])
-# def user_about():
-#     if request.method=="GET":
-#          aboutInfo = {
-#             "aboutme": 
-#          }
+        return render_template(
+            "edit_profile.html", userName=userName, aboutMe=aboutMe,
+            firstname=firstname, surname=surname, upload=upload, email=email,
+            preferredInstrument=preferredInstrument,
+            useruploads=useruploadstitle)
+    elif request.method == "POST":
+        update = {
+            "firstName": request.form.get("firstName"),
+            "surname": request.form.get("surname"),
+            "username": session["user"],
+            "email": request.form.get("email").lower(),
+            "password": generate_password_hash(request.form.get("password")),
+            "instrumentLogin": request.form.get("instrumentLogin"),
+            "aboutme": request.form.get("updateAboutText")
+        }
+        mongo.db.users.update(
+            {"_id": ObjectId(session["userId"])}, update)
+        flash("Your details have been updated")
+        return render_template("user_profile.html", user=user)
+
+    return render_template("edit_profile.html", user=user)
 
 
 @app.route("/delete_piece/<piece_id>")
