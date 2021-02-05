@@ -21,7 +21,7 @@
 <div class="container-fluid">
     <div class="row row-cols-1 row-cols-sm-2 row-cols-md-3 row-cols-lg-4 row-cols-xl-5 d-flex justify-content-center text-center">
         {% for piece in music %}
-        <div class="card col mb-4">
+        <div class="card card-music col mb-4">
             {% if session.user == piece.user %}
             <a href="{{ url_for('delete_piece', piece_id=piece._id) }}" class="btn-small btn-danger ">Delete</a>
             <a href="#" class="btn-small btn-success">Edit</a>

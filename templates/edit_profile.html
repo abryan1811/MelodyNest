@@ -32,7 +32,7 @@
         <div class="card col-9 col mb-4">
             &nbsp
         <label for="AboutText"><u>About Me</u></label>
-        <textarea class="form-control" id="updateAboutText" rows="8">{{aboutMe}}</textarea>
+        <textarea class="form-control" name="updateAboutText" id="updateAboutText" rows="8">{{aboutMe}}</textarea>
    
         </div>
     </div>
@@ -75,9 +75,9 @@
 
             </div>
         </div>
-        <div class="card col-8 col mb-4 ">
+        <div class="card card-music col-8 col mb-4 ">
             {% for piece in useruploads %}
-            <div class="card col-3 mb-4">
+            <div class="card card-music col-3 mb-4">
                 {% if session.user == userName %}
                 <a href="{{ url_for('delete_piece', piece_id=piece._id) }}" class="btn btn-small btn-danger">Delete</a>
                 <a href="#" class="btn btn-small btn-success">Edit</a>

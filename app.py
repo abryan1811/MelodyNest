@@ -208,10 +208,10 @@ def edit_profile():
             {"_id": ObjectId(session["userId"])})
     if request.method == "GET":
         userName = user.get("username")
-        aboutMe = user.get("aboutme")
+        aboutme = user.get("aboutme")
         firstname = user.get("firstName")
         surname = user.get("surname")
-        email = user.get("email"),
+        email = user.get("email")
         password = user.get("password")
         profileImage = user.get("image")
         preferredInstrument = user.get("instrumentLogin")
@@ -233,7 +233,7 @@ def edit_profile():
         print(userName)
 
         return render_template(
-            "edit_profile.html", userName=userName, aboutMe=aboutMe,
+            "edit_profile.html", userName=userName, aboutme=aboutme,
             firstname=firstname, surname=surname, upload=upload, email=email,
             preferredInstrument=preferredInstrument, password=password,
             useruploads=useruploadstitle, profileImage=profileImage)
@@ -256,7 +256,7 @@ def edit_profile():
         flash("Your details have been updated")
         return render_template("user_profile.html", user=user)
 
-    return render_template("edit_profile.html", user=user)
+    return render_template("user_profile.html", user=user)
 
 
 @app.route("/delete_piece/<piece_id>")
