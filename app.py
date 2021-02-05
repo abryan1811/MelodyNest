@@ -92,7 +92,8 @@ def register():
             "username": request.form.get("username").lower(),
             "password": generate_password_hash(request.form.get("password")),
             "instrumentLogin": request.form.get("instrumentLogin"),
-            "aboutme": "About me..."
+            "aboutme": "About me...",
+            "image": "Treble_Clef.jpg"
         }
         mongo.db.users.insert_one(register)
 
@@ -106,37 +107,6 @@ def logout():
     flash("You have logged out")
     session.pop("user")
     return redirect(url_for("login"))
-
-
-@app.route("/user_profile")
-def user_profile():
-    user = mongo.db.users.find_one(
-        {"_id": ObjectId(session["userId"])})
-    userName = user.get("username")
-    aboutMe = user.get("aboutme")
-    firstname = user.get("firstName")
-    surname = user.get("surname")
-    email = user.get("email")
-    preferredInstrument = user.get("instrumentLogin")
-    useruploads = mongo.db.music.find(
-        {"user": ObjectId(session["userId"])})
-    useruploadstitle = []
-    for upload in useruploads:
-        useruploadstitle.append(upload)
-        print("************")
-        print(upload.get("genre"))
-        musicGenreId = mongo.db.genres.find_one(
-            {"_id": ObjectId(upload["genre"])}).get("genre")
-        musicInstrumentId = mongo.db.instruments.find_one(
-            {"_id": ObjectId(upload["instrument"])}).get("instrument")
-    upload = {
-        "genre": musicGenreId,
-        "instrument": musicInstrumentId,
-    }
-    return render_template(
-        "user_profile.html", userName=userName, aboutMe=aboutMe,
-        firstname=firstname, surname=surname, upload=upload, email=email,
-        preferredInstrument=preferredInstrument, useruploads=useruploadstitle)
 
 
 @app.route("/file/<filename>")
@@ -201,6 +171,37 @@ def share():
         return redirect(url_for('music_collection'))
 
 
+@app.route("/user_profile")
+def user_profile():
+    user = mongo.db.users.find_one(
+        {"_id": ObjectId(session["userId"])})
+    userName = user.get("username")
+    aboutMe = user.get("aboutme")
+    firstname = user.get("firstName")
+    surname = user.get("surname")
+    email = user.get("email")
+    preferredInstrument = user.get("instrumentLogin")
+    profileImage = user.get("image")
+    useruploads = mongo.db.music.find(
+        {"user": ObjectId(session["userId"])})
+    useruploadstitle = []
+    for upload in useruploads:
+        useruploadstitle.append(upload)
+        musicGenreId = mongo.db.genres.find_one(
+            {"_id": ObjectId(upload["genre"])}).get("genre")
+        musicInstrumentId = mongo.db.instruments.find_one(
+            {"_id": ObjectId(upload["instrument"])}).get("instrument")
+    upload = {
+        "genre": musicGenreId,
+        "instrument": musicInstrumentId,
+    }
+    return render_template(
+        "user_profile.html", userName=userName, aboutMe=aboutMe,
+        firstname=firstname, surname=surname, upload=upload, email=email,
+        preferredInstrument=preferredInstrument,
+        useruploads=useruploadstitle, profileImage=profileImage)
+
+
 @app.route("/edit_profile", methods=["GET", "POST"])
 def edit_profile():
     user = mongo.db.users.find_one(
@@ -210,7 +211,9 @@ def edit_profile():
         aboutMe = user.get("aboutme")
         firstname = user.get("firstName")
         surname = user.get("surname")
-        email = user.get("email")
+        email = user.get("email"),
+        password = user.get("password")
+        profileImage = user.get("image")
         preferredInstrument = user.get("instrumentLogin")
         useruploads = mongo.db.music.find(
             {"user": ObjectId(session["userId"])})
@@ -232,17 +235,21 @@ def edit_profile():
         return render_template(
             "edit_profile.html", userName=userName, aboutMe=aboutMe,
             firstname=firstname, surname=surname, upload=upload, email=email,
-            preferredInstrument=preferredInstrument,
-            useruploads=useruploadstitle)
+            preferredInstrument=preferredInstrument, password=password,
+            useruploads=useruploadstitle, profileImage=profileImage)
     elif request.method == "POST":
+        if "inputProfileImage" in request.files:
+            inputProfileImage = request.files["inputProfileImage"]
+            mongo.save_file(inputProfileImage.filename, inputProfileImage)
         update = {
             "firstName": request.form.get("firstName"),
             "surname": request.form.get("surname"),
             "username": session["user"],
-            "email": request.form.get("email").lower(),
+            "email": request.form.get("email"),
             "password": generate_password_hash(request.form.get("password")),
             "instrumentLogin": request.form.get("instrumentLogin"),
-            "aboutme": request.form.get("updateAboutText")
+            "aboutme": request.form.get("updateAboutText"),
+            "image": request.files["inputProfileImage"].filename
         }
         mongo.db.users.update(
             {"_id": ObjectId(session["userId"])}, update)

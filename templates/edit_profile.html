@@ -16,70 +16,66 @@
 {% endif %}
 {% endwith %}
 
+<form method="POST" action="{{url_for('edit_profile')}}" enctype="multipart/form-data">
 <div class="container-fluid">
     <div class="row d-flex text-center">
-        <form class="card col-3 col mb-4"  method="POST" action="{{url_for('edit_profile')}}">
-            <img src="#" class="card-img-top border " style="height:15rem;" alt="">
+        <div class="card col-3 col mb-4">
+            <img src="{{ url_for('file', filename=profileImage) }}" class="card-img-top border " style="height:15rem;"
+                alt="">
             <div class="row">
                 <div class="input-group mb-3">
                     <label class="input-group-text" for="inputProfileImage">Upload Profile Image</label>
                     <input type="file" class="form-control" name="inputProfileImage" id="inputProfileImage">
-                    <a href="{{url_for('edit_profile')}}" class="btn btn-success editProfile" type="submit"
-                        role="button">Update</a>
                 </div>
             </div>
-        </form>
-        <form class="card col-9 col mb-4" method="POST" action="{{url_for('edit_profile')}}">
-            <p class="d-flex justify-content-center"><u>About Me</u></p>            
-                <label for="aboutMeText"></label>
-                <textarea class="form-control d-none" rows="5" placeholder="{{aboutMe}}..." id="updateAboutText"
-                    name="aboutMeText">{{aboutMe}}</textarea> 
-                <button class="btn btn-success editProfile" type="submit"
-                    role="button">Update</button>          
-        </form>
+        </div>
+        <div class="card col-9 col mb-4">
+            &nbsp
+        <label for="AboutText"><u>About Me</u></label>
+        <textarea class="form-control" id="updateAboutText" rows="8">{{aboutMe}}</textarea>
+   
+        </div>
     </div>
 </div>
 
 <div class="container-fluid">
     <div class="row d-flex text-center">
-        <div class="card col-3 col mb-4">
+        <div class="card col-4 col mb-4">
             &nbsp
             <p class="d-flex justify-content-center"><u>{{userName}}'s Information</u></p>
-            <form method="POST">
+            <div>
                 <div class="row">
-                    <div class="mb-3">
-                        <label for="firstName" class="form-label">First Name</label>
-                        <input type="text" name="firstName" class="form-control required" id="firstNameLogin"
-                            pattern="^[A-Za-z]+$" aria-describedby="firstNameHelp" value="{{firstname}}">
-                    </div>
-                    <div class="mb-3">
-                        <label for="surname" class="form-label">Surname</label>
-                        <input type="text" name="surname" class="form-control required" id="surnameLogin"
-                            pattern="^[A-Za-z]+$" aria-describedby="surnameHelp" value="{{surname}}">
-                    </div>
+                <div class="mb-3 col-6">
+                    <label for="firstName" class="form-label">First Name</label>
+                    <input type="text" name="firstName" class="form-control required" id="firstNameLogin"
+                        pattern="^[A-Za-z]+$" aria-describedby="firstNameHelp" value="{{firstname}}">
+                </div>
+                <div class="mb-3 col-6">
+                    <label for="surname" class="form-label">Surname</label>
+                    <input type="text" name="surname" class="form-control required" id="surnameLogin"
+                        pattern="^[A-Za-z]+$" aria-describedby="surnameHelp" value="{{surname}}">
+                </div>
                 </div>
                 <div class="mb-3">
                     <label for="InputEmail" class="form-label">Email address</label>
                     <input type="email" class="form-control validate" name="email" id="InputEmail"
                         aria-describedby="emailHelp" value="{{email}}">
-                    <div id="emailHelp" class="form-text">We'll never share your email with anyone else.</div>
                 </div>
                 <div class="mb-3">
                     <label for="InputPassword" class="form-label">Password</label>
                     <input type="password" name="password" class="form-control validate" id="passwordLogin"
                         minlength="4" maxlength="15" pattern="^[a-zA-Z0-9]{4,15}$">
+                    <input type="checkbox" onclick="myFunction()">Show Password
                 </div>
                 <div class="mb-3">
                     <label for="instrumentLogin" class="form-label">Preferred Instrument</label>
                     <input type="text" name="instrumentLogin" class="form-control required" id="instrumentLogin"
-                        pattern="^[A-Za-z]+$" aria-describedby="instrumentLoginHelp"
-                        value="{{preferredInstrument}}">
+                        pattern="^[A-Za-z]+$" aria-describedby="instrumentLoginHelp" value="{{preferredInstrument}}">
                 </div>
-                <button class="btn btn-success editProfile" type="submit"
-                    role="button">Update</button>
-            </form>
+
+            </div>
         </div>
-        <div class="card col-9 col mb-4 ">
+        <div class="card col-8 col mb-4 ">
             {% for piece in useruploads %}
             <div class="card col-3 mb-4">
                 {% if session.user == userName %}
@@ -100,4 +96,17 @@
         </div>
     </div>
 </div>
+<div class="container-fluid">
+    <div class="row d-flex justify-content-center text-center ">
+        <button class="btn btn-success editProfile" type="submit" role="button">Update Changes</button>
+    </div>
+</div>
+</form>
+<div class="container-fluid">
+    <div class="row d-flex text-center footer-row">
+        &nbsp
+    </div>
+
+
+
 {% endblock %}

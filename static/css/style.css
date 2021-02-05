@@ -52,8 +52,13 @@
   cursor: pointer;
 padding-left:6px; }
 
+.footer-row {
+    height:80px;
+}
 
-
+.card {
+    display:inline-block;
+}
 
 /* Media Queries for screen sizes */
 

@@ -7,7 +7,7 @@
 <form class="container-fluid">
     <div class="row d-flex text-center">
         <div class="card col-3 col mb-4">
-            <img src="#" class="card-img-top border " style="height:15rem;" alt="">
+            <img src="{{ url_for('file', filename=profileImage) }}" class="card-img-top border " style="height:15rem;" alt="">
         </div>
         <div class="card col-9 col mb-4 ">
             <div class="updateProfileSection" onchange="updateProfile()"></div>
@@ -70,6 +70,8 @@
         </div>
     </div>
 </div>
-
+<div class="container-fluid">
+    <div class="row d-flex text-center footer-row">        
+    </div>
 
 {% endblock %}
