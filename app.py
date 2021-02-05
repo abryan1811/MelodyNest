@@ -241,20 +241,32 @@ def edit_profile():
         if "inputProfileImage" in request.files:
             inputProfileImage = request.files["inputProfileImage"]
             mongo.save_file(inputProfileImage.filename, inputProfileImage)
-        update = {
-            "firstName": request.form.get("firstName"),
-            "surname": request.form.get("surname"),
-            "username": session["user"],
-            "email": request.form.get("email"),
-            "password": generate_password_hash(request.form.get("password")),
-            "instrumentLogin": request.form.get("instrumentLogin"),
-            "aboutme": request.form.get("updateAboutText"),
-            "image": request.files["inputProfileImage"].filename
+        password = generate_password_hash(request.form.get("password"))
+
+        update = {"$set": {
+                "firstName": request.form.get("firstName"),
+                "surname": request.form.get("surname"),
+                "username": session["user"],
+                "email": request.form.get("email"),
+                "password": password,
+                "instrumentLogin": request.form.get("instrumentLogin"),
+                "aboutme": request.form.get("updateAboutText")
+            }
         }
-        mongo.db.users.update(
-            {"_id": ObjectId(session["userId"])}, update)
+        mongo.db.users.update_one(
+            {"_id": ObjectId(session["userId"])}, update, upsert=True)
+
+        if request.files["inputProfileImage"].filename != "":
+            updateImage = {"$set": {
+                "image": request.files["inputProfileImage"].filename
+                }
+            }
+            mongo.db.users.update_one(
+                {"_id": ObjectId(session["userId"])}, updateImage, upsert=True)
+
         flash("Your details have been updated")
-        return render_template("user_profile.html", user=user)
+        return render_template(
+            (session["userId"], "user_profile.html"), user=user)
 
     return render_template("user_profile.html", user=user)
 

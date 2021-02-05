@@ -60,6 +60,10 @@ padding-left:6px; }
     display:inline-block;
 }
 
+.profileText {
+    white-space: pre-line;
+}
+
 /* Media Queries for screen sizes */
 
 @media screen and (max-width: 1024px){
