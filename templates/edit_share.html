@@ -89,10 +89,16 @@
                             <input type="file" class="form-control" name="inputSheetMusic" id="inputSheetMusic">
                         </div>
                     </div>
-                    <!--submit-->
-                    <div class="col-12">
-                        <button type="submit" class="btn btn-primary shareButton">Edit Music</button>
+                    <!--Revert -->
+                    <div class="row">
+                    <div class="col-6">
+                        <a href="{{url_for('edit_share', piece_id=piece._id)}}" type="submit" class="btn btn-warning shareButton">Cancel Changes</a>
                     </div>
+                    <!--submit-->
+                    <div class="col-6">
+                        <button type="submit" class="btn btn-primary shareButton">Make changes</button>
+                    </div>
+                </div>
                 </div>
             </form>
         </div>
