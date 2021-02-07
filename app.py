@@ -171,6 +171,41 @@ def share():
         return redirect(url_for('music_collection'))
 
 
+@app.route("/edit_share/<piece_id>", methods=["GET", "POST"])
+def edit_share(piece_id):
+    piece = mongo.db.music.find_one({"_id": ObjectId(piece_id)})
+
+    genres = []
+    genresDB = list(mongo.db.genres.find().sort("genre"))
+    for genre in genresDB:
+        genres.append(genre)
+    instruments = []
+    instrumentsDB = list(mongo.db.instruments.find().sort("instrument"))
+    for instrument in instrumentsDB:
+        instruments.append(instrument)
+    musicGenreId = ""
+    if (request.form.get("inputGenre") == "addNew"):
+        genre = {
+            "genre": request.form.get("newGenreText")
+        }
+        musicGenreId = mongo.db.genres.insert(genre)
+        print("musicGenreId: ", musicGenreId)
+    else:
+        musicGenreId = request.form.get("inputGenre")
+    instrId = ""
+    if (request.form.get("inputInstrument") == "addNew"):
+        instr = {
+            "instrument": request.form.get("newInstrumentText")
+        }
+        instrId = mongo.db.instruments.insert(instr)
+        print("instrId: ", instrId)
+    else:
+        instrId = request.form.get("inputInstrument")
+
+    return render_template(
+        'edit_share.html', piece=piece, genres=genres, instruments=instruments)
+
+
 @app.route("/user_profile")
 def user_profile():
     user = mongo.db.users.find_one(

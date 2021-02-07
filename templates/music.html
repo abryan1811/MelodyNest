@@ -24,7 +24,7 @@
         <div class="card card-music col mb-4">
             {% if session.user == piece.user %}
             <a href="{{ url_for('delete_piece', piece_id=piece._id) }}" class="btn-small btn-danger ">Delete</a>
-            <a href="#" class="btn-small btn-success">Edit</a>
+            <a href="{{url_for('edit_share', piece_id=piece._id)}}" class="btn-small btn-success">Edit</a>
             {% else %}
             <a href="#" class="btn-large btn-warning text-white">Write a Review</a>
             <a href="#" class="btn-large btn-info text-white">Read Reviews</a>
