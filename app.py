@@ -249,6 +249,51 @@ def edit_share(piece_id):
             "music_collection", username=session["user"]))
 
 
+@app.route("/profiles")
+def profiles():
+    profile = mongo.db.users.find()
+    profileInfo = []
+    for data in profile:
+        profile_data = {
+            "_id": data["_id"],
+            "image": data["image"],
+            "username": data["username"]
+            }
+        profileInfo.append(profile_data)
+    return render_template("list_profiles.html", profile=profileInfo)
+
+
+@app.route("/view_profiles/<user_id>", methods=["GET", "POST"])
+def view_profiles(user_id):
+    user = mongo.db.users.find_one(
+        {"_id": ObjectId(user_id)})
+    userName = user.get("username")
+    aboutMe = user.get("aboutme")
+    firstname = user.get("firstName")
+    surname = user.get("surname")
+    email = user.get("email")
+    preferredInstrument = user.get("instrumentLogin")
+    profileImage = user.get("image")
+    useruploads = mongo.db.music.find(
+        {"user": ObjectId(user_id)})
+    useruploadstitle = []
+    for upload in useruploads:
+        useruploadstitle.append(upload)
+        musicGenreId = mongo.db.genres.find_one(
+            {"_id": ObjectId(upload["genre"])}).get("genre")
+        musicInstrumentId = mongo.db.instruments.find_one(
+            {"_id": ObjectId(upload["instrument"])}).get("instrument")
+    upload = {
+        "genre": musicGenreId,
+        "instrument": musicInstrumentId,
+    }
+    return render_template(
+        "user_profile.html", userName=userName, aboutMe=aboutMe,
+        firstname=firstname, surname=surname, upload=upload, email=email,
+        preferredInstrument=preferredInstrument,
+        useruploads=useruploadstitle, profileImage=profileImage)
+
+
 @app.route("/user_profile")
 def user_profile():
     user = mongo.db.users.find_one(

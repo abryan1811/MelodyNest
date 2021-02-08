@@ -37,7 +37,9 @@
             <p class="d-flex justify-content-center"><u>{{userName}}'s Information</u></p>
             <p>Name: {{firstname}} {{surname}}</p>
             <p>Instrument: {{preferredInstrument}}</p>
-            <a href="{{url_for('edit_profile')}}" class="btn btn-success" id="editProfile" role="button">Edit Profile</a>
+            {% if session.user == userName %}
+                <a href="{{url_for('edit_profile')}}" class="btn btn-success" id="editProfile" role="button">Edit Profile</a>
+            {% endif %}
         </div>
         <div class="card card-music col-9 col mb-4 ">
             {% for piece in useruploads %}
