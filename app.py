@@ -394,6 +394,13 @@ def edit_profile():
     return render_template("user_profile.html", user=user)
 
 
+@app.route("/write_review/<review_id>", methods=["GET", "POST"])
+def write_review(review_id):
+    review = mongo.db.music.find_one(
+        {"_id": ObjectId(review_id)})
+    return render_template("write_review.html", review=review)
+
+
 @app.route("/delete_piece/<piece_id>")
 def delete_piece(piece_id):
     mongo.db.music.remove({"_id": ObjectId(piece_id)})

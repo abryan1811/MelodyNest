@@ -1,0 +1,15 @@
+{% extends "base.html" %}
+{% block content %}
+
+<h3 class="d-flex justify-content-center">Review for </h3>
+&nbsp
+
+<div class="card col-9 col mb-4">
+    <form method="POST" action="{{url_for('write_review', review_id=review._id)}}" enctype="multipart/form-data">
+        &nbsp
+        <label for="AboutText"><u>Review for </u></label>
+        <textarea class="form-control" name="reviewText" id="reviewText" rows="8">{{review}}</textarea>
+    </form>
+</div>
+
+{% endblock %}
