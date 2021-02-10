@@ -394,11 +394,19 @@ def edit_profile():
     return render_template("user_profile.html", user=user)
 
 
-@app.route("/write_review/<review_id>", methods=["GET", "POST"])
-def write_review(review_id):
-    review = mongo.db.music.find_one(
-        {"_id": ObjectId(review_id)})
-    return render_template("write_review.html", review=review)
+@app.route("/write_review/<reviews_id>", methods=["GET", "POST"])
+def write_review(reviews_id):
+    reviews = mongo.db.music.find_one(
+        {"_id": ObjectId(reviews_id)})
+    if request.method == "POST":
+        reviewVariables = {
+            "music": ObjectId(reviews_id),
+            "reviewtext": request.form.get("reviewText")
+            }
+        mongo.db.reviews.insert_one(reviewVariables)
+
+    return render_template(
+        "write_review.html", reviews=reviews)
 
 
 @app.route("/delete_piece/<piece_id>")

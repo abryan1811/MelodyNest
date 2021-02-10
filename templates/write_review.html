@@ -5,10 +5,13 @@
 &nbsp
 
 <div class="card col-9 col mb-4">
-    <form method="POST" action="{{url_for('write_review', review_id=review._id)}}" enctype="multipart/form-data">
+    <form method="POST" action="{{url_for('write_review', reviews_id=reviews._id)}}" enctype="multipart/form-data">
         &nbsp
         <label for="AboutText"><u>Review for </u></label>
-        <textarea class="form-control" name="reviewText" id="reviewText" rows="8">{{review}}</textarea>
+        <textarea class="form-control" name="reviewText" id="reviewText" rows="8">{{reviewtext}}</textarea>
+        <div class="row d-flex justify-content-center text-center ">
+        <button class="btn btn-success submitReview" type="submit" role="button">Submit Review</button>
+    </div>
     </form>
 </div>
 
