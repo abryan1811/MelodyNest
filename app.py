@@ -409,6 +409,32 @@ def write_review(reviews_id):
         "write_review.html", reviews=reviews)
 
 
+@app.route("/review_page", methods=["GET", "POST"])
+def review_page():
+    reviews = mongo.db.reviews.find()
+    reviewCards = []
+    for review in reviews:
+        review = {
+            "id_": review["_id"],
+            "music": review["music"],
+            "reviewText": review["reviewtext"]
+        }
+        reviewCards.append(review)
+    music = mongo.db.music.find(
+        {"id_": ["music"]}
+    )
+    musicPieces = []
+    for piece in music:
+        piece = {
+            "title": piece["title"],
+            "image": piece["image"],
+        }
+        musicPieces.append(piece)
+    return render_template(
+        "review_page.html", reviews=reviewCards, musicPieces=musicPieces
+    )
+
+
 @app.route("/delete_piece/<piece_id>")
 def delete_piece(piece_id):
     mongo.db.music.remove({"_id": ObjectId(piece_id)})

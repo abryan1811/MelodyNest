@@ -1,0 +1,25 @@
+{% extends "base.html" %}
+{% block content %}
+
+<h3 class="d-flex justify-content-center">All reviews</h3>
+
+<div class="container-fluid">
+    <div class="row row-cols-1 row-cols-sm-2 row-cols-md-3 row-cols-lg-4 row-cols-xl-5 d-flex justify-content-center text-center">
+        {% for piece in music %}
+            <img src="{{ url_for('file', filename=piece.image)}}" class="card-img-top border" style="height:10rem;"
+                alt="{{ piece.image }}">
+        {% endfor %}
+        {% for review in reviews %}
+            <div class="card-body">
+                <h5 class="card-title">{{ review.music}} </h5>             
+            </div>
+            <div class="card-body">
+                <h5 class="card-title">{{ review.reviewText}} </h5>             
+            </div> 
+        {% endfor %}
+        </div>    
+   
+    </div>
+
+
+{% endblock %}
