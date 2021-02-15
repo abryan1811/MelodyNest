@@ -42,9 +42,8 @@ function stop() {
     music.pause();
 }
 
-//$("#inputGenre").on('change', newGenre());
+
 function newGenre(){
-    //alert("fire genre");
     if ($("#inputGenre").val() == "addNew") {
         $("#newGenreText").removeClass("d-none");
    }
@@ -53,9 +52,8 @@ function newGenre(){
     }
 }
 
-//$("#inputInstrument").on('change', newInstrument());
+
 function newInstrument(){
-    //alert("fire instrument");
     if ($("#inputInstrument").val() == "addNew") {
         $("#newInstrumentText").removeClass("d-none");
     }
@@ -73,3 +71,14 @@ function showPassword() {
     x.type = "password";
   }
 }
+
+$(".reviewText").each(function(e, v) {
+    $(v).data("full-text", $(v).html());
+    if ($(v).html().split(' ').length > 10) {
+        $(v).html($(v).html().split(' ').slice(0,10).join(' ') + " ... " + '<a class="expandReview">More</a>');
+    }
+
+    $(this).click(function() {
+        $(v).html($(v).data("full-text"));
+    });
+});
