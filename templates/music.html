@@ -29,7 +29,7 @@
             <a href="{{url_for('write_review', reviews_id=piece._id)}}" class="btn-large btn-warning text-white">Write a Review</a>
             <a href="#" class="btn-large btn-info text-white">Read Reviews</a>
             {% endif %}
-            <img src="{{ url_for('file', filename=piece.image)}}" class="card-img-top border" style="height:10rem;"
+            <img src="{{ url_for('file', filename=piece.image)}}" class="card-img-top border" style="height:12rem;"
                 alt="{{ piece.image }}">
             <div class="card-body">
                 <h5 class="card-title">{{ piece.title}} </h5>
@@ -51,6 +51,9 @@
     </div>
 </div>
 
-
+<div class="container-fluid">
+    <div class="row d-flex text-center footer-row">
+        &nbsp
+    </div>
 
 {% endblock %}

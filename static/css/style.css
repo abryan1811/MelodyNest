@@ -1,124 +1,144 @@
 .navbarNavAuthentication {
-    background-color:#575352;
+	background-color:#575352;
 }
-
 .mainNavbarNav{
-    background-color:rgb(241, 240, 237);
-    font-size: 50px;
-    color:white;
+	background-color:rgb(241, 240, 237);
+	font-size: 50px;
+	color:white;
 }
-
 .baseContent{
-    max-height: 100vh;
-    left:0;
-    padding:0px;
+	max-height: 100vh;
+	left:0;
+	padding:0px;
+}
+.homeTitle{
+	color:white;
+	font-size: 20px;
+	position: fixed;
+	right:10px;
+	top:200px;
+}
+
+.homeTitle h1{
+	font-size: 45px;	
+}
+
+.homeTitle h2{
+	font-size: 35px;	
 }
 
 .main-image{
-    background: url("/static/images/piano-rose.jpg");
-    background-position: center;
+	background: url("/static/images/piano-rose.jpg");
+	background-position: center;
 	background-size: cover;
-    background-repeat: no-repeat;    
-    height:750px;
+	background-repeat: no-repeat;
+	height:750px;
 }
-
 .navbar-home{
-    font-size:50px;
+	font-size:50px;
 }
-
 #footer{
-    width:100%;
-    height:50px;
-    position:fixed;
-    bottom:0;
-    left:0;
-    background-color: black;
+	width:100%;
+	height:50px;
+	position:fixed;
+	bottom:0;
+	left:0;
+	background-color: black;
 }
-
-
-
 .shareCard {
-    background-color:rgb(233, 230, 230);
+	background-color:rgb(233, 230, 230);
 }
-
 #playButton {
-  float: left; 
-  margin-top: 12px;
-  cursor: pointer; }
-
+	float: left;
+	margin-top: 12px;
+}
 #stopButton {
-  float: left; 
-  margin-top: 12px;
-  cursor: pointer;
-padding-left:6px; }
-
+	float: left;
+	margin-top: 12px;
+	padding-left:6px;
+}
 .footer-row {
-    height:80px;
+	height:80px;
 }
-
 .card-music {
-    display:inline-block;
+	display:inline-block;
 }
-
 .profileText {
-    white-space: pre-line;
+	white-space: pre-line;
 }
-
 /* Media Queries for screen sizes */
-
 @media screen and (max-width: 1024px){
-.main-image{
-        padding-right: 0px;
+	.main-image{
+		padding-right: 0px;
 		object-fit: cover;
 		height: 1200px;
-        background-position-x: 20%;
-}
+		background-position-x: 20%;
+	}
+	.homeTitle h1{
+	font-size: 35px;	
 }
 
+.homeTitle h2{
+	font-size: 25px;	
+}
+}
 @media screen and (max-width: 768px){
-
-.main-image{
+	.main-image{
 		height: 780px;
+	}
+	.homeTitle {
+		font-size: 12px;
+	}
 }
-}
-
 @media screen and (max-width: 640px) {
-
-    .main-image{
+	.main-image{
 		height: 650px;
+	}
+	.homeTitle h1{
+	font-size: 25px;	
 }
 
+.homeTitle h2{
+	font-size: 15px;	
 }
-
+}
 @media screen and (max-width: 540px) {
-     .main-image{
+	.main-image{
 		height: 530px;
+    }
+    
 }
-
-}
-
 @media screen and (max-width: 480px) {
-    .main-image{
+	.main-image{
 		height: 500px;
+	}
 }
-
-}
-
 @media screen and (max-width: 411px) {
-    .main-image{
+	.main-image{
 		height: 450px;
-}
+    }.homeTitle h1{
+	font-size: 30px;	
 }
 
+.homeTitle h2{
+	font-size: 20px;	
+}
+   
+}
 @media screen and (max-width: 320px) {
-        .main-image{
+	.main-image{
 		height: 350px;
-}
+    }
+     .homeTitle h1{
+	font-size: 20px;	
 }
 
+.homeTitle h2{
+	font-size: 10px;	
+}
+}
 @media screen and (max-width: 280px) {
-        .main-image{
+	.main-image{
 		height: 400px;
+	}
 }
-}
-
