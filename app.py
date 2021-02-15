@@ -413,25 +413,21 @@ def write_review(reviews_id):
 def review_page():
     reviews = mongo.db.reviews.find()
     reviewCards = []
-    for review in reviews:
-        review = {
-            "id_": review["_id"],
-            "music": review["music"],
-            "reviewText": review["reviewtext"]
-        }
-        reviewCards.append(review)
-    music = mongo.db.music.find(
-        {"id_": ["music"]}
-    )
-    musicPieces = []
-    for piece in music:
-        piece = {
-            "title": piece["title"],
-            "image": piece["image"],
-        }
-        musicPieces.append(piece)
+    if request.method == "GET":
+        for review in reviews:
+            music = mongo.db.music.find_one(
+                {"_id": ObjectId(review["music"])})
+            review = {
+                "_id": review["_id"],
+                "music": review["music"],
+                "reviewText": review["reviewtext"],
+                "title": music.get("title"),
+                "image": music.get("image")
+            }
+            reviewCards.append(review)
+
     return render_template(
-        "review_page.html", reviews=reviewCards, musicPieces=musicPieces
+        "review_page.html", reviews=reviewCards
     )
 
 
