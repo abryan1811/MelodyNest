@@ -14,8 +14,8 @@
 .homeTitle{
 	color:white;
 	font-size: 20px;
-	position: fixed;
-	right:10px;
+	position: absolute;
+	right:20px;
 	top:200px;
 }
 
@@ -34,6 +34,29 @@
 	background-repeat: no-repeat;
 	height:750px;
 }
+
+.info-panel {
+	min-height: 303px;
+	padding-bottom: 10px;
+	background-color: rgb(192, 190, 190);
+}
+
+.shared-details {
+	text-align: Center;
+}
+
+.circle-image {
+	position: relative;
+	top: 20px;
+	text-align: center;
+	text-decoration: none;
+}
+
+.circle-image img {
+	border-width: 1px;
+	border-radius: 50%;
+}
+
 .navbar-home{
 	font-size:50px;
 }
