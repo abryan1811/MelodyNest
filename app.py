@@ -18,12 +18,14 @@ app.secret_key = os.environ.get("SECRET_KEY")
 mongo = PyMongo(app)
 
 
+# Home page setup
 @app.route("/")
 @app.route("/home")
 def home():
     return render_template("index.html")
 
 
+# Music that has been shared by users
 @app.route("/music_collection")
 def music_collection():
     music = mongo.db.music.find()
@@ -50,6 +52,7 @@ def music_collection():
     return render_template("music.html", music=musicPieces)
 
 
+# Login user
 @app.route("/login", methods=["GET", "POST"])
 def login():
     if request.method == "POST":
@@ -74,6 +77,7 @@ def login():
     return render_template("login.html")
 
 
+# Register new users
 @app.route("/register", methods=["GET", "POST"])
 def register():
     if request.method == "POST":
@@ -102,6 +106,7 @@ def register():
     return render_template("register.html")
 
 
+# logout User
 @app.route("/logout")
 def logout():
     flash("You have logged out")
@@ -109,12 +114,14 @@ def logout():
     return redirect(url_for("login"))
 
 
+# Make the files accessible that are in mongoDB
 @app.route("/file/<filename>")
 def file(filename):
     print(filename)
     return mongo.send_file(filename)
 
 
+# Upload share files
 @app.route("/share", methods=["GET", "POST"])
 def share():
     if request.method == "GET":
@@ -171,6 +178,7 @@ def share():
         return redirect(url_for('music_collection'))
 
 
+# Edit the files/text in a users upload
 @app.route("/edit_share/<piece_id>", methods=["GET", "POST"])
 def edit_share(piece_id):
     piece = mongo.db.music.find_one(
@@ -249,6 +257,7 @@ def edit_share(piece_id):
             "music_collection", username=session["user"]))
 
 
+# View every profile set up on MongoDB
 @app.route("/profiles")
 def profiles():
     profile = mongo.db.users.find()
@@ -263,6 +272,7 @@ def profiles():
     return render_template("list_profiles.html", profile=profileInfo)
 
 
+# Access the profiles of others
 @app.route("/view_profiles/<user_id>", methods=["GET", "POST"])
 def view_profiles(user_id):
     user = mongo.db.users.find_one(
@@ -294,6 +304,7 @@ def view_profiles(user_id):
         useruploads=useruploadstitle, profileImage=profileImage)
 
 
+# User to access their profile
 @app.route("/user_profile")
 def user_profile():
     user = mongo.db.users.find_one(
@@ -325,6 +336,7 @@ def user_profile():
         useruploads=useruploadstitle, profileImage=profileImage)
 
 
+# User to edit their profile
 @app.route("/edit_profile", methods=["GET", "POST"])
 def edit_profile():
     user = mongo.db.users.find_one(
@@ -394,6 +406,7 @@ def edit_profile():
     return render_template("user_profile.html", user=user)
 
 
+# Write a review for a piece that doesnt belong to the user
 @app.route("/write_review/<reviews_id>", methods=["GET", "POST"])
 def write_review(reviews_id):
     reviews = mongo.db.music.find_one(
@@ -409,6 +422,7 @@ def write_review(reviews_id):
         "write_review.html", reviews=reviews)
 
 
+# View all reviews
 @app.route("/review_page", methods=["GET", "POST"])
 def review_page():
     reviews = mongo.db.reviews.find()
@@ -431,6 +445,7 @@ def review_page():
     )
 
 
+# Delete the piece if it belongs to the user
 @app.route("/delete_piece/<piece_id>")
 def delete_piece(piece_id):
     mongo.db.music.remove({"_id": ObjectId(piece_id)})

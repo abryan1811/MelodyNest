@@ -1,3 +1,4 @@
+/* Navbar */
 .navbarNavAuthentication {
 	background-color:#575352;
 }
@@ -6,11 +7,14 @@
 	font-size: 50px;
 	color:white;
 }
+/* All templates section styles */
 .baseContent{
 	max-height: 100vh;
 	left:0;
 	padding:0px;
 }
+
+/* Home page */
 .homeTitle{
 	color:white;
 	font-size: 20px;
@@ -68,9 +72,15 @@
 	left:0;
 	background-color: black;
 }
+
+/* Sharing uploads page */
+
 .shareCard {
 	background-color:rgb(233, 230, 230);
 }
+
+/* Music Player */
+
 #playButton {
 	float: left;
 	margin-top: 12px;
@@ -80,12 +90,20 @@
 	margin-top: 12px;
 	padding-left:6px;
 }
+
+/* Footer */
 .footer-row {
 	height:80px;
 }
+
+/* Music Cards */
+
 .card-music {
 	display:inline-block;
 }
+
+/* Profile Page */
+
 .profileText {
 	white-space: pre-line;
 }

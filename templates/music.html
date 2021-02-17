@@ -18,17 +18,21 @@
 {% endif %}
 {% endwith %}
 
+<!--Music piece card-->
 <div class="container-fluid">
     <div class="row row-cols-1 row-cols-sm-2 row-cols-md-3 row-cols-lg-4 row-cols-xl-5 d-flex justify-content-center text-center">
         {% for piece in music %}
         <div class="card card-music col mb-4">
             {% if session.user == piece.user %}
+            <!--If this is the user that created the piece, delete or edit the piece of music-->
             <a href="{{ url_for('delete_piece', piece_id=piece._id) }}" class="btn-small btn-danger ">Delete</a>
             <a href="{{url_for('edit_share', piece_id=piece._id)}}" class="btn-small btn-success">Edit</a>
             {% else %}
+            <!--If the piece wasn't created by this user, have an option to leave a review-->
             <a href="{{url_for('write_review', reviews_id=piece._id)}}" class="btn-large btn-warning text-white">Write a Review</a>
             <a href="#" class="btn-large btn-info text-white">Read Reviews</a>
             {% endif %}
+            <!--Attached information from the share page-->
             <img src="{{ url_for('file', filename=piece.image)}}" class="card-img-top border" style="height:12rem;"
                 alt="{{ piece.image }}">
             <div class="card-body">
@@ -40,7 +44,8 @@
                 <a href="{{ url_for('file', filename=piece.sheetmusic)}}" target="_blank" class="btn btn-primary">Sheet Music</a>
                 <audio id="music{{ piece._id }}" class="music" preload="true">
                     <source src="{{ url_for('file', filename=piece.sound)}}"> 
-                </audio>               
+                </audio>  
+                <!--Play and stop button-->             
                 <div id="audioplayer">                    
                     <i id="play{{ piece._id }}" data-id="{{ piece._id }}" class="playButton fas fa-play"></i>
                     <i id="stop{{ piece._id }}" data-id="{{ piece._id }}" class="stopButton fas fa-square"></i>

@@ -3,16 +3,19 @@
 
 <h3 class="d-flex justify-content-center" method="GET">All reviews</h3>
 
+<!--Review Cards-->
 <div class="container-fluid">
     <div class="row row-cols-1 row-cols-sm-2 row-cols-md-3 row-cols-lg-4 row-cols-xl-5 d-flex justify-content-center text-center">
         {% for review in reviews %}
+            <!--Image that belongs to the reviewed piece-->
             <div class="card card-music col mb-4">
                 <img src="{{ url_for('file', filename=review.image)}}" class="card-img-top border" style="height:10rem;"
                     alt="{{ review.image }}">     
-            
+                <!--image that belongs to the reviewed piece-->
                 <div class="card-body">
                     <h5 class="card-title">{{ review.title}} </h5>             
                 </div>
+                <!--Text that user inputted for the review-->
                 <div class="card-body">
                     <h5 class="card-title"><p class="reviewText"> {{ review.reviewText }} </p></h5>         
                 </div> 

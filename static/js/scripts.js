@@ -1,4 +1,4 @@
-
+/* Music Player */
 var playButtons = $('.playButton'); // play buttons
 var stopButtons = $('.stopButton'); // stop buttons
 
@@ -42,7 +42,7 @@ function stop() {
     music.pause();
 }
 
-
+/* Add Genre to the share dropdown */
 function newGenre(){
     if ($("#inputGenre").val() == "addNew") {
         $("#newGenreText").removeClass("d-none");
@@ -52,7 +52,7 @@ function newGenre(){
     }
 }
 
-
+/* Add Instrument to the share dropdown */
 function newInstrument(){
     if ($("#inputInstrument").val() == "addNew") {
         $("#newInstrumentText").removeClass("d-none");
@@ -62,6 +62,7 @@ function newInstrument(){
     }
 }
 
+/* Add option to see the password when typed in */
 //code located https://www.w3schools.com/howto/howto_js_toggle_password.asp
 function showPassword() {
   var x = document.getElementById("passwordLogin");
@@ -72,6 +73,7 @@ function showPassword() {
   }
 }
 
+/* If review is over 10 words, have it shrink down until More is clicked to read the rest. */
 $(".reviewText").each(function(e, v) {
     $(v).data("full-text", $(v).html());
     if ($(v).html().split(' ').length > 10) {
