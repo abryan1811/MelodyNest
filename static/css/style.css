@@ -1,3 +1,8 @@
+/* Font */
+body {
+    font-family: 'Arvo', serif;
+}
+
 /* Navbar */
 .navbarNavAuthentication {
 	background-color:#575352;
