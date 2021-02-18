@@ -41,7 +41,7 @@ body {
 	background-position: center;
 	background-size: cover;
 	background-repeat: no-repeat;
-	height:750px;
+    height:750px;
 }
 
 .info-panel {
@@ -83,6 +83,7 @@ body {
 .shareCard {
 	background-color:rgb(233, 230, 230);
 }
+
 
 /* Music Player */
 
