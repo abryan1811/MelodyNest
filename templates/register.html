@@ -1,6 +1,13 @@
 {% extends "base.html" %}
 {% block content %}
 
+<div class="container-fluid">
+    <div class="row d-flex text-center space-below-navbar">
+        &nbsp
+</div>
+
+<h3 class="d-flex justify-content-center">Register</h3>
+
 <div class="container loginCard">
     <div class="row">
         <form class="col d-flex justify-content-center" method="POST" action="{{ url_for('register') }}">

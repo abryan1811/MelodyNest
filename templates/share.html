@@ -14,14 +14,16 @@
 {% endwith %}
 
 <div class="container-fluid">
-    <div class="row d-flex text-center footer-row">
+    <div class="row d-flex text-center space-below-navbar">
         &nbsp
-    </div>
+</div>
+
+<h3 class="d-flex justify-content-center">Share your music with other users</h3>
 
     <div class="row">
         <div class="d-flex justify-content-center align-items-center container">
 
-            <form class="col-12 card-body shareCard" method="POST" action="{{ url_for('share') }}"
+            <form class="col-12 card-body card" method="POST" action="{{ url_for('share') }}"
                 enctype="multipart/form-data">
                 <div class="col col-12">
                     <!--Upload information card-->

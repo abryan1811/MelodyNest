@@ -1,7 +1,10 @@
 {% extends "base.html" %}
 {% block content %}
 
-
+<div class="container-fluid">
+    <div class="row d-flex text-center space-below-navbar">
+        &nbsp
+</div>
 
 <h3 class="d-flex justify-content-center">Music Share</h3>
 <h4 class="d-flex justify-content-center">A place to share music with others</h4>
@@ -17,6 +20,8 @@
 {% endfor %}
 {% endif %}
 {% endwith %}
+
+
 
 <!--Music piece card-->
 <div class="container-fluid">
@@ -56,9 +61,5 @@
     </div>
 </div>
 
-<div class="container-fluid">
-    <div class="row d-flex text-center footer-row">
-        &nbsp
-    </div>
 
 {% endblock %}
