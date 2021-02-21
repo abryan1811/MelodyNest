@@ -4,6 +4,8 @@
  * Copyright 2011-2021 Twitter, Inc.
  * Licensed under MIT (https://github.com/twbs/bootstrap/blob/main/LICENSE)
  */
+
+ /******* Bootstrap Code edited using node, Ruby and Sass ********/
 :root {
   --blue: #007bff;
   --indigo: #6610f2;
@@ -3339,7 +3341,7 @@ input[type="button"].btn-block {
   padding-top: 0.3125rem;
   padding-bottom: 0.3125rem;
   margin-right: 1rem;
-  font-size: 1.25rem;
+  font-size: 1rem;
   line-height: inherit;
   white-space: nowrap; }
   .navbar-brand:hover, .navbar-brand:focus {
@@ -8140,6 +8142,9 @@ a.text-gray-dark:hover, a.text-gray-dark:focus {
   .table .thead-dark th {
     color: inherit;
     border-color: #dee2e6; } }
+
+/******* Personal Code *******/
+
 /* Font */
 body {
   font-family: 'Arvo', serif;
@@ -8165,9 +8170,9 @@ body {
 .homeTitle {
   color: white;
   font-size: 20px;
-  position: absolute;
-  right: 20px;
-  top: 200px; }
+  position: relative;
+  left: 5px;
+  top: 30px; }
 
 .homeTitle h1 {
   font-size: 45px; }
