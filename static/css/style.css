@@ -8207,6 +8207,10 @@ body {
   margin: 10px;
   color: black; }
 
+.card-profile {
+    margin: 0px;
+}
+
 /* Music Player */
 #playButton {
   float: left;

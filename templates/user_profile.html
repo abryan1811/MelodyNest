@@ -4,6 +4,7 @@
 <div class="container-fluid">
     <div class="row d-flex text-center space-below-navbar">
         &nbsp
+    </div>
 </div>
 
 <h3 class="d-flex justify-content-center">{{userName}}'s Profile Page</h3>
@@ -12,11 +13,11 @@
 <form class="container-fluid">
     <!--Profile image-->
     <div class="row d-flex text-center">
-        <div class="card col-lg-3 col-md-6 col-sm-12 col-12 mb-4">
+        <div class="card card-profile col col-lg-3 col-md-6 col-sm-12 col-12 mb-4">
             <img src="{{ url_for('file', filename=profileImage) }}" class="card-img-top border " style="height:15rem;"
                 alt="">
         </div>
-        <div class="card col-lg-3 col-md-6 col-sm-12 col-12 mb-4">
+        <div class="card card-profile col col-lg-3 col-md-6 col-sm-12 col-12 mb-4">
             &nbsp
             <p class="d-flex justify-content-center"><u>{{userName}}'s Information</u></p>
             <p>Name: {{firstname}} {{surname}}</p>
@@ -26,7 +27,7 @@
                 Profile</a>
             {% endif %}
         </div>
-        <div class="card col col-lg-5 col-md-12 col-sm-12 mb-4 ">
+        <div class="card card-profile col col-lg-6 col-md-6 col-sm-12 col-12 mb-4">
             <!--About me Information-->
             <div class="updateProfileSection"></div>
             <div>
@@ -36,17 +37,9 @@
                     <p>{{aboutMe}}</p>
                 </div>
             </div>
-
-            <div class="updatingProfile">
-                <label for="comment"></label>
-                <textarea class="form-control d-none" rows="5" placeholder="{{aboutMe}}..." id="updateAboutText"
-                    name="aboutMeText">{{aboutMe}}</textarea>
-            </div>
         </div>
-
-
-
     </div>
+
 </form>
 
 <!--Card of users information-->
@@ -91,4 +84,4 @@
     </div>
 
 
-        {% endblock %}
+    {% endblock %}
