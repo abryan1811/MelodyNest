@@ -64,12 +64,12 @@ This gis created so users can share music they have arranged or composed, sharin
 
 |     | Feature                        | Importance | Viability |
 | --- | ------------------------------ | :--------: | --------: |
-| A   | Music player                   |     5      |         4 |
-| B   | Sheet music PDF sharing        |     5      |         4 |
-| C   | Image upload                   |     3      |         5 |
-| D   | Reviewing                      |     5      |         3 |
-| E   | Profile page and updatable info|     3      |         5 |
-|     | Total                          |     21     |        21 |
+| A   | Music player                   |     5      |         5 |
+| B   | Sheet music PDF sharing        |     5      |         5 |
+| C   | Image upload                   |     5      |         5 |
+| D   | Reviewing                      |     3      |         4 |
+| E   | Profile page and updatable info|     4      |         4 |
+|     | Total                          |     22     |        23 |
 
 ### Responsive
 
@@ -85,20 +85,53 @@ This gis created so users can share music they have arranged or composed, sharin
 - [jQuery](https://jquery.com/)
 - jQuery is an open source library that makes using javascript easier and quicker. It simplifies a variety of multiple lines of javascript code by putting it into a single line of jquery code. 
 
-- [Flask]
+- [Flask](https://flask.palletsprojects.com/en/1.1.x/)
+- Flask is a micro web framework written in Python
+- Uses Workzeug which is a utility library for the Python programming language
+- Uses Jinja which is a template engine for the Python programming language
 
-- []
+- [NodeJs](https://en.wikipedia.org/wiki/Node.js)
+- npm was installed so bootstrap was modifiable. 
+
+- [Sass](https://en.wikipedia.org/wiki/Sass_(stylesheet_language))
+- Sass is used to tweak the stylesheets so bootstrap is editable. It allows the custom code to be added to the bootstrap. Installed [Ruby](https://en.wikipedia.org/wiki/Ruby_(programming_language)) in order to use Sass
 
 ### Typography
 
 The font Arvo was used as it is a serif font. Serif fonts are known for their roman types. 
-As music is associated with latin (as shown with terminology for dynamics), a serif font was appropriate for this project. (https://www.fonts.com/content/learning/fontology/level-1/type-anatomy/type-classifications)
+[As music is associated with latin](https://www.fonts.com/content/learning/fontology/level-1/type-anatomy/type-classifications) (as shown with terminology for dynamics), a serif font was appropriate for this project.
 
 1 [Google Font](https://fonts.google.com/) was used throughout this website:
 - ["Arvo", serif;](https://fonts.google.com/specimen/Arvo)
 
 ### Colors
 
+The following colours have been selected for this project
+
+#### Foundation colours
+These were used as the main colours. A more monochromic approach 
+
+- "white": "white"
+- "black": "black"
+- "gray": #707070,
+- "gray-dark": #3f3f3f,
+
+#### Accent colours 
+The red was chosen from a colour picker on the rose itself on the home page image.
+The other colours were chosen to compliment the selected red colour. According to this [website](https://www.canva.com/colors/color-wheel/), they are either tetradic or analogous.
+
+ Main accent colour
+- "red": #421319,
+
+Analogous - Chosen for its versatility. 
+
+- "purple": #421331,
+- "brown": #422513,
+
+Tetradic - Chosen for boldness but to compliment the red as the primary colour. Red is used for anything larger, with the smaller buttons having the tetradic colours.
+- "green": #194213,
+- "mint green": #13423c,
+- "dark blue": #131942,
 
 
 ### Icons
@@ -197,9 +230,8 @@ Permissions for editing image ok.
 
 - Javascript
 
- - This project uses Javascript to create functions, rules and effects in order to make the certain features work. Features include being able to use a music player. Updating and showing dropdown menus for genre/instruments. 
- Shrink the number of words on a review card until read more is clicked if over a certain amount.
- - [Javascript](https://en.wikipedia.org/wiki/JavaScript)
+  - This project uses Javascript to create functions, rules and effects in order to make the certain features work. Features include being able to use a music player. Updating and showing dropdown menus for genre/instruments. Shrink the number of words on a review card until read more is clicked if over a certain amount.
+  - [Javascript](https://en.wikipedia.org/wiki/JavaScript)
 
 
 ##### Back to [top](#table-of-contents)
@@ -236,49 +268,15 @@ For information on the testing, follow the link to the document [here](testing.m
 
 ---
 
-\*The [Pokematch repository](https://github.com/adam181189/Pokematch) was developed using GitHub Workspaces, and all commits were pushed to GitHub using Git.
 
-\*Commits were pushed every time important sections were completed in order to create useful ongoing checkpoints.
 
 ### Local Deployment
 
-- *In order to locally deploy the website, the following was actioned (using Windows 10): 
-1. Navigate to GitHub repository:
-    - [adam181189 repository](https://github.com/adam181189?tab=repositories)
-2. Open the Pokematch repository:
-    - [Pokematch repository](https://github.com/adam181189/Pokematch)
-3. Click on the code dropdown option and select download zip
-4. Create a new folder called Pokematch and unzip the files in that new folder
-5. Now iis is required, this can be done by going to run and typing in appwiz.cpl
-6. Now click on turn windows features on or off
-7. scroll down to internet information services
-8. Open folder and open Web Management tools and tick IIS Management Console
-9. Go to This PC and click on the local disk that houses the operating system.
-10. Open folder called inetpub
-11. inside here find wwwroot
-12. Move your pokematch folder into this folder. 
-13. Go to the following link http://localhost/pokematch/index.html
+
 
 ### Remote Deployment
 
-- Deployed Site:
 
-  - https://adam181189.github.io/Pokematch/
-
-*In order to deploy the website, the following was actioned:
-1. Navigate to GitHub repository:
-    - [adam181189 repository](https://github.com/adam181189?tab=repositories)
-2. Open the Pokematch repository:
-    - [Pokematch repository](https://github.com/adam181189/Pokematch) 
-3. Click on the **Settings** tab at the top:
-    - [Settings](https://github.com/adam181189/Pokematch/settings)
-3. Scroll down to the **GitHub Pages** section.
-4. The first drop-down field should be **Source** with *None* pre-selected.
-5. Select **master branch** from the list.
-6. The page should refresh.
-7. Scroll down to the **GitHub Pages** section.
-8. There will now be a deployed link:
-    - The site is published at [https://adam181189.github.io/Pokematch/](https://adam181189.github.io/Pokematch/)
 
 ##### Back to [top](#table-of-contents)
 ---
@@ -289,23 +287,20 @@ For information on the testing, follow the link to the document [here](testing.m
 
 ### Content
 
-- Most written content was my own.
-- "Welcome to the world of Pokemon, I am the Pokemon professor" is a phrase used at the start of the pokemon games by Professor Oak so was included to introduce him as part of the "how to play" section.
+- All written content was my own.
+
 
 ### Media
 
-- [Pixabay](https://pixabay.com/photos/grass-lawn-backdrop-background-84622/) - Grass background image
-- [Bulbapedia](https://bulbapedia.bulbagarden.net/wiki/Main_Page) All other images came from this website. All images are copyrighted property of Nintendo.
-- [Sounds](https://www.sounds-resource.com/game_boy_gbc/pokemonredblueyellow/sound/17241/) All used sounds were found and downlaoded from this page.
-- [Hourglass image](https://www.clipartmax.com/middle/m2i8d3K9i8m2A0Z5_hourglass-clipart-image-hour-glass-clip-art/) Used as part of the timer.
+- [Pixabay](https://pixabay.com/photos/grass-lawn-backdrop-background-84622/) - Main home image
+- Uploaded piano pieces were performed by myself
+- Alton towers theme was downloaded from [here]()
+- All images used for uploading are found on [google images](www.google.com) by using images/tools/usage rights/commercial and other licenses.
+- For the purpose of this project I have used sheet music that is already made.  
+
 
 ### Acknowledgements
 
-Inspiration for this project was drawn from a video game series I have enjoyed since I was a child, and the need for a simple ICT programme that the 
-children can use in my job. We can use this to assess how well the children in our group can complete a program from start to finish, and also help 
-to build up memory function skills. 
 
-I also want to thank some of the members on slack May-2020 group as they looked at my project and suggested some changes, and bugs that were in my project. 
-I also want to the thank the children at the pre school i work at for playing the game and telling me what they enjoyed about it. 
 
 ##### Back to [top](#table-of-contents)
