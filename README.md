@@ -1,16 +1,17 @@
 # Melody Nest
 
----
+<img src="static/images/responsive.png">
 
+MelodyNest is a website that allows musicians to share music with other musicians. They are able to 
+
+[*Am I Responsive?*](http://ami.responsivedesign.is/#) was used to test how responsive the website is on different devices.
 ## Table of Contents
 
 ---
 
 1. [UX](#ux)
    - [User Stories](#user-stories)
-   - [Viability](#project-viability)
-   - [Responsive](#responsive)
-   - [Frameworks](#frameworks-used)
+   - [Viability](#project-viability) 
    - [Typography](#typography)
    - [Colors](#colors)
    - [icons](#icons)
@@ -21,6 +22,7 @@
    - [Features left to implement](#features-left-to-implement)
 3. [Technologies Used](#technologies-used)
    - [Front End Technologies](#front-end-technology)
+   - [Frameworks](#frameworks-used)
 4. [Testing](#testing)
    - [Validators](#validators)
    - [Testing Methods](#testing-methods)
@@ -38,9 +40,29 @@
 
 ---
 
-### User Stories
+### Design Process
 
-This gis created so users can share music they have arranged or composed, sharing the audio and the sheet music.
+#### Strategy Plane
+
+#### *Developer Stories*
+
+ - As the developer, I want to create a website so musicians can share their music with other musicians. 
+
+ - As the developer, I want the website to be aesthetically pleasing to those who visit the website making good use of HTML, CSS and Bootstrap. 
+
+ - As the developer, I want to website to function in the intended ways using Javascript/JQuery and Python.
+
+ - As the developer, I want everything shared to be stored in a back end data network, in this case I will be using MongoDB 
+
+#### *Site Owner Stories*
+
+- As the site owner, I want users to have a positive experience so that the number of users grows continually. 
+
+- As the site owner, I want to have a pleasant experience when I add, edit and delete items that I moderate as innapropriate or no longer necessary. 
+
+#### *User Stories*
+
+This is created so users can share music they have arranged or composed, sharing the audio and the sheet music.
 
 - As a user, I want to be able to share the sheet music I arrange or I compose
 
@@ -60,43 +82,34 @@ This gis created so users can share music they have arranged or composed, sharin
 
 - As a user, I want to be able to download some new music that others have shared.
 
-### Project Viability
+#### Scope Plane
 
-|     | Feature                        | Importance | Viability |
-| --- | ------------------------------ | :--------: | --------: |
-| A   | Music player                   |     5      |         5 |
-| B   | Sheet music PDF sharing        |     5      |         5 |
-| C   | Image upload                   |     5      |         5 |
-| D   | Reviewing                      |     3      |         4 |
-| E   | Profile page and updatable info|     4      |         4 |
-|     | Total                          |     22     |        23 |
+After deciding on the main aims of the project, I considered the features that were realistic in the time frame of the project. I used the user stories to come up with a list of features, their importance and their viability. Anything less viable will be considered as more likely being added as a future feature (will be viewable in the features section).
 
-### Responsive
+#### *Project Viability*
 
-[Am I Responsive?](http://ami.responsivedesign.is/#) was used to test how responsive the website is on different devices.
+|     | Feature                          | Importance | Viability |
+| --- | ---------------------------------| :--------: | --------: |
+| A   | Music player                     |     5      |         5 |
+| B   | Sheet music PDF sharing          |     5      |         5 |
+| C   | Image upload                     |     5      |         5 |
+| D   | Reviewing                        |     3      |         4 |
+| E   | Profile page and updatable info  |     4      |         4 |
+| F   | Rating system                    |     3      |         3 |
+|     | ---------------------------------|            |           |
+|     | Total                            |     25     |        26 |
 
-<img src="static/images/responsive.png">
+#### Structure Plane
 
-### Frameworks Used
+#### Skeleton Plane
 
-- [Bootstrap](https://getbootstrap.com/)
-- Bootstrap is an open source library with access to reusable bits of code for html, css and javascript. 
+#### *Wireframes*
 
-- [jQuery](https://jquery.com/)
-- jQuery is an open source library that makes using javascript easier and quicker. It simplifies a variety of multiple lines of javascript code by putting it into a single line of jquery code. 
+Click here to see the project [Wireframes](wireframes.md)
 
-- [Flask](https://flask.palletsprojects.com/en/1.1.x/)
-- Flask is a micro web framework written in Python
-- Uses Workzeug which is a utility library for the Python programming language
-- Uses Jinja which is a template engine for the Python programming language
+#### Surface Plane
 
-- [NodeJs](https://en.wikipedia.org/wiki/Node.js)
-- npm was installed so bootstrap was modifiable. 
-
-- [Sass](https://en.wikipedia.org/wiki/Sass_(stylesheet_language))
-- Sass is used to tweak the stylesheets so bootstrap is editable. It allows the custom code to be added to the bootstrap. Installed [Ruby](https://en.wikipedia.org/wiki/Ruby_(programming_language)) in order to use Sass
-
-### Typography
+#### *Typography*
 
 The font Arvo was used as it is a serif font. Serif fonts are known for their roman types. 
 [As music is associated with latin](https://www.fonts.com/content/learning/fontology/level-1/type-anatomy/type-classifications) (as shown with terminology for dynamics), a serif font was appropriate for this project.
@@ -104,11 +117,9 @@ The font Arvo was used as it is a serif font. Serif fonts are known for their ro
 1 [Google Font](https://fonts.google.com/) was used throughout this website:
 - ["Arvo", serif;](https://fonts.google.com/specimen/Arvo)
 
-### Colors
+#### *Colors*
 
-The following colours have been selected for this project
-
-#### Foundation colours
+#### *Foundation colours*
 These were used as the main colours. A more monochromic approach 
 
 - "white": "white"
@@ -116,46 +127,38 @@ These were used as the main colours. A more monochromic approach
 - "gray": #707070,
 - "gray-dark": #3f3f3f,
 
-#### Accent colours 
+#### *Accent colours* 
 The red was chosen from a colour picker on the rose itself on the home page image.
 The other colours were chosen to compliment the selected red colour. According to this [website](https://www.canva.com/colors/color-wheel/), they are either tetradic or analogous.
 
  Main accent colour
-- "red": #421319,
 
-Analogous - Chosen for its versatility. 
-
-- "purple": #421331,
-- "brown": #422513,
+<img src="static/images/darkSienna.png">
 
 Tetradic - Chosen for boldness but to compliment the red as the primary colour. Red is used for anything larger, with the smaller buttons having the tetradic colours.
-- "green": #194213,
-- "mint green": #13423c,
-- "dark blue": #131942,
 
+<img src="static/images/tetradic.png">
 
-### Icons
+   #131942   433D14   14433D   141A43
+
+#### *Icons*
 
 [Font Awesome 5.13.1](https://fontawesome.com/)
   
-
-### Wireframes
-
-- Click here to see the project [Wireframes](wireframes.md)
-
-### Image modifications
+#### *Image modifications*
 
 - [GIMP](https://www.gimp.org/) was used to tweak the main page image so the top was plain black so title could be added without conflicting with the words on the piano. 
-Permissions for editing image ok.   
+Permissions for editing image ok.  
+
 
 ##### Back to [top](#table-of-contents)
 ---
 
-## Features
+### Features
 
 ---
 
-### Existing Features
+#### Existing Features
 
 - View shared music
 
@@ -200,7 +203,7 @@ Permissions for editing image ok.
 
 -  
 
-### Features to Implement
+#### Features to Implement
 
 - 5 star system where users can give a rating to the piece they review. 
 
@@ -233,7 +236,26 @@ Permissions for editing image ok.
   - This project uses Javascript to create functions, rules and effects in order to make the certain features work. Features include being able to use a music player. Updating and showing dropdown menus for genre/instruments. Shrink the number of words on a review card until read more is clicked if over a certain amount.
   - [Javascript](https://en.wikipedia.org/wiki/JavaScript)
 
+#### Frameworks Used
 
+- [Bootstrap](https://getbootstrap.com/)
+    - Bootstrap is an open source library with access to reusable bits of code for html, css and javascript. 
+
+- [jQuery](https://jquery.com/)
+    - jQuery is an open source library that makes using javascript easier and quicker. It simplifies a variety of multiple lines of javascript code by putting it into a single line of jquery code. 
+
+- [Flask](https://flask.palletsprojects.com/en/1.1.x/)
+    - Flask is a micro web framework written in Python
+    - Uses Workzeug which is a utility library for the Python programming language
+    - Uses Jinja which is a template engine for the Python programming language
+
+- [NodeJs](https://en.wikipedia.org/wiki/Node.js)
+    - npm was installed so bootstrap was modifiable. 
+
+- [Sass](https://en.wikipedia.org/wiki/Sass_(stylesheet_language))
+    - Sass is used to tweak the stylesheets so bootstrap is editable. It allows the custom code to be added to the bootstrap. Installed [Ruby](https://en.wikipedia.org/wiki/Ruby_(programming_language)) in order to use Sass with gem install sass
+
+ 
 ##### Back to [top](#table-of-contents)
 
 ---
@@ -296,8 +318,7 @@ For information on the testing, follow the link to the document [here](testing.m
 - Uploaded piano pieces were performed by myself
 - Alton towers theme was downloaded from [here]()
 - All images used for uploading are found on [google images](www.google.com) by using images/tools/usage rights/commercial and other licenses.
-- For the purpose of this project I have used sheet music that is already made.  
-
+- For the purpose of this project I have used sheet music that is already written and by others as the time constraints for this project dont allow time for writing my own music. 
 
 ### Acknowledgements
 
