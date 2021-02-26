@@ -102,6 +102,24 @@ After deciding on the main aims of the project, I considered the features that w
 
 #### Structure Plane
 
+The following is how the website will be structured, based on the scope of the project:
+
+- The Navbar will have a login/register if user isnt logged in to the site. 
+    - Home page returns the user to the home page. 
+    - login/register sends user to a login page, with option to register underneath the login form. 
+    - If a new user registers, after completion it will return to the login and ask the user to login for the first time
+
+- If the user is logged in the top Navbar will say the username, which links to their profile page. It will also have a logout link next to it 
+    - In the profile page, users can view their details and change their details.
+- the second navbar will have Home, music, profiles, share, reviews 
+    - home brings the user back to the home page
+    - music allows the user to view all the uploaded pieces of music, with the option to listen to them performed, and view the sheet music. Also the option to edit or delete ones they have uploaded, or review other users uploads.
+    - profiles allows the user to see all the other users and link to their profiles
+    - share will allow the user to upload their piece of music, including: title, artist, image, audio, genre, instrument, and sheet music pdf
+    - reviews will allow users to view all reviews for all pieces of music
+
+A star rating system in the review sections is something that may not be possible for this project. If there is time towards the end of the deadline, it is something I would like to fit in. 
+
 #### Skeleton Plane
 
 #### *Wireframes*
