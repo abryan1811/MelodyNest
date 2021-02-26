@@ -8165,9 +8165,9 @@ body {
 .homeTitle {
   color: white;
   font-size: 20px;
-  position: absolute;
-  right: 20px;
-  top: 200px; }
+  position: relative;
+  left: 10px;
+  top: 20px; }
 
 .homeTitle h1 {
   font-size: 45px; }
