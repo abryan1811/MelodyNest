@@ -17,6 +17,7 @@ MelodyNest is a website that allows musicians to share music with other musician
    - [icons](#icons)
    - [Wireframes](#wireframes)
    - [Logo](#logo)
+   - [InformationArchitecture](#information-architecture)
 2. [Features](#features)
    - [Existing Features](#existing-features)
    - [Features left to implement](#features-left-to-implement)
@@ -150,6 +151,29 @@ Tetradic - Chosen for boldness but to compliment the red as the primary colour. 
 - [GIMP](https://www.gimp.org/) was used to tweak the main page image so the top was plain black so title could be added without conflicting with the words on the piano. 
 Permissions for editing image ok.  
 
+#### Information Architecture
+
+I used MongoDB to store the data that the website uses. I used the [documentation](https://docs.mongodb.com/manual/) in order to support me with the python coding. 
+
+I have cluster set up called mnCluster and inside that cluster I have a group of collections
+
+These two are created when I the python was set up in order to send music/images/pdfs to mongoDB and they are stored within fs.files. This used the mongo.save_File code.
+- fs.chunks
+- fs.files
+
+The rest I created for the databases themselves
+- genres
+- instruments
+- music
+- reviews
+- users
+
+This is a schema ([created with this software](https://dbschema.com/download.html)) to explain how the data responds to each other. 
+
+oid = objectId 
+
+<img src="static/images/mongoDBSchema.png">
+
 
 ##### Back to [top](#table-of-contents)
 ---
@@ -238,23 +262,27 @@ Permissions for editing image ok.
 
 #### Frameworks Used
 
-- [Bootstrap](https://getbootstrap.com/)
-    - Bootstrap is an open source library with access to reusable bits of code for html, css and javascript. 
+- Bootstrap
+    - Bootstrap is an open source library with access to reusable bits of code for html, css and javascript.
+    - [Bootstrap](https://getbootstrap.com/) 
 
-- [jQuery](https://jquery.com/)
+- jQuery
     - jQuery is an open source library that makes using javascript easier and quicker. It simplifies a variety of multiple lines of javascript code by putting it into a single line of jquery code. 
+    - [jQuery](https://jquery.com/)
 
-- [Flask](https://flask.palletsprojects.com/en/1.1.x/)
+- Flask
     - Flask is a micro web framework written in Python
     - Uses Workzeug which is a utility library for the Python programming language
     - Uses Jinja which is a template engine for the Python programming language
+    - [Flask](https://flask.palletsprojects.com/en/1.1.x/)
 
-- [NodeJs](https://en.wikipedia.org/wiki/Node.js)
+- NodeJs
     - npm was installed so bootstrap was modifiable. 
+    - [NodeJs](https://en.wikipedia.org/wiki/Node.js)
 
-- [Sass](https://en.wikipedia.org/wiki/Sass_(stylesheet_language))
+- Sass
     - Sass is used to tweak the stylesheets so bootstrap is editable. It allows the custom code to be added to the bootstrap. Installed [Ruby](https://en.wikipedia.org/wiki/Ruby_(programming_language)) in order to use Sass with gem install sass
-
+    - [Sass](https://en.wikipedia.org/wiki/Sass_(stylesheet_language))
  
 ##### Back to [top](#table-of-contents)
 
@@ -290,14 +318,44 @@ For information on the testing, follow the link to the document [here](testing.m
 
 ---
 
+### Remote Deployment
+
+- Go to your Github repository and open it using GitPod index
+- In the terminal run the command "pip3 freeze --local > requirements.txt" to create a .txt file with all of the dependencies for Heroku
+- In the terminal run the command "echo web: python run.py > Procfile" to create a Procfile for Heroku
+- Check the Procfile - remove any previous blank lines above web: python app.py
+- Log in to Heroku and select "Create New App"
+- Select the input field "App Name"
+- Give your app a name you haven't already used
+- Select the region closest to your location (ireland for me) as I am in England
+- Click "Create App"
+- To connect the app to your Github repository, click on the Github icon inside of the "Deployment Method" section
+- Here there will be a new section called "Connect to Github" - ensure your Github profile is displayed inside it
+- Insert your repo name inside the "Connect to Github" section next to where your profile is displayed
+- Click on the "Search" button, once it finds your repo click the "Connect" button
+- Click on the settings tab at the top of the page, and select "Reveal Config Var"
+- Add the variables for IP, PORT, SECRET_KEY, MONGO_URI and MONGODB_NAME 
+- Return to the Gitpod IDE and make sure you have pushed the requirements.txt and Procfile
+- Return to Heroku and select "Enable Automatic Deployment"
+- Select your master branch under "Branch Selected"
+- Click on the "Deploy Branch" - wait for the app to build
+- Once the site is deployed, click "View" to launch the app
+- As "Enable Automatic Deployment" has been selected, any pushes to github will be updated automatically by heroku. 
 
 
 ### Local Deployment
 
-
-
-### Remote Deployment
-
+- Go to the Github repository and click on the "Code" dropdown and select "download zip". This downloads a zip file with all of the files required to run the website
+- Next, open VSCode and add all the files from the zip to this project by unzipping the file into documents and dragging them into VSCode
+- Add a env.py file and add all the information for the IP, PORT, SECRET_KEY, MONGO_URI and MONGODB_NAME relating to the mongoDB file 
+- Open the command pallette and select Python: select interpereter
+- Open the terminal and type in Python3 -m pip install flask
+- Open the terminal and type in Python3 -m pip install flask-pymongo
+- Open the terminal and type in Python3 -m pip install pymongo
+- Open the terminal and type in Python3 -m pip install dnspython
+- Open the terminal and type in Python3 app.py
+- Follow the IP address link Running on http://0.0.0.0:5000/
+- in the url, change http://0.0.0.0:5000/ to htto://127.0.0.1:5000 to open it locally
 
 
 ##### Back to [top](#table-of-contents)
@@ -310,18 +368,23 @@ For information on the testing, follow the link to the document [here](testing.m
 ### Content
 
 - All written content was my own.
-
+- [Unsplash](https://unsplash.com/photos/sS0-eF5uy_U) - Main home image
+- [pixabay](https://pixabay.com/photos/piano-boy-playing-learning-78492/) - first circle image on home page
+- [pixabay](https://pixabay.com/photos/eyeglasses-music-sheet-music-pen-1209707/) - second circle image on home page
+- [pixabay](https://pixabay.com/photos/guitar-guitarist-music-756326/) - third circle image on home page
 
 ### Media
 
-- [Pixabay](https://pixabay.com/photos/grass-lawn-backdrop-background-84622/) - Main home image
 - Uploaded piano pieces were performed by myself
-- Alton towers theme was downloaded from [here]()
+- Alton towers theme(hall of the mountain King) was downloaded from [here](https://www.youtube.com/watch?v=2fGkrHuNS7k)
 - All images used for uploading are found on [google images](www.google.com) by using images/tools/usage rights/commercial and other licenses.
 - For the purpose of this project I have used sheet music that is already written and by others as the time constraints for this project dont allow time for writing my own music. 
 
 ### Acknowledgements
 
-
+- I'd like to thank the slack community for their support, particularly the May 2020 cohort group who have given me support and suggestions.
+- I'd like to thank my mentor Adeye Gbenga for his support through the project.  
+- I'd also like to thank my friends and family for their support, and their support with testing of the website. 
+- I'd particularly like to thank my parents for ensuring I had piano lessons when I was younger, as this is what gave me the inspiration for this website.  
 
 ##### Back to [top](#table-of-contents)
