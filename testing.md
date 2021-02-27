@@ -37,11 +37,15 @@
 
 - New users cannot access profiles 
 
+    - This bug was solved by adding a simple if else statement on the user_profile.html. If the length of the useruploads array has 1 or more items inside it, then it loads up the users uploaded music. , else it says user hasnt uploaded any music. 
+
 - MongoDB filling up with unused data
+
+    - 
 
 - When a user updates a new piece, it changes all the other details on genre and instrument to say the same for every piece.(in profile view only).
 
-    - This bug was due to a syntax error, and was a simple and obvious fix. At the bottom of the user profile, it needed to go below all the information in the for loop. 
+    - This bug was due to an error in the code written, and was a simple and obvious fix. At the bottom of the user profile, the append to array code (useruploadstitle.append(piece)) needed to go below all the information in the for loop, where as I had it written before. 
 
 ## User opinions
 

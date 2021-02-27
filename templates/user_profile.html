@@ -3,12 +3,12 @@
 
 <div class="container-fluid">
     <div class="row d-flex text-center space-below-navbar">
-        &nbsp
+        &nbsp;
     </div>
 </div>
 
 <h3 class="d-flex justify-content-center">{{userName}}'s Profile Page</h3>
-&nbsp
+&nbsp;
 
 <form class="container-fluid">
     <!--Profile image-->
@@ -31,7 +31,7 @@
             <!--About me Information-->
             <div class="updateProfileSection"></div>
             <div>
-                &nbsp
+                &nbsp;
                 <p class="d-flex justify-content-center"><u>About Me</u></p>
                 <div class="profileText " id="aboutMeText">
                     <p>{{aboutMe}}</p>
@@ -47,41 +47,48 @@
     <div class="row d-flex text-center">
 
         <!--All pieces this user has uploaded-->
-        <div class="container-fluid">
-            <div
-                class="row row-cols-1 row-cols-sm-2 row-cols-md-3 row-cols-lg-4 row-cols-xl-5 d-flex justify-content-center text-center">                
-                {% for piece in useruploads %}
-                <div class="card card-music col mb-4">
-                    {% if session.user == userName %}
-                    <a href="{{ url_for('delete_piece', piece_id=piece._id) }}"
-                        class="btn btn-small btn-danger">Delete</a>
-                    <a href="#" class="btn btn-small btn-success">Edit</a>
-                    {% else %}
-                    <a href="#" class="btn btn-large btn-warning text-white">Write a Review</a>
-                    {% endif %}
-                    <img src="{{ url_for('file', filename=piece.image)}}" class="card-img-top border "
-                        style="height:10rem;" alt="{{ piece.image }}">
-                    <div class="card-body">
-                        <h5 class="card-title">{{ piece.title}} </h5>
-                        <p class="card-text">{{ piece.artist }}</p>
-                        <p class="card-text">{{ piece.genre }}</p>
-                        <p class="card-text">{{ piece.instrument }}</p>
-                        <p class="card-text">{{ piece.username }}</p>
-                        <a href="{{ url_for('file', filename=piece.sheetmusic)}}" target="_blank"
-                            class="btn btn-primary">Sheet Music</a>
-                        <audio id="music{{ piece._id }}" class="music" preload="true">
-                            <source src="{{ url_for('file', filename=piece.sound)}}">
-                        </audio>
-                        <div id="audioplayer">
-                            <i id="play{{ piece._id }}" data-id="{{ piece._id }}" class="playButton fas fa-play"></i>
-                            <i id="stop{{ piece._id }}" data-id="{{ piece._id }}" class="stopButton fas fa-square"></i>
+                
+            {% if useruploads|length > 1 %}
+                <div class="container-fluid">
+                    <div class="row row-cols-1 row-cols-sm-2 row-cols-md-3 row-cols-lg-4 row-cols-xl-5 d-flex justify-content-center text-center">                
+                        {% for piece in useruploads %}
+                        <div class="card card-music col mb-4">
+                            {% if session.user == userName %}
+                            <a href="{{ url_for('delete_piece', piece_id=piece._id) }}"
+                                class="btn btn-small btn-danger">Delete</a>
+                            <a href="#" class="btn btn-small btn-success">Edit</a>
+                            {% else %}
+                            <a href="#" class="btn btn-large btn-warning text-white">Write a Review</a>
+                            {% endif %}
+                            <img src="{{ url_for('file', filename=piece.image)}}" class="card-img-top border "
+                                style="height:10rem;" alt="{{ piece.image }}">
+                            <div class="card-body">
+                                <h4 class="card-title">{{ piece.title }} </h4>
+                                <p class="card-text">{{ piece.artist }}</p>
+                                <p class="card-text">{{ piece.genre }}</p>
+                                <p class="card-text">{{ piece.instrument }}</p>
+                                <p class="card-text">{{ piece.username }}</p>
+                                <a href="{{ url_for('file', filename=piece.sheetmusic)}}" target="_blank"
+                                    class="btn btn-primary">Sheet Music</a>
+                                <audio id="music{{ piece._id }}" class="music" preload="true">
+                                    <source src="{{ url_for('file', filename=piece.sound)}}">
+                                </audio>
+                                <div id="audioplayer">
+                                    <i id="play{{ piece._id }}" data-id="{{ piece._id }}" class="playButton fas fa-play"></i>
+                                    <i id="stop{{ piece._id }}" data-id="{{ piece._id }}" class="stopButton fas fa-square"></i>
+                                </div>
+                            </div>
                         </div>
+                        {% endfor %}
                     </div>
                 </div>
-                {% endfor %}
-            </div>
-        </div>
+            {% else %}
+                <div class="container-fluid">
+                    <div class="row row-cols-1 row-cols-sm-2 row-cols-md-3 row-cols-lg-4 row-cols-xl-5 d-flex justify-content-center text-center">User hasn't uploaded any music.</div>
+                </div>
+            {% endif %}
+                
     </div>
+</div>
 
-
-    {% endblock %}
+{% endblock %}
