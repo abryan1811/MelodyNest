@@ -163,6 +163,8 @@ Tetradic - Chosen for boldness but to compliment the red as the primary colour. 
 #### *Icons*
 
 [Font Awesome 5.13.1](https://fontawesome.com/)
+
+Used for the play and stop button on the music player
   
 #### *Image modifications*
 

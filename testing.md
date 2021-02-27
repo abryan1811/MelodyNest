@@ -37,6 +37,11 @@
 
 - New users cannot access profiles 
 
+- MongoDB filling up with unused data
+
+- When a user updates a new piece, it changes all the other details on genre and instrument to say the same for every piece.(in profile view only).
+
+    - This bug was due to a syntax error, and was a simple and obvious fix. At the bottom of the user profile, it needed to go below all the information in the for loop. 
 
 ## User opinions
 
