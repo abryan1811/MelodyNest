@@ -8164,9 +8164,8 @@ body {
 /* Home page */
 .homeTitle {
   color: white;
-  font-size: 20px;
   position: relative;
-  left: 10px;
+  left: 0px;
   top: 20px; }
 
 .homeTitle h1 {
@@ -8239,6 +8238,10 @@ body {
 /* Profile Page */
 .profileText {
   white-space: pre-line; }
+
+.card-profile {
+    margin:0px;
+}
 
 /* Media Queries for screen sizes */
 @media screen and (max-width: 1024px) {
