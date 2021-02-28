@@ -8207,6 +8207,11 @@ body {
   color: black; }
 
 /* Music Player */
+
+#audioplayer {
+    padding-top :20px;
+}
+
 #playButton {
   float: left;
   margin-top: 12px; }

@@ -124,7 +124,7 @@ A star rating system in the review sections is something that may not be possibl
 
 #### *Wireframes*
 
-Click here to see the project [Wireframes](wireframes.md)
+Click here to see the project [Wireframes](wireframes.md) (added to seperate file due to size)
 
 #### Surface Plane
 
