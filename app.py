@@ -435,9 +435,11 @@ def write_review(reviews_id):
             "reviewtext": request.form.get("reviewText")
             }
         mongo.db.reviews.insert_one(reviewVariables)
+        return redirect(url_for("review_page"))
 
     return render_template(
         "write_review.html", reviews=reviews)
+    
 
 
 # View all reviews
