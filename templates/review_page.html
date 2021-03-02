@@ -4,31 +4,51 @@
 <div class="container-fluid">
     <div class="row d-flex text-center space-below-navbar">
         &nbsp
-</div>
+    </div>
 
-<h3 class="d-flex justify-content-center" method="GET">Reviews</h3>
+    <h3 class="d-flex justify-content-center" method="GET">Reviews</h3>
 
-<!--Review Cards-->
-<div class="container-fluid">
-    <div class="row row-cols-1 row-cols-sm-2 row-cols-md-3 row-cols-lg-4 row-cols-xl-5 d-flex justify-content-center text-center">
-        {% for review in reviews %}
+    {% with messages = get_flashed_messages() %}
+    {% if messages %}
+    {% for message in messages %}
+    <div class="row">
+        <div class="col d-flex justify-content-center bg-warning">
+            <h4 class="center-align">{{ message }}</h4>
+        </div>
+    </div>
+    {% endfor %}
+    {% endif %}
+    {% endwith %}
+
+    <!--Review Cards-->
+
+    <div class="container-fluid">
+        <div
+            class="row row-cols-1 row-cols-sm-2 row-cols-md-3 row-cols-lg-4 row-cols-xl-5 d-flex justify-content-center text-center">
+            {% for review in reviews %}
             <!--Image that belongs to the reviewed piece-->
             <div class="card card-music col mb-4">
+                {% if session.user == review.user or session.user == "admin" %}
+                <!--If this is the user that created the piece, delete or edit the piece of music-->
+                <a href="{{ url_for('delete_review', review_id=review._id) }}" class="btn btn-small btn-orange ">Delete</a>
+                {% endif %}
                 <img src="{{ url_for('file', filename=review.image)}}" class="card-img-top border" style="height:10rem;"
-                    alt="{{ review.image }}">     
+                    alt="{{ review.image }}">
                 <!--image that belongs to the reviewed piece-->
                 <div class="card-body">
-                    <h5 class="card-title">{{ review.title}} </h5>             
+                    <h5 class="card-title">{{ review.title}} </h5>
                 </div>
                 <!--Text that user inputted for the review-->
                 <div class="card-body">
-                    <h5 class="card-title"><p class="reviewText"> {{ review.reviewText }} </p></h5>         
-                </div> 
+                    <h5 class="card-title">
+                        <p class="reviewText"> {{ review.reviewText }} </p>
+                    </h5>
+                </div>
             </div>
-        {% endfor %}
-        </div>    
-   
-    </div>   
+            {% endfor %}
+        </div>
+
+    </div>
 
 
-{% endblock %}
+    {% endblock %}

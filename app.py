@@ -439,7 +439,6 @@ def write_review(reviews_id):
 
     return render_template(
         "write_review.html", reviews=reviews)
-    
 
 
 # View all reviews
@@ -471,6 +470,22 @@ def delete_piece(piece_id):
     mongo.db.music.remove({"_id": ObjectId(piece_id)})
     flash("Your music share has been deleted")
     return redirect(url_for("music_collection"))
+
+
+# Delete the review if it belongs to the user
+@app.route("/delete_review/<review_id>")
+def delete_review(review_id):
+    mongo.db.reviews.remove({"_id": ObjectId(review_id)})
+    flash("Your review has been deleted")
+    return redirect(url_for("review_page"))
+
+
+# Set up so admin can delete users
+@app.route("/delete_user/<profile_id>")
+def delete_user(profile_id):
+    mongo.db.reviews.remove({"_id": ObjectId(profile_id)})
+    flash("The user has been deleted")
+    return redirect(url_for("review_page"))
 
 
 if __name__ == "__main__":
