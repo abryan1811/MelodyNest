@@ -441,6 +441,24 @@ def write_review(reviews_id):
         "write_review.html", reviews=reviews)
 
 
+@app.route("/edit_review/<review_id>", methods=["GET", "POST"])
+def edit_review(review_id):
+    if request.method == "POST":
+
+        reviewVariables = {"$set": {
+            "reviewtext": request.form.get("reviewText")
+            }
+        }
+        mongo.db.reviews.update_one(
+            {"_id": ObjectId(review_id)}, reviewVariables, upsert=True)
+        flash("Review Successfully Updated")
+        return redirect(url_for("review_page"))
+
+    reviews = mongo.db.reviews.find_one({"_id": ObjectId(review_id)})
+    return render_template(
+        "edit_review.html", reviews=reviews)
+
+
 # View all reviews
 @app.route("/review_page", methods=["GET", "POST"])
 def review_page():
@@ -448,6 +466,7 @@ def review_page():
     reviewCards = []
     if request.method == "GET":
         for review in reviews:
+
             music = mongo.db.music.find_one(
                 {"_id": ObjectId(review["music"])})
             review = {
