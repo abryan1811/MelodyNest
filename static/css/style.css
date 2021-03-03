@@ -8201,6 +8201,10 @@ body {
 .navbar-home {
   font-size: 50px; }
 
+.navbarLinks{
+    font-size:30px;
+}
+
 .card {
   background-color: #bebebe;
   margin: 10px;
