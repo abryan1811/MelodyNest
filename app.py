@@ -432,7 +432,8 @@ def write_review(reviews_id):
     if request.method == "POST":
         reviewVariables = {
             "music": ObjectId(reviews_id),
-            "reviewtext": request.form.get("reviewText")
+            "reviewtext": request.form.get("reviewText"),
+            "user": ObjectId(session["userId"]),
             }
         mongo.db.reviews.insert_one(reviewVariables)
         return redirect(url_for("review_page"))
@@ -466,7 +467,8 @@ def review_page():
     reviewCards = []
     if request.method == "GET":
         for review in reviews:
-
+            userId = mongo.db.users.find_one(
+                {"_id": ObjectId(review["user"])}).get("username")
             music = mongo.db.music.find_one(
                 {"_id": ObjectId(review["music"])})
             review = {
@@ -474,7 +476,8 @@ def review_page():
                 "music": review["music"],
                 "reviewText": review["reviewtext"],
                 "title": music.get("title"),
-                "image": music.get("image")
+                "image": music.get("image"),
+                "user": userId
             }
             reviewCards.append(review)
 
