@@ -26,17 +26,21 @@
                     {% if session.user %}
                     <li class="nav-item">
                         <a class="nav-link text-white" href="{{ url_for('user_profile') }}">{{session.user}}</a>
-                    <li class="nav-item">
-                        <a class="nav-link text-white" aria-current="page" href="{{ url_for('logout') }}">Logout</a>
                     </li>
+                    <li class="nav-item">
+                        <a class="nav-link text-white" href="{{ url_for('help') }}">Help</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link text-white" aria-current="page" href="{{ url_for('logout') }}">Logout</a>               
                     </li>
                     {% else %}
                     <li class="Title text-white">
                         <p>Welcome to MelodyNest</p>
                     </li>
+                    <li class="nav-item">
+                        <a class="nav-link text-white" href="{{ url_for('help') }}">Help</a>
+                    </li>
                     {% endif %}
-
-
                 </ul>
             </div>
         </div>

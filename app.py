@@ -24,6 +24,11 @@ def home():
     return render_template("index.html")
 
 
+@app.route("/help")
+def help():
+    return render_template("help.html")
+
+
 # Music that has been shared by users
 @app.route("/music_collection")
 def music_collection():

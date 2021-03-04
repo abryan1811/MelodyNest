@@ -1,0 +1,97 @@
+{% extends "base.html" %}
+{% block content %}
+
+<div class="container-fluid">
+    <div class="row d-flex text-center space-below-navbar">
+        &nbsp;
+    </div>
+
+    <h3 class="d-flex justify-content-center">Help</h3>
+    <h4 class="d-flex justify-content-center">See the FAQ's below</h4>
+
+    <div class="row d-flex justify-content-center text-center accordion text-center" id="accordionExample">
+        <div class="col-lg-6">
+            <div class="card">
+                <div class="card-header" id="headingOne">
+                    <h2 class="mb-0">
+                        <button class="btn btn-link btn-block text-left text-center" type="button"
+                            data-toggle="collapse" data-target="#collapseOne" aria-expanded="true"
+                            aria-controls="collapseOne">
+                            How do I upload a piece of music
+                        </button>
+                    </h2>
+                </div>
+
+                <div id="collapseOne" class="collapse" aria-labelledby="headingOne" data-parent="#accordionExample">
+                    <div class="card-body">
+                        In order to upload music, go to the share tab and add the title, artist, select a genre and the
+                        instrument you played the piece with.
+                        Then upload a PDF of the sheet music you performed, upload an audio file of your performance of
+                        the piece and upload an image relating to your music (jpeg/png).
+                    </div>
+                </div>
+            </div>
+            <div class="card">
+                <div class="card-header" id="headingTwo">
+                    <h2 class="mb-0">
+                        <button class="btn btn-link btn-block text-left collapsed text-center" type="button"
+                            data-toggle="collapse" data-target="#collapseTwo" aria-expanded="false"
+                            aria-controls="collapseTwo">
+                            I've fogotten my password. What do I do?
+                        </button>
+                    </h2>
+                </div>
+                <div id="collapseTwo" class="collapse" aria-labelledby="headingTwo" data-parent="#accordionExample">
+                    <div class="card-body">
+                        We don't yet have a reset password feature in place, but we will be working on that soon. Your
+                        profile won't be gone, but will be inaccessible for a while. You are welcome to set up a new
+                        profile while you wait.
+                        If you'd prefer we delete it, please send an email to admin@melodynest.com amd we will remove
+                        your profile for you.
+                    </div>
+                </div>
+            </div>
+            <div class="card">
+                <div class="card-header" id="headingThree">
+                    <h2 class="mb-0">
+                        <button class="btn btn-link btn-block text-left collapsed text-center" type="button"
+                            data-toggle="collapse" data-target="#collapseThree" aria-expanded="false"
+                            aria-controls="collapseThree">
+                            What are the policies for using this website?
+                        </button>
+                    </h2>
+                </div>
+                <div id="collapseThree" class="collapse" aria-labelledby="headingThree" data-parent="#accordionExample">
+                    <div class="card-body">
+                        Users must upload images, PDFs of sheet music and audios that they own or have permission to use. We at MelodyNest recommend using the google image tools to select images with permissions, or else we may have to remove them off the website. 
+                        We also will not tolerate any offensive language or images. This includes but isn't limited to Racism, Gender, Homophobia, Pornography.  
+                    </div>
+                </div>
+            </div>
+            <div class="card">
+                <div class="card-header" id="headingFour">
+                    <h2 class="mb-0">
+                        <button class="btn btn-link btn-block text-left collapsed text-center" type="button"
+                            data-toggle="collapse" data-target="#collapseFour" aria-expanded="false"
+                            aria-controls="collapseFour">
+                            Can I report a User or Post that I find offensive?
+                        </button>
+                    </h2>
+                </div>
+                <div id="collapseFour" class="collapse" aria-labelledby="headingFour" data-parent="#accordionExample">
+                    <div class="card-body">
+                        If you find any offensive content, or anything that doesn't follow the above policies has been
+                        added by a user, please send an email to admin@melodynest.
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="container-fluid">
+        <div class="row d-flex text-center footer-row">
+            &nbsp;
+        </div>
+    </div>
+
+    {% endblock %}
