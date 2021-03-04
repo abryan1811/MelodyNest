@@ -51,6 +51,43 @@ def music_collection():
     return render_template("music.html", music=musicPieces)
 
 
+# Search Feature
+
+# Used the following website to support with this implementation
+# https://kb.objectrocket.com/mongo-db/how-to-query-mongodb-documents-with-regex-in-python-362
+@app.route("/search_music", methods=["GET", "POST"])
+def search_music():
+    mongo.db.music.create_index("title")
+    query = {
+        "title": {
+            "$regex": request.form.get("query"),
+            "$options": 'i'
+        }
+    }
+    music = list(mongo.db.music.find(query))
+    musicPieces = []
+    for piece in music:
+        musicGenreId = mongo.db.genres.find_one(
+            {"_id": ObjectId(piece["genre"])}).get("genre")
+        musicInstrumentId = mongo.db.instruments.find_one(
+            {"_id": ObjectId(piece["instrument"])}).get("instrument")
+        userId = mongo.db.users.find_one(
+            {"_id": ObjectId(piece["user"])}).get("username")
+        piece = {
+            "_id": piece["_id"],
+            "genre": musicGenreId,
+            "title": piece["title"],
+            "artist": piece["artist"],
+            "instrument": musicInstrumentId,
+            "user": userId,
+            "sound": piece["sound"],
+            "sheetmusic": piece["sheetmusic"],
+            "image": piece["image"]
+        }
+        musicPieces.append(piece)
+    return render_template("music.html", music=musicPieces)
+
+
 # Login user
 @app.route("/login", methods=["GET", "POST"])
 def login():
