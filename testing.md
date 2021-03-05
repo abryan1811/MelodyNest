@@ -2,8 +2,23 @@
 
 ---
 
-## User stories
+## *Developer Stories*
 
+ - As the developer, I want to create a website so musicians can share their music with other musicians. 
+
+ - As the developer, I want the website to be aesthetically pleasing to those who visit the website making good use of HTML, CSS and Bootstrap. 
+
+ - As the developer, I want to website to function in the intended ways using Javascript/JQuery and Python.
+
+ - As the developer, I want everything shared to be stored in a back end data network, in this case I will be using MongoDB 
+
+ ## *Site Owner Stories*
+
+- As the site owner, I want users to have a positive experience so that the number of users grows continually. 
+
+- As the site owner, I want to have a pleasant experience when I add, edit and delete items that I moderate as innapropriate or no longer necessary. 
+
+## User stories
 
 ### As a user, I want to be able to share the sheet music I arrange or I compose
 - A user can share an their sheet music. 
@@ -47,7 +62,13 @@
 
     - This bug was due to an error in the code written, and was a simple and obvious fix. At the bottom of the user profile, the append to array code (useruploadstitle.append(piece)) needed to go below all the information in the for loop, where as I had it written before. 
 
+- Having fixed the bug in which a new user could access their profile, after adding search to music, and tweaking the navbar, it seemed to cause a bug where a user without any uploads cannot access their profile or edit it. However, the profile can be accessed from the profile list tab.
+
+    - To fix this new error, I had added some unncessary files to the app.py for user_profile function. Piece=piece was causing it to made it a priority to check if a piece of music had been included by the user. Having removed this, a new user had access to their profile and edit of the profile, without having to have already uploaded.
+
 ## User opinions
+
+
 
 
 
