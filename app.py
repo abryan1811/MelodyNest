@@ -356,7 +356,7 @@ def view_profiles(user_id):
 
 
 # User to access their own profile
-@app.route("/user_profile")
+@app.route("/user_profile/")
 def user_profile():
     user = mongo.db.users.find_one(
         {"_id": ObjectId(session["userId"])})
@@ -391,7 +391,7 @@ def user_profile():
         useruploadstitle.append(piece)
     return render_template(
         "user_profile.html", userName=userName, aboutMe=aboutMe,
-        firstname=firstname, surname=surname, piece=piece, email=email,
+        firstname=firstname, surname=surname, email=email,
         preferredInstrument=preferredInstrument,
         useruploads=useruploadstitle, profileImage=profileImage)
 

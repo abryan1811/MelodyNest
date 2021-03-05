@@ -63,8 +63,11 @@
     <div class="row d-flex text-center">
 
         <!--All pieces this user has uploaded-->
-                
-            {% if useruploads|length > 0 %}
+            {% if useruploads|length == 0 %}
+                <div class="container-fluid">
+                    <div class="row row-cols-1 row-cols-sm-2 row-cols-md-3 row-cols-lg-4 row-cols-xl-5 d-flex justify-content-center text-center">No music uploaded.</div>
+                </div>    
+            {% elif useruploads|length > 0 %}
                 <div class="container-fluid">
                     <div class="row row-cols-1 row-cols-sm-2 row-cols-md-3 row-cols-lg-4 row-cols-xl-5 d-flex justify-content-center text-center">                
                         {% for piece in useruploads %}
@@ -98,10 +101,7 @@
                         {% endfor %}
                     </div>
                 </div>
-            {% else %}
-                <div class="container-fluid">
-                    <div class="row row-cols-1 row-cols-sm-2 row-cols-md-3 row-cols-lg-4 row-cols-xl-5 d-flex justify-content-center text-center">User hasn't uploaded any music.</div>
-                </div>
+            
             {% endif %}
                 
     </div>
