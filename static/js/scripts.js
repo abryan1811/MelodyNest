@@ -84,3 +84,6 @@ $(".reviewText").each(function(e, v) {
         $(v).html($(v).data("full-text"));
     });
 });
+
+
+
