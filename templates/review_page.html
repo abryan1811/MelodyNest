@@ -37,13 +37,11 @@
                     alt="{{ review.image }}">
                 <!--image that belongs to the reviewed piece-->
                 <div class="card-body">
-                    <h5 class="card-title">{{ review.title}} </h5>
-                </div>
-                <!--Text that user inputted for the review-->
-                <div class="card-body">
+                    <h5 class="card-title">{{ review.title}} </h5>               
+                <!--Text that user inputted for the review-->                
                     <h5 class="card-title">
                         <p class="reviewText"> {{ review.reviewText }} </p>
-                        <p class="reviewText"> Written by {{ review.user }} </p>
+                        <p class="reviewText"> Reviewed by {{ review.user }} </p>
                     </h5>
                 </div>
             </div>
