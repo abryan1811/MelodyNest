@@ -460,10 +460,9 @@ def edit_profile():
                 {"_id": ObjectId(session["userId"])}, updateImage, upsert=True)
 
         flash("Your details have been updated")
-        return render_template(
-            (session["userId"], "user_profile.html"), user=user)
+        return redirect(url_for("profiles"))
 
-    return render_template("user_profile.html", user=user)
+    return redirect(url_for("profiles"))
 
 
 # Write a review for a piece that doesnt belong to the user
@@ -532,6 +531,7 @@ def review_page():
 @app.route("/delete_piece/<piece_id>")
 def delete_piece(piece_id):
     mongo.db.music.remove({"_id": ObjectId(piece_id)})
+    mongo.db.fs.files.remove({"_id": ObjectId(piece_id)})
     flash("Your music share has been deleted")
     return redirect(url_for("music_collection"))
 
@@ -547,9 +547,9 @@ def delete_review(review_id):
 # Set up so admin can delete users
 @app.route("/delete_user/<profile_id>")
 def delete_user(profile_id):
-    mongo.db.reviews.remove({"_id": ObjectId(profile_id)})
+    mongo.db.users.remove({"_id": ObjectId(profile_id)})
     flash("The user has been deleted")
-    return redirect(url_for("review_page"))
+    return redirect(url_for("profiles"))
 
 
 if __name__ == "__main__":

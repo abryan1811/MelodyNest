@@ -9,6 +9,18 @@
     <h3 class="d-flex justify-content-center">Profile Pages</h3>
 
 
+{% with messages = get_flashed_messages() %}
+    {% if messages %}
+    {% for message in messages %}
+    <div class="row">
+        <div class="col d-flex justify-content-center bg-primary">
+            <h4 class="center-align">{{ message }}</h4>
+        </div>
+    </div>
+    {% endfor %}
+    {% endif %}
+    {% endwith %}
+
     <!--Profile cards-->
     <div class="container-fluid">
         <div
@@ -18,8 +30,7 @@
             <div class="card card-music col mb-4">
                 {% if session.user == "admin" %}
                 <!--If this is the user that created the piece, delete or edit the piece of music-->
-                <a href="{{ url_for('delete_user', profile_id=profile._id) }}"
-                    class="btn btn-small btn-orange ">Delete</a>
+                <a href="{{ url_for('delete_user', profile_id=data._id) }}" class="btn btn-small btn-orange ">Delete</a>
                 {% endif %}
                 <div class="row">
                     <!--Profile Image-->
