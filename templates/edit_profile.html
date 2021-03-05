@@ -132,11 +132,11 @@
             {% endfor %}
         </div>
     </div>
-    {% else %}
+    {% elif useruploads|length == 0 %}
         <div class="container-fluid">
         <div
             class="row row-cols-1 row-cols-sm-2 row-cols-md-3 row-cols-lg-4 row-cols-xl-5 d-flex justify-content-center text-center">
-            You haven't uploaded any music. click <a href="{{url_for('share')}}">here</a> to share some music now</div>
+            When you upload music, they can be seen here.</div>
     </div>
     {% endif %}
 

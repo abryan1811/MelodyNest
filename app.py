@@ -415,21 +415,9 @@ def edit_profile():
         useruploadstitle = []
         for upload in useruploads:
             useruploadstitle.append(upload)
-            musicGenreId = mongo.db.genres.find_one(
-                {"_id": ObjectId(upload["genre"])}).get("genre")
-            musicInstrumentId = mongo.db.instruments.find_one(
-                {"_id": ObjectId(upload["instrument"])}).get("instrument")
-        upload = {
-            "genre": musicGenreId,
-            "instrument": musicInstrumentId,
-        }
-
-        print("Username: ")
-        print(userName)
-
         return render_template(
             "edit_profile.html", userName=userName, aboutme=aboutme,
-            firstname=firstname, surname=surname, upload=upload, email=email,
+            firstname=firstname, surname=surname, email=email,
             preferredInstrument=preferredInstrument, password=password,
             useruploads=useruploadstitle, profileImage=profileImage)
     elif request.method == "POST":
