@@ -38,7 +38,7 @@
                         <div class="input-group mb-3">
                             <span class="col-lg-3 col-md-12 col-sm-12 col-12 input-group-text" id="inputArtist">Artist</span>
                             <input type="text" class="col-lg-9 col-md-12 col-sm-12 col-12 form-control" name="inputArtist" aria-label="Sizing example input"
-                                aria-describedby="inputGroup-sizing-default">
+                                aria-describedby="inputGroup-sizing-default" required>
                         </div>
                     </div>
                     <!--Dropdowns of pre decided genres/instruments. Also option to add a new genre with JS-->
@@ -46,7 +46,7 @@
                         <div class="input-group mb-3">
                             <span class="col-lg-3 col-md-12 col-sm-12 col-12 input-group-text" id="inputGenreTab">Genre</span>
                             <select class="form-select form-control" id="inputGenre" name="inputGenre"
-                                aria-label="Example select with button addon" onchange="newGenre()">                                
+                                aria-label="Example select with button addon" onchange="newGenre()" required>                                
                                 <option value="" disabled selected>(Select Genre)</option>
                                 {% for genre in genres %}
                                 <option value="{{genre._id}}">{{genre.genre}}</option>
@@ -61,7 +61,7 @@
                         <div class="input-group mb-3">
                             <span class="col-lg-3 col-md-12 col-sm-12 col-12 input-group-text" id="inputInstrumentTab">Instrument</span>
                             <select class="form-select form-control" id="inputInstrument" name="inputInstrument"
-                                aria-label="Example select with button addon" onchange="newInstrument()">
+                                aria-label="Example select with button addon" onchange="newInstrument()" required>
                                 <option value="" disabled selected>(Select Instrument)</option>
                                 {% for instrument in instruments %}
                                 <option value="{{instrument._id}}">{{instrument.instrument}}</option>
@@ -76,20 +76,20 @@
                     <div class="row">
                         <div class="input-group mb-3">
                             <label class="col-lg-3 col-md-12 col-sm-12 col-12 input-group-text" for="inputSoundFile">Upload Soundfile</label>
-                            <input type="file" accept=".mp3,audio/*" class="col-lg-9 col-md-12 col-sm-12 col-12 form-control" name="inputSoundFile" id="inputSoundFile">
+                            <input type="file" accept=".mp3,audio/*" class="col-lg-9 col-md-12 col-sm-12 col-12 form-control" name="inputSoundFile" id="inputSoundFile" required>
                         </div>
                     </div>
 
                     <div class="row">
                         <div class="input-group mb-3">
                             <label class="col-lg-3 col-md-12 col-sm-12 col-12 input-group-text" for="inputImageArtwork">Upload Image/Artwork</label>
-                            <input type="file" accept="image/x-png,image/gif,image/jpeg"  class="col-lg-9 col-md-12 col-sm-12 col-12 form-control" name="inputImageArtwork" id="inputImageArtwork">
+                            <input type="file" accept="image/x-png,image/gif,image/jpeg"  class="col-lg-9 col-md-12 col-sm-12 col-12 form-control" name="inputImageArtwork" id="inputImageArtwork" required>
                         </div>
                     </div>
                     <div class="row">
                         <div class="input-group mb-3">
                             <label class="col-lg-3 col-md-12 col-sm-12 col-12 input-group-text" for="inputSheetMusic">Upload Sheet Music</label>
-                            <input type="file" accept="application/pdf" class="col-lg-9 col-md-12 col-sm-12 col-12 form-control" name="inputSheetMusic" id="inputSheetMusic">
+                            <input type="file" accept="application/pdf" class="col-lg-9 col-md-12 col-sm-12 col-12 form-control" name="inputSheetMusic" id="inputSheetMusic" required>
                         </div>
                     </div>
                     <!--submit-->

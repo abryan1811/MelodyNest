@@ -43,14 +43,14 @@
                                 id="inputArtist">Artist</span>
                             <input type="text" class="col-lg-9 col-md-12 col-sm-12 col-12 form-control"
                                 name="inputArtist" aria-label="Sizing example input"
-                                aria-describedby="inputGroup-sizing-default" value="{{piece.artist}}">
+                                aria-describedby="inputGroup-sizing-default" value="{{piece.artist}}" required>
                         </div>
                     </div>
                     <div class="row">
                         <div class="input-group mb-3">
                             <span class="col-lg-3 col-md-12 col-sm-12 col-12 input-group-text" id="inputGenreTab">Genre</span>
                             <select class="form-select form-control" id="inputGenre" name="inputGenre"
-                                aria-label="Example select with button addon" onchange="newGenre()">
+                                aria-label="Example select with button addon" onchange="newGenre()" required>
                                 <option value="" disabled>(Select Genre)</option>
                                 {% for genre in genres %}
                                 {% if genre._id == piece.genre %}
@@ -69,7 +69,7 @@
                         <div class="input-group mb-3">
                             <span class="col-lg-3 col-md-12 col-sm-12 col-12 input-group-text" id="inputInstrumentTab">Instrument</span>
                             <select class="form-select form-control" id="inputInstrument" name="inputInstrument"
-                                aria-label="Example select with button addon" onchange="newInstrument()">
+                                aria-label="Example select with button addon" onchange="newInstrument()" required>
                                 <option value="" disabled>(Select Instrument)</option>
                                 {% for instrument in instruments %}
                                 {% if instrument._id == piece.instrument %}
