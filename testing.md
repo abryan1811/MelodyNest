@@ -29,7 +29,7 @@
 
 <img src="static/images/adminDelEdit.png" width="800px" >
 
-## User stories
+## *User stories*
 
 ### As a user, I want to be able to share the sheet music I arrange or I compose
 - A user can share an their sheet music. 

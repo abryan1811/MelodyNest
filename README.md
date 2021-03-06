@@ -2,7 +2,8 @@
 
 <img src="static/images/responsive.png">
 
-MelodyNest is a website that allows musicians to share music with other musicians. They are able to 
+MelodyNest is a website that allows musicians to share music with other musicians. They are able to upload audio recordings of their music, information about the piece, and a copy of the sheet music. 
+They can also write reviews on other musicians pieces and keep an up to date profile page.  
 
 [*Am I Responsive?*](http://ami.responsivedesign.is/#) was used to test how responsive the website is on different devices.
 ## Table of Contents
@@ -104,7 +105,9 @@ After deciding on the main aims of the project, I considered the features that w
 
 The following is how the website will be structured, based on the scope of the project:
 
-- The Navbar will have a login/register if user isnt logged in to the site. 
+-There are two Navbars, the top Navbar is for user information and help support. The second Navbar is for navigating around the website. 
+
+- The top Navbar will have a login/register if user isnt logged in to the site. 
     - Home page returns the user to the home page. 
     - login/register sends user to a login page, with option to register underneath the login form. 
     - If a new user registers, after completion it will return to the login and ask the user to login for the first time
