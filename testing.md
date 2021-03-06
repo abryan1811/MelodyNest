@@ -4,46 +4,73 @@
 
 ## *Developer Stories*
 
- - As the developer, I want to create a website so musicians can share their music with other musicians. 
+ ### As the developer, I want to create a website so musicians can share their music with other musicians. 
 
- - As the developer, I want the website to be aesthetically pleasing to those who visit the website making good use of HTML, CSS and Bootstrap. 
+ ### As the developer, I want the website to be aesthetically pleasing to those who visit the website making good use of HTML, CSS and Bootstrap. 
 
- - As the developer, I want to website to function in the intended ways using Javascript/JQuery and Python.
+- See user stories
 
- - As the developer, I want everything shared to be stored in a back end data network, in this case I will be using MongoDB 
+ ### As the developer, I want to website to function in the intended ways using Javascript/JQuery and Python.
+
+-  Javascript/JQuery and Python were used for functions and are all working as intended. 
+
+ ### As the developer, I want everything shared to be stored in a back end data network, in this case I will be using MongoDB 
+- Developer used mongoDB to create collections, and built code around adding documents to those collections. 
+
+ <img src="static/images/mongodbcollection.png" width="800px" >
 
  ## *Site Owner Stories*
 
-- As the site owner, I want users to have a positive experience so that the number of users grows continually. 
+### As the site owner, I want users to have a positive experience so that the number of users grows continually. 
+- See user stories to see how this has been achieved
 
-- As the site owner, I want to have a pleasant experience when I add, edit and delete items that I moderate as innapropriate or no longer necessary. 
+### As the site owner, I want to have a pleasant experience when I add, edit and delete items that I moderate as innapropriate or no longer necessary. 
+- Admin has access to editting and deleting profiles, uploaded pieces of music, and reviews. 
+
+<img src="static/images/adminDelEdit.png" width="800px" >
 
 ## User stories
 
 ### As a user, I want to be able to share the sheet music I arrange or I compose
 - A user can share an their sheet music. 
 
-<img src="static/images/sheetmusicupload.png">
-
 ### As a user, I want to be able to share an audio file of the music I performed on my chosen instrument
 - A user can share an audio file. 
 
-<img src="static/images/audioupload.png">
+<img src="static/images/upload.png" width="800px">
 
 ### As a user, I want to have a profile page where I can share information about myself in terms of music. 
+- Users have a profile page that they can edit at any point.
+
+<img src="static/images/editprofile.png" width="800px">
 
 ### As a user, I want to write reviews about the music shared by other users
+- User can click on a piece of music that isn't their own and write up a review about it
+
+<img src="static/images/review.png" width="800px">
 
 ### As a user, I want to see what others think of the music I have shared
+- Other users can share reviews and all of these are viewable by visiting the review tab. A future feature will include a sort option so you can sort by piece title, user or recent. 
+
+<img src="static/images/reviewedmusic.png" width="800px">
 
 ### As a user, I want to see an attractive website that makes me want to use it. 
+- The user will find the website easy to understand, all links work, it's colour scheme is muted and understated to fit the theme, with an appropriate font style. 
 
 ### As a user, I want to see other users profile pages, and see what they have shared
+- users can access the profiles of other users and also see what music they have uploaded
+
+<img src="static/images/profilepage.png" width="800px">
 
 ### As a user, I want to listen to other users performances
+- users can listen to the music of other users by pressing the play button on the piece card. 
+
+<img src="static/images/musicPlay.png" width="800px">
 
 ### As a user, I want to be able to download some new music that others have shared.
+- users can view and save the pdf of the shared sheet music by clicking on the sheet music button a card. This brings up a new tab with the pdf file shared. 
 
+<img src="static/images/sheetmusic.png" width="800px">
 
 
 ## Bugs
