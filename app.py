@@ -262,7 +262,6 @@ def edit_share(piece_id):
                 "artist": request.form.get("inputArtist"),
                 "instrument": ObjectId(instrId),
                 "genre": ObjectId(musicGenreId),
-                "user": ObjectId(session["userId"]),
             }
         }
         mongo.db.music.update_one(
@@ -475,6 +474,34 @@ def change_password():
 
     return render_template(
         "change_password.html")
+
+
+@app.route("/admin_change_password/<profile_id>", methods=["GET", "POST"])
+def admin_change_password(profile_id):
+    user = mongo.db.users.find_one(
+        {"_id": ObjectId(profile_id)})
+    if request.method == "GET":
+        userName = user.get("username"),
+        password = user.get("password")
+
+        return render_template(
+            "admin_change_password.html", password=password,
+            userName=userName, user=user)
+
+    elif request.method == "POST":
+        password = generate_password_hash(request.form.get("password"))
+        updatePassword = {"$set": {
+                "password": password
+            }
+        }
+        mongo.db.users.update_one(
+            {"_id": ObjectId(profile_id)}, updatePassword, upsert=True)
+
+        flash("Your password has been updated")
+        return redirect(url_for("profiles"))
+
+    return render_template(
+        "admin_change_password.html")
 
 
 # Write a review for a piece that doesnt belong to the user

@@ -31,13 +31,15 @@
                 {% if session.user == "admin" %}
                 <!--If this is the user that created the piece, delete or edit the piece of music-->
                 <a href="{{ url_for('delete_user', profile_id=data._id) }}" class="btn btn-small btn-orange ">Delete</a>
+                <a href="{{url_for('admin_change_password', profile_id=data._id)}}" class="btn btn-small btn-primary">Change Password</a>
                 {% endif %}
                 <div class="row">
                     <!--Profile Image-->
                     <img src="{{ url_for('file', filename=data.image)}}" class="card-img-top border col-5"
                         style="width:10rem;" alt="{{ data.image }}">
                     <!--Username-->
-                    <a href="{{ url_for('view_profiles', user_id=data._id) }}" class="card-text col-7">User:
+                    
+                    <a href="{{ url_for('view_profiles', user_id=data._id) }}" class="card-text col-7">
                         {{ data.username }}</a>
                 </div>
 
