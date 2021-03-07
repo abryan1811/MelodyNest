@@ -73,17 +73,13 @@
 <img src="static/images/sheetmusic.png" width="800px">
 
 
-## Bugs
+## Major Bugs
 
-### 
+### Fixed Bugs
 
 - New users cannot access profiles 
 
     - This bug was solved by adding a simple if else statement on the user_profile.html. If the length of the useruploads array has 1 or more items inside it, then it loads up the users uploaded music. , else it says user hasnt uploaded any music. 
-
-- MongoDB filling up with unused data
-
-    - 
 
 - When a user updates a new piece, it changes all the other details on genre and instrument to say the same for every piece.(in profile view only).
 
@@ -92,6 +88,13 @@
 - Having fixed the bug in which a new user could access their profile, after adding search to music, and tweaking the navbar, it seemed to cause a bug where a user without any uploads cannot access their profile or edit it. However, the profile can be accessed from the profile list tab.
 
     - To fix this new error, I had added some unncessary files to the app.py for user_profile function. Piece=piece was causing it to made it a priority to check if a piece of music had been included by the user. Having removed this, a new user had access to their profile and edit of the profile, without having to have already uploaded.
+
+
+### Ongoing Bugs
+
+- MongoDB filling up with unused data
+
+    - Ongoing bug that will need fixing in the future. Cannot find out how to code in a fix to delete files as a user deletes from the system with the GridFS system. Will continue to look into. But currently a housekeeping task for developer in the meantime.
 
 ## User opinions
 
