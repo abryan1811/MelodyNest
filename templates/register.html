@@ -3,7 +3,7 @@
 
 <div class="container-fluid">
     <div class="row d-flex text-center space-below-navbar">
-        &nbsp
+        &nbsp;
 </div>
 
 <h3 class="d-flex justify-content-center">Register</h3>
@@ -27,33 +27,33 @@
                 </div>
                 <!--Registration input card-->
                 <div class="card-body">
-                    <form>
+                    <div>
                         <div class="row">
                             <div class="mb-3">
-                                <label for="firstName" class="form-label">First Name</label>
+                                <label for="firstNameLogin" class="form-label">First Name</label>
                                 <input type="text" name="firstName" class="form-control required" id="firstNameLogin"
-                                    pattern="^[A-Za-z]+$" aria-describedby="firstNameHelp">
+                                    pattern="^[A-Za-z]+$" aria-describedby="firstNameLogin">
                             </div>
                             <div class="mb-3">
-                                <label for="surname" class="form-label">Surname</label>
+                                <label for="surnameLogin" class="form-label">Surname</label>
                                 <input type="text" name="surname" class="form-control required" id="surnameLogin"
-                                    pattern="^[A-Za-z]+$" aria-describedby="surnameHelp">
+                                    pattern="^[A-Za-z]+$" aria-describedby="surnameLogin">
                             </div>
                         </div>
                         <div class="mb-3">
                             <label for="InputEmail" class="form-label">Email address</label>
                             <input type="email" class="form-control validate" name="email" id="InputEmail"
-                                aria-describedby="emailHelp">
+                                aria-describedby="InputEmail">
                             <div id="emailHelp" class="form-text">We'll never share your email with anyone else.</div>
                         </div>
                         <div class="mb-3">
-                            <label for="username" class="form-label">Username</label>
+                            <label for="usernameLogin" class="form-label">Username</label>
                             <input type="text" name="username" class="form-control validate" id="usernameLogin"
                                 minlength="4" maxlength="15" pattern="^[a-zA-Z0-9]{5,15}$"
-                                aria-describedby="usernameHelp">
+                                aria-describedby="usernameLogin">
                         </div>
                         <div class="mb-3">
-                            <label for="InputPassword" class="form-label">Password</label>
+                            <label for="passwordLogin" class="form-label">Password</label>
                             <input type="password" name="password" class="form-control validate" id="passwordLogin"
                                 minlength="4" maxlength="15" pattern="^[a-zA-Z0-9]{4,15}$">
                                 <input type="checkbox" onclick="showPassword()">Show Password
@@ -61,9 +61,9 @@
                         <div class="mb-3">
                                 <label for="instrumentLogin" class="form-label">Preferred Instrument</label>
                                 <input type="text" name="instrumentLogin" class="form-control required" id="instrumentLogin"
-                                    pattern="^[A-Za-z]+$" aria-describedby="instrumentLoginHelp">
+                                    pattern="^[A-Za-z]+$" aria-describedby="instrumentLogin">
                             </div>
-                    </form>
+                        </div>
                 </div>
                 <div class="card-footer text-muted">
                     <button type="submit" class="btn btn-primary">Register</button>

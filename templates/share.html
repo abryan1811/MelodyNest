@@ -15,7 +15,8 @@
 
 <div class="container-fluid">
     <div class="row d-flex text-center space-below-navbar">
-        &nbsp
+        &nbsp;
+    </div>
 </div>
 
 <h3 class="d-flex justify-content-center">Share your music with other users</h3>
@@ -30,15 +31,15 @@
                     <div class="row">
                         <div class="input-group mb-3">
                             <span class="col-lg-3 col-md-12 col-sm-12 col-12 input-group-text" id="inputTitle">Title</span>
-                            <input type="text" class="col-lg-9 col-md-12 col-sm-12 col-12 form-control" name="inputTitle" aria-label="Sizing example input"
-                                aria-describedby="inputGroup-sizing-default" required>
+                            <input type="text" class="col-lg-9 col-md-12 col-sm-12 col-12 form-control" name="inputTitle" aria-label="inputTitle"
+                                aria-describedby="inputTitle" required />
                         </div>
                     </div>
                     <div class="row">
                         <div class="input-group mb-3">
                             <span class="col-lg-3 col-md-12 col-sm-12 col-12 input-group-text" id="inputArtist">Artist</span>
-                            <input type="text" class="col-lg-9 col-md-12 col-sm-12 col-12 form-control" name="inputArtist" aria-label="Sizing example input"
-                                aria-describedby="inputGroup-sizing-default" required>
+                            <input type="text" class="col-lg-9 col-md-12 col-sm-12 col-12 form-control" name="inputArtist" aria-label="inputArtist"
+                                aria-describedby="inputArtist" required />
                         </div>
                     </div>
                     <!--Dropdowns of pre decided genres/instruments. Also option to add a new genre with JS-->
@@ -53,7 +54,7 @@
                                 {% endfor %}
                                 <option value="addNew">(add new)</option>
                                 <input class="form-control d-none" id="newGenreText" name="newGenreText" type="text"
-                                    placeholder="Add a New Genre">
+                                    placeholder="Add a New Genre" />
                             </select>
                         </div>
                     </div>
@@ -68,7 +69,7 @@
                                 {% endfor %}
                                 <option value="addNew">(add new)</option>
                                 <input class="form-control d-none" id="newInstrumentText" name="newInstrumentText"
-                                    type="text" placeholder="Add a New Instrument">
+                                    type="text" placeholder="Add a New Instrument" />
                             </select>
                         </div>
                     </div>

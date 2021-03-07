@@ -3,7 +3,7 @@
 
 <div class="container-fluid">
     <div class="row d-flex text-center space-below-navbar">
-        &nbsp
+        &nbsp;
 </div>
 
 <h3 class="d-flex justify-content-center">Login</h3>
@@ -27,18 +27,18 @@
                 </div>
                 <!--Card with username and password-->
                 <div class="card-body">
-                    <form>
+                    <div>
                         <div class="mb-3">
-                            <label for="username" class="form-label">Username</label>
+                            <label for="usernameLogin" class="form-label">Username</label>
                             <input type="text" name="username" class="form-control validate" id="usernameLogin" 
-                                minlength="4" maxlength="15" pattern="^[a-zA-Z0-9]{5,15}$" aria-describedby="usernameHelp">
+                                minlength="4" maxlength="15" pattern="^[a-zA-Z0-9]{5,15}$" aria-describedby="usernameLogin">
                         </div>
                         <div class="mb-3">
-                            <label for="InputPassword" class="form-label">Password</label>
+                            <label for="passwordLogin" class="form-label">Password</label>
                             <input type="password" name="password" class="form-control validate" id="passwordLogin"
                                 minlength="4" maxlength="15" pattern="^[a-zA-Z0-9]{4,15}$">
                         </div>
-                    </form>
+                    </div>
                 </div>
                 <div class="card-footer text-muted">
                     <button type="submit" class="btn btn-primary">Login</button>

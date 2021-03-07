@@ -15,7 +15,7 @@
 
 <div class="container-fluid">
     <div class="row d-flex text-center space-below-navbar">
-        &nbsp
+        &nbsp;
 </div>
 
 <h3 class="d-flex justify-content-center">Edit your upload</h3>
@@ -27,14 +27,14 @@
             <form class="col-12 card-body card" method="POST"
                 action="{{url_for('edit_share', piece_id=piece._id)}}" enctype="multipart/form-data">
                 <div class="col col-12">
-                    <!--Edut Upload information-->
+                    <!--Edit Upload information-->
                     <div class="row">
                         <div class="input-group mb-3">
                             <span class="col-lg-3 col-md-12 col-sm-12 col-12 input-group-text"
                                 id="inputTitle">Title</span>
                             <input type="text" class="col-lg-9 col-md-12 col-sm-12 col-12 form-control"
-                                name="inputTitle" aria-label="Sizing example input"
-                                aria-describedby="inputGroup-sizing-default" value="{{piece.title}}" required>
+                                name="inputTitle" aria-label="inputTitle"
+                                aria-describedby="inputTitle" value="{{piece.title}}" required>
                         </div>
                     </div>
                     <div class="row">
@@ -42,8 +42,8 @@
                             <span class="col-lg-3 col-md-12 col-sm-12 col-12 input-group-text"
                                 id="inputArtist">Artist</span>
                             <input type="text" class="col-lg-9 col-md-12 col-sm-12 col-12 form-control"
-                                name="inputArtist" aria-label="Sizing example input"
-                                aria-describedby="inputGroup-sizing-default" value="{{piece.artist}}" required>
+                                name="inputArtist" aria-label="inputArtist"
+                                aria-describedby="inputArtist" value="{{piece.artist}}" required>
                         </div>
                     </div>
                     <div class="row">
@@ -113,8 +113,8 @@
                     <div class="row d-flex justify-content-center align-items-center container">
                         <!--Go Back-->
                         <div class="col-lg-4 col-md-4 col-sm-12 col-12">
-                            <a href="{{url_for('music_collection', piece_id=piece._id)}}" type="submit"
-                                class="btn btn-danger shareButton">Go Back</a>
+                            <a href="{{url_for('user_profile', piece_id=piece._id)}}" type="submit"
+                                class="btn btn-danger shareButton">Go back</a>
                         </div>
                         <!--Revert Changes -->
                         <div class="col-lg-4 col-md-4 col-sm-12 col-12">
@@ -135,6 +135,7 @@
 
 <div class="container-fluid">
     <div class="row d-flex text-center footer-row">
-        &nbsp
+        &nbsp;
     </div>
-    {% endblock %}
+</div>
+{% endblock %}

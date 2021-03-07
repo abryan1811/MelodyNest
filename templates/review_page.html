@@ -3,10 +3,10 @@
 
 <div class="container-fluid">
     <div class="row d-flex text-center space-below-navbar">
-        &nbsp
+        &nbsp;
     </div>
 
-    <h3 class="d-flex justify-content-center" method="GET">Reviews</h3>
+    <h3 class="d-flex justify-content-center">Reviews</h3>
 
     {% with messages = get_flashed_messages() %}
     {% if messages %}
@@ -39,16 +39,18 @@
                 <div class="card-body">
                     <h5 class="card-title">{{ review.title}} </h5>               
                 <!--Text that user inputted for the review-->                
-                    <h5 class="card-title">
+                    <div class="card-title">
                         <p class="reviewText"> {{ review.reviewText }} </p>
                         <p class="reviewText"> Reviewed by {{ review.user }} </p>
-                    </h5>
+                    </div>
                 </div>
             </div>
             {% endfor %}
         </div>
 
     </div>
+
+</div>
 
 
     {% endblock %}

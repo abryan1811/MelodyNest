@@ -253,6 +253,7 @@ oid = objectId
 #### Features to Implement
 
 - 5 star system where users can give a rating to the piece they review. 
+- Sort feature to select reviews by piece order
 
 ##### Back to [top](#table-of-contents)
 
@@ -319,15 +320,31 @@ oid = objectId
 
 - HTML
 
-  - [W3C HTML Validator](https://validator.w3.org/) "Document checking completed. No errors or warnings to show."
+  - [W3C HTML Validator](https://validator.w3.org/) More information below for each html file
+    - base.html - Only Errors are relating to Jinja
+    - edit_profile.html - Only Errors are relating to Jinja
+    - edit_review.html - Only Errors are relating to Jinja, warning for the button, being unnecessary, but without it, it doesn't work.
+    - help.html - Only Errors are relating to Jinja
+    - index.html - Only Errors are relating to Jinja
+    - list_profiles.html - Only Errors are relating to Jinja
+    - login.html - Only Errors are relating to Jinja
+    - music.html - Only Errors are relating to Jinja
+    - register.html - Only Errors are relating to Jinja
+    - user_profile.html - Only Errors are relating to Jinja
+    - write_review.html - Only Errors are relating to Jinja, warning for the button, being unnecessary, but without it, it doesn't work.
+    - share.html - Only Errors are relating to Jinja Select and input and select error appears seemingly due to for and if statements.
+    - edit_share.html - Only Errors are relating to Jinja and input and select error appears seemingly due to for and if statements.
 
 - CSS
 
   - [W3C CSS Validator](https://jigsaw.w3.org/css-validator/) "Congratulations! No Error Found. This document validates as CSS level 3 + SVG !"
 
-- JSHint
+- Javascript
 
-  - [JSHint javascript Validator](https://jshint.com/) 
+  - [JSHint javascript Validator](https://jshint.com/) There are no critical errors, but there are warnings for $ used in jquery.
+
+- Python
+  - [PEP8 online](http://pep8online.com/) "All right"
 
 
 ### Testing Methods

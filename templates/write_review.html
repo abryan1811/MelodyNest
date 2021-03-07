@@ -3,7 +3,8 @@
 
 <div class="container-fluid">
     <div class="row d-flex text-center space-below-navbar">
-        &nbsp
+        &nbsp;
+    </div>
 </div>
 
 <h3 class="d-flex justify-content-center">Review for {{reviews.title}}</h3>
@@ -13,7 +14,7 @@
 <div class="row d-flex justify-content-center text-center">
 <div class="card col-9 col mb-4">
     <form method="POST" action="{{url_for('write_review', reviews_id=reviews._id)}}" enctype="multipart/form-data">
-        &nbsp
+        &nbsp;
         <!--text box for user to write review-->
         <textarea class="form-control" name="reviewText" id="reviewText" rows="8">{{reviewtext}}</textarea>
         <div class="row d-flex justify-content-center text-center ">
