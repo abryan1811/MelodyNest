@@ -322,7 +322,7 @@ oid = objectId
 
   - [W3C HTML Validator](https://validator.w3.org/) More information below for each html file
     - base.html - Only Errors are relating to Jinja
-    - edit_profile.html - Only Errors are relating to Jinja
+    - edit_profile.html - Only Errors are relating to Jinja, warning for the button, being unnecessary, but without it, it doesn't work.
     - edit_review.html - Only Errors are relating to Jinja, warning for the button, being unnecessary, but without it, it doesn't work.
     - help.html - Only Errors are relating to Jinja
     - index.html - Only Errors are relating to Jinja
