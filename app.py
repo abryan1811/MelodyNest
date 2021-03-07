@@ -408,7 +408,6 @@ def edit_profile():
         firstname = user.get("firstName")
         surname = user.get("surname")
         email = user.get("email")
-        password = user.get("password")
         profileImage = user.get("image")
         preferredInstrument = user.get("instrumentLogin")
         useruploads = mongo.db.music.find(
@@ -419,20 +418,17 @@ def edit_profile():
         return render_template(
             "edit_profile.html", userName=userName, aboutme=aboutme,
             firstname=firstname, surname=surname, email=email,
-            preferredInstrument=preferredInstrument, password=password,
+            preferredInstrument=preferredInstrument,
             useruploads=useruploadstitle, profileImage=profileImage)
     elif request.method == "POST":
         if "inputProfileImage" in request.files:
             inputProfileImage = request.files["inputProfileImage"]
             mongo.save_file(inputProfileImage.filename, inputProfileImage)
-        password = generate_password_hash(request.form.get("password"))
-
         update = {"$set": {
                 "firstName": request.form.get("firstName"),
                 "surname": request.form.get("surname"),
                 "username": session["user"],
                 "email": request.form.get("email"),
-                "password": password,
                 "instrumentLogin": request.form.get("instrumentLogin"),
                 "aboutme": request.form.get("updateAboutText")
             }
@@ -452,6 +448,33 @@ def edit_profile():
         return redirect(url_for("profiles"))
 
     return redirect(url_for("profiles"))
+
+
+@app.route("/change_password", methods=["GET", "POST"])
+def change_password():
+    user = mongo.db.users.find_one(
+            {"_id": ObjectId(session["userId"])})
+    if request.method == "GET":
+        userName = user.get("username"),
+        password = user.get("password")
+
+        return render_template(
+            "change_password.html", password=password, userName=userName)
+
+    elif request.method == "POST":
+        password = generate_password_hash(request.form.get("password"))
+        updatePassword = {"$set": {
+                "password": password
+            }
+        }
+        mongo.db.users.update_one(
+            {"_id": ObjectId(session["userId"])}, updatePassword, upsert=True)
+
+        flash("Your password has been updated")
+        return redirect(url_for("user_profile"))
+
+    return render_template(
+        "change_password.html")
 
 
 # Write a review for a piece that doesnt belong to the user
