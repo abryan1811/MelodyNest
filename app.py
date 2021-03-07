@@ -449,6 +449,58 @@ def edit_profile():
     return redirect(url_for("profiles"))
 
 
+@app.route("/admin_profile_edit/<profile_id>", methods=["GET", "POST"])
+def admin_profile_edit(profile_id):
+    user = mongo.db.users.find_one(
+        {"_id": ObjectId(profile_id)})
+    if request.method == "GET":
+        userName = user.get("username")
+        aboutme = user.get("aboutme")
+        firstname = user.get("firstName")
+        surname = user.get("surname")
+        email = user.get("email")
+        profileImage = user.get("image")
+        preferredInstrument = user.get("instrumentLogin")
+        useruploads = mongo.db.music.find(
+            {"user": user})
+        useruploadstitle = []
+        for upload in useruploads:
+            useruploadstitle.append(upload)
+        return render_template(
+            "admin_profile_edit.html", userName=userName, aboutme=aboutme,
+            firstname=firstname, surname=surname, email=email,
+            preferredInstrument=preferredInstrument,
+            useruploads=useruploadstitle, profileImage=profileImage,
+            user=user)
+    elif request.method == "POST":
+        if "inputProfileImage" in request.files:
+            inputProfileImage = request.files["inputProfileImage"]
+            mongo.save_file(inputProfileImage.filename, inputProfileImage)
+        update = {"$set": {
+                "firstName": request.form.get("firstName"),
+                "surname": request.form.get("surname"),
+                "email": request.form.get("email"),
+                "instrumentLogin": request.form.get("instrumentLogin"),
+                "aboutme": request.form.get("updateAboutText")
+            }
+        }
+        mongo.db.users.update_one(
+            {"_id": ObjectId(profile_id)}, update, upsert=True)
+
+        if request.files["inputProfileImage"].filename != "":
+            updateImage = {"$set": {
+                "image": request.files["inputProfileImage"].filename
+                }
+            }
+            mongo.db.users.update_one(
+                {"_id": ObjectId(profile_id)}, updateImage, upsert=True)
+
+        flash("Your details have been updated")
+        return redirect(url_for("profiles"))
+
+    return redirect(url_for("profiles"))
+
+
 @app.route("/change_password", methods=["GET", "POST"])
 def change_password():
     user = mongo.db.users.find_one(
