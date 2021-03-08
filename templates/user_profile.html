@@ -77,7 +77,7 @@
                                 class="btn btn-small btn-danger">Delete</a>
                             <a href="{{url_for('edit_share', piece_id=piece._id)}}" class="btn btn-small btn-success">Edit</a>
                             {% else %}
-                            <a href="#" class="btn btn-large btn-warning text-white">Write a Review</a>
+                            <a href="{{url_for('write_review', reviews_id=piece._id)}}" class="btn btn-large btn-info text-white">Write a Review</a>
                             {% endif %}
                             <img src="{{ url_for('file', filename=piece.image)}}" class="card-img-top border "
                                 style="height:10rem;" alt="{{ piece.image }}">
