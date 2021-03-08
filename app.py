@@ -561,11 +561,13 @@ def admin_change_password(profile_id):
 def write_review(reviews_id):
     reviews = mongo.db.music.find_one(
         {"_id": ObjectId(reviews_id)})
+    pieceUser = reviews.get("user")
     if request.method == "POST":
         reviewVariables = {
             "music": ObjectId(reviews_id),
             "reviewtext": request.form.get("reviewText"),
             "user": ObjectId(session["userId"]),
+            "performer": pieceUser
             }
         mongo.db.reviews.insert_one(reviewVariables)
         return redirect(url_for("review_page"))
@@ -609,7 +611,7 @@ def review_page():
                 "reviewText": review["reviewtext"],
                 "title": music.get("title"),
                 "image": music.get("image"),
-                "user": userId
+                "user": userId,
             }
             reviewCards.append(review)
 
@@ -639,6 +641,9 @@ def delete_review(review_id):
 @app.route("/delete_user/<profile_id>")
 def delete_user(profile_id):
     mongo.db.users.remove({"_id": ObjectId(profile_id)})
+    mongo.db.music.remove({"user": ObjectId(profile_id)})
+    mongo.db.reviews.remove({"performer": ObjectId(profile_id)})
+    mongo.db.reviews.remove({"user": ObjectId(profile_id)})
     flash("The user has been deleted")
     return redirect(url_for("profiles"))
 

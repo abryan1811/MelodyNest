@@ -87,7 +87,12 @@
 
 - Having fixed the bug in which a new user could access their profile, after adding search to music, and tweaking the navbar, it seemed to cause a bug where a user without any uploads cannot access their profile or edit it. However, the profile can be accessed from the profile list tab.
 
-    - To fix this new error, I had added some unncessary files to the app.py for user_profile function. Piece=piece was causing it to made it a priority to check if a piece of music had been included by the user. Having removed this, a new user had access to their profile and edit of the profile, without having to have already uploaded.
+    - To fix this new error, I had added some unnecessary files to the app.py for user_profile function. Piece=piece was causing it to made it a priority to check if a piece of music had been included by the user. Having removed this, a new user had access to their profile and edit of the profile, without having to have already uploaded.
+
+- When admin deletes a user, music and reviews are no longer accessible, as the original users ObjectId no longer exists.
+
+    - To fix this bug, I had to set the write_review function to send the userid of the original performer to the reviews document in mongodb. Then On the delete_user function, I used a db.music.remove and a db.review.remove with the routes leading to the ObjectId of those files in music and review. It now removes every file relating to that user. 
+
 
 
 ### Ongoing Bugs
