@@ -5,6 +5,7 @@
     <div class="row d-flex text-center space-below-navbar">
         &nbsp;
     </div>
+</div> 
 
     <h3 class="d-flex justify-content-center">{{userName}}'s Profile Page</h3>
     &nbsp;
@@ -42,7 +43,7 @@
                 <!--Edit about Me info-->
                 <div class="card col-lg-8 col-md-12 col-sm-12 mb-4">
                     &nbsp;
-                    <label for="AboutText"><u>About Me</u></label>
+                    <label for="updateAboutText"><u>About Me</u></label>
                     <textarea class="form-control" name="updateAboutText" id="updateAboutText"
                         rows="8">{{aboutme}}</textarea>
                     &nbsp;
@@ -66,26 +67,26 @@
                         <div>
                             <div class="row">
                                 <div class="mb-3 col-6">
-                                    <label for="firstName" class="form-label">First Name</label>
+                                    <label for="firstNameLogin" class="form-label">First Name</label>
                                     <input type="text" name="firstName" class="form-control required"
-                                        id="firstNameLogin" pattern="^[A-Za-z]+$" aria-describedby="firstNameHelp"
+                                        id="firstNameLogin" pattern="^[A-Za-z]+$" aria-describedby="firstNameLogin"
                                         value="{{firstname}}">
                                 </div>
                                 <div class="mb-3 col-6">
-                                    <label for="surname" class="form-label">Surname</label>
+                                    <label for="surnameLogin" class="form-label">Surname</label>
                                     <input type="text" name="surname" class="form-control required" id="surnameLogin"
-                                        pattern="^[A-Za-z]+$" aria-describedby="surnameHelp" value="{{surname}}">
+                                        pattern="^[A-Za-z]+$" aria-describedby="surnameLogin" value="{{surname}}">
                                 </div>
                             </div>
                             <div class="mb-3">
                                 <label for="InputEmail" class="form-label">Email address</label>
                                 <input type="email" class="form-control validate" name="email" id="InputEmail"
-                                    aria-describedby="emailHelp" value="{{email}}">
+                                    aria-describedby="InputEmail" value="{{email}}">
                             </div>
                             <div class="mb-3">
                                 <label for="instrumentLogin" class="form-label">Preferred Instrument</label>
                                 <input type="text" name="instrumentLogin" class="form-control required"
-                                    id="instrumentLogin" pattern="^[A-Za-z]+$" aria-describedby="instrumentLoginHelp"
+                                    id="instrumentLogin" pattern="^[A-Za-z]+$" aria-describedby="instrumentLogin"
                                     value="{{preferredInstrument}}">
                             </div>
 
@@ -149,7 +150,7 @@
         <div class="row d-flex text-center footer-row">
             &nbsp;
         </div>
-
+    </div>
 
 
         {% endblock %}

@@ -334,6 +334,10 @@ oid = objectId
     - write_review.html - Only Errors are relating to Jinja, warning for the button, being unnecessary, but without it, it doesn't work.
     - share.html - Only Errors are relating to Jinja Select and input and select error appears seemingly due to for and if statements.
     - edit_share.html - Only Errors are relating to Jinja and input and select error appears seemingly due to for and if statements.
+    - change_password.html - Only Errors are relating to Jinja warning for the button, being unnecessary, but without it, it doesn't work.
+    - admin_change_password.html - Only Errors are relating to Jinja warning for the button, being unnecessary, but without it, it doesn't work.
+    - admin_profile_edit.html - Only Errors are relating to Jinja, warning for the button, being unnecessary, but without it, it doesn't work.
+
 
 - CSS
 
