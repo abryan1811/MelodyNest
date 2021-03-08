@@ -93,7 +93,9 @@
 
     - To fix this bug, I had to set the write_review function to send the userid of the original performer to the reviews document in mongodb. Then On the delete_user function, I used a db.music.remove and a db.review.remove with the routes leading to the ObjectId of those files in music and review. It now removes every file relating to that user. 
 
+- When admin or user removes a piece, the review stayed. 
 
+    - To fix this bug, I wrote a db.reviews.remove (with the object Id linking to the piece of music) in the delete_piece function. This means that any review associated with that piece of music will be deleted at the same time. 
 
 ### Ongoing Bugs
 

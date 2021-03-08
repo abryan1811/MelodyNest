@@ -625,6 +625,7 @@ def review_page():
 def delete_piece(piece_id):
     mongo.db.music.remove({"_id": ObjectId(piece_id)})
     mongo.db.fs.files.remove({"_id": ObjectId(piece_id)})
+    mongo.db.reviews.remove({"music": ObjectId(piece_id)})
     flash("Your music share has been deleted")
     return redirect(url_for("music_collection"))
 
