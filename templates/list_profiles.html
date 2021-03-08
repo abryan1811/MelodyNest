@@ -32,7 +32,8 @@
             <div class="card card-music col mb-4">
                 {% if session.user == "admin" %}
                 <!--If this is the user that created the piece, delete or edit the piece of music-->
-                <a href="{{ url_for('delete_user', profile_id=data._id) }}" class="btn btn-small btn-orange ">Delete</a>
+                <a href="{{ url_for('delete_user', profile_id=data._id) }}" 
+                    class="btn btn-small btn-orange" type="input" id="delete_user_button" value="delete" name="delete" onclick="certainDelete()">Delete</a>
                 <a href="{{url_for('admin_profile_edit', profile_id=data._id)}}"
                     class="btn btn-small btn-success">Edit</a>
                 <a href="{{url_for('admin_change_password', profile_id=data._id)}}"
