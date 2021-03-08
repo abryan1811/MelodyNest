@@ -254,6 +254,11 @@ oid = objectId
 
 - 5 star system where users can give a rating to the piece they review. 
 - Sort feature to select reviews by piece order
+- Questions users ask will be updated by admin with a future update where the admin can add new questions and answers to the help page. 
+
+- On the help page there is an email address for admin@melodynest.com. This is not a real email address as this is just a demo website 
+for a Code Institute project. A future feature would be to add the chance for users to email a real address. The most likely update will 
+be a contact page where users can send an email directly on the website that new users will be able to access as well as logged in users.  
 
 ##### Back to [top](#table-of-contents)
 
