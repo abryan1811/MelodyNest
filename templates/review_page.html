@@ -30,15 +30,16 @@
             <div class="card card-music col mb-4">
                 {% if session.user == review.user or session.user == "admin" %}
                 <!--If this is the user that created the piece, delete or edit the piece of music-->
-                <a href="{{ url_for('delete_review', review_id=review._id) }}" class="btn btn-small btn-orange ">Delete</a>
+                <a href="{{ url_for('delete_review', review_id=review._id) }}"
+                    class="btn btn-small btn-orange ">Delete</a>
                 <a href="{{url_for('edit_review', review_id=review._id)}}" class="btn btn-small btn-success">Edit</a>
                 {% endif %}
                 <img src="{{ url_for('file', filename=review.image)}}" class="card-img-top border" style="height:10rem;"
                     alt="{{ review.image }}">
                 <!--image that belongs to the reviewed piece-->
                 <div class="card-body">
-                    <h5 class="card-title">{{ review.title}} </h5>               
-                <!--Text that user inputted for the review-->                
+                    <h5 class="card-title">{{ review.title}} </h5>
+                    <!--Text that user inputted for the review-->
                     <div class="card-title">
                         <p class="reviewText"> {{ review.reviewText }} </p>
                         <p class="reviewText"> Reviewed by {{ review.user }} </p>
@@ -53,4 +54,4 @@
 </div>
 
 
-    {% endblock %}
+{% endblock %}

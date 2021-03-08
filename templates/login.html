@@ -4,52 +4,53 @@
 <div class="container-fluid">
     <div class="row d-flex text-center space-below-navbar">
         &nbsp;
-</div>
-
-<h3 class="d-flex justify-content-center">Login</h3>
-
-<div class="container loginCard">
-    <div class="row">
-        <form class="col d-flex justify-content-center" method="POST" action="{{ url_for('login') }}">
-            <div class="card text-center">
-                <div class="card-header">
-                    {% with messages = get_flashed_messages() %}
-                    {% if messages %}
-                    {% for message in messages %}
-                    <div class="row">
-                        <div class="col d-flex justify-content-center">
-                            <h4 class="center-align">{{ message }}</h4>
-                        </div>
-                    </div>
-                    {% endfor %}
-                    {% endif %}
-                    {% endwith %}
-                </div>
-                <!--Card with username and password-->
-                <div class="card-body">
-                    <div>
-                        <div class="mb-3">
-                            <label for="usernameLogin" class="form-label">Username</label>
-                            <input type="text" name="username" class="form-control validate" id="usernameLogin" 
-                                minlength="4" maxlength="15" pattern="^[a-zA-Z0-9]{5,15}$" aria-describedby="usernameLogin">
-                        </div>
-                        <div class="mb-3">
-                            <label for="passwordLogin" class="form-label">Password</label>
-                            <input type="password" name="password" class="form-control validate" id="passwordLogin"
-                                minlength="4" maxlength="15" pattern="^[a-zA-Z0-9]{4,15}$">
-                        </div>
-                    </div>
-                </div>
-                <div class="card-footer text-muted">
-                    <button type="submit" class="btn btn-primary">Login</button>
-                </div>
-            </div>
-        </form>
     </div>
-</div>
 
-<!--Option to go to register page instead-->
-<div class="row">
+    <h3 class="d-flex justify-content-center">Login</h3>
+
+    <div class="container loginCard">
+        <div class="row">
+            <form class="col d-flex justify-content-center" method="POST" action="{{ url_for('login') }}">
+                <div class="card text-center">
+                    <div class="card-header">
+                        {% with messages = get_flashed_messages() %}
+                        {% if messages %}
+                        {% for message in messages %}
+                        <div class="row">
+                            <div class="col d-flex justify-content-center">
+                                <h4 class="center-align">{{ message }}</h4>
+                            </div>
+                        </div>
+                        {% endfor %}
+                        {% endif %}
+                        {% endwith %}
+                    </div>
+                    <!--Card with username and password-->
+                    <div class="card-body">
+                        <div>
+                            <div class="mb-3">
+                                <label for="usernameLogin" class="form-label">Username</label>
+                                <input type="text" name="username" class="form-control validate" id="usernameLogin"
+                                    minlength="4" maxlength="15" pattern="^[a-zA-Z0-9]{5,15}$"
+                                    aria-describedby="usernameLogin">
+                            </div>
+                            <div class="mb-3">
+                                <label for="passwordLogin" class="form-label">Password</label>
+                                <input type="password" name="password" class="form-control validate" id="passwordLogin"
+                                    minlength="4" maxlength="15" pattern="^[a-zA-Z0-9]{4,15}$">
+                            </div>
+                        </div>
+                    </div>
+                    <div class="card-footer text-muted">
+                        <button type="submit" class="btn btn-primary">Login</button>
+                    </div>
+                </div>
+            </form>
+        </div>
+    </div>
+
+    <!--Option to go to register page instead-->
+    <div class="row">
         <div class="col d-flex justify-content-center">
             <p class="center-align">
                 Don't have an account?
@@ -58,4 +59,4 @@
         </div>
     </div>
 
-{% endblock %}
+    {% endblock %}

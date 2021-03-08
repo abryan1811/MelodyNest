@@ -21,90 +21,101 @@
 
 <h3 class="d-flex justify-content-center">Share your music with other users</h3>
 
-    <div class="row">
-        <div class="d-flex justify-content-center align-items-center container">
+<div class="row">
+    <div class="d-flex justify-content-center align-items-center container">
 
-            <form class="col-12 card-body card" method="POST" action="{{ url_for('share') }}"
-                enctype="multipart/form-data">
-                <div class="col col-12">
-                    <!--Upload information card-->
-                    <div class="row">
-                        <div class="input-group mb-3">
-                            <span class="col-lg-3 col-md-12 col-sm-12 col-12 input-group-text" id="inputTitle">Title</span>
-                            <input type="text" class="col-lg-9 col-md-12 col-sm-12 col-12 form-control" name="inputTitle" aria-label="inputTitle"
-                                aria-describedby="inputTitle" required />
-                        </div>
-                    </div>
-                    <div class="row">
-                        <div class="input-group mb-3">
-                            <span class="col-lg-3 col-md-12 col-sm-12 col-12 input-group-text" id="inputArtist">Artist</span>
-                            <input type="text" class="col-lg-9 col-md-12 col-sm-12 col-12 form-control" name="inputArtist" aria-label="inputArtist"
-                                aria-describedby="inputArtist" required />
-                        </div>
-                    </div>
-                    <!--Dropdowns of pre decided genres/instruments. Also option to add a new genre with JS-->
-                    <div class="row">
-                        <div class="input-group mb-3">
-                            <span class="col-lg-3 col-md-12 col-sm-12 col-12 input-group-text" id="inputGenreTab">Genre</span>
-                            <select class="form-select form-control" id="inputGenre" name="inputGenre"
-                                aria-label="Example select with button addon" onchange="newGenre()" required>                                
-                                <option value="" disabled selected>(Select Genre)</option>
-                                {% for genre in genres %}
-                                <option value="{{genre._id}}">{{genre.genre}}</option>
-                                {% endfor %}
-                                <option value="addNew">(add new)</option>
-                                <input class="form-control d-none" id="newGenreText" name="newGenreText" type="text"
-                                    placeholder="Add a New Genre" />
-                            </select>
-                        </div>
-                    </div>
-                    <div class="row">
-                        <div class="input-group mb-3">
-                            <span class="col-lg-3 col-md-12 col-sm-12 col-12 input-group-text" id="inputInstrumentTab">Instrument</span>
-                            <select class="form-select form-control" id="inputInstrument" name="inputInstrument"
-                                aria-label="Example select with button addon" onchange="newInstrument()" required>
-                                <option value="" disabled selected>(Select Instrument)</option>
-                                {% for instrument in instruments %}
-                                <option value="{{instrument._id}}">{{instrument.instrument}}</option>
-                                {% endfor %}
-                                <option value="addNew">(add new)</option>
-                                <input class="form-control d-none" id="newInstrumentText" name="newInstrumentText"
-                                    type="text" placeholder="Add a New Instrument" />
-                            </select>
-                        </div>
-                    </div>
-                    <!--Upload documents into MongoDB-->
-                    <div class="row">
-                        <div class="input-group mb-3">
-                            <label class="col-lg-3 col-md-12 col-sm-12 col-12 input-group-text" for="inputSoundFile">Upload Soundfile</label>
-                            <input type="file" accept=".mp3,audio/*" class="col-lg-9 col-md-12 col-sm-12 col-12 form-control" name="inputSoundFile" id="inputSoundFile" required>
-                        </div>
-                    </div>
-
-                    <div class="row">
-                        <div class="input-group mb-3">
-                            <label class="col-lg-3 col-md-12 col-sm-12 col-12 input-group-text" for="inputImageArtwork">Upload Image/Artwork</label>
-                            <input type="file" accept="image/x-png,image/gif,image/jpeg"  class="col-lg-9 col-md-12 col-sm-12 col-12 form-control" name="inputImageArtwork" id="inputImageArtwork" required>
-                        </div>
-                    </div>
-                    <div class="row">
-                        <div class="input-group mb-3">
-                            <label class="col-lg-3 col-md-12 col-sm-12 col-12 input-group-text" for="inputSheetMusic">Upload Sheet Music</label>
-                            <input type="file" accept="application/pdf" class="col-lg-9 col-md-12 col-sm-12 col-12 form-control" name="inputSheetMusic" id="inputSheetMusic" required>
-                        </div>
-                    </div>
-                    <!--submit-->
-                    <div class="col-12">
-                        <button type="submit" class="btn btn-primary shareButton">Share Music</button>
+        <form class="col-12 card-body card" method="POST" action="{{ url_for('share') }}" enctype="multipart/form-data">
+            <div class="col col-12">
+                <!--Upload information card-->
+                <div class="row">
+                    <div class="input-group mb-3">
+                        <span class="col-lg-3 col-md-12 col-sm-12 col-12 input-group-text" id="inputTitle">Title</span>
+                        <input type="text" class="col-lg-9 col-md-12 col-sm-12 col-12 form-control" name="inputTitle"
+                            aria-label="inputTitle" aria-describedby="inputTitle" required />
                     </div>
                 </div>
-            </form>
-        </div>
-    </div>
+                <div class="row">
+                    <div class="input-group mb-3">
+                        <span class="col-lg-3 col-md-12 col-sm-12 col-12 input-group-text"
+                            id="inputArtist">Artist</span>
+                        <input type="text" class="col-lg-9 col-md-12 col-sm-12 col-12 form-control" name="inputArtist"
+                            aria-label="inputArtist" aria-describedby="inputArtist" required />
+                    </div>
+                </div>
+                <!--Dropdowns of pre decided genres/instruments. Also option to add a new genre with JS-->
+                <div class="row">
+                    <div class="input-group mb-3">
+                        <span class="col-lg-3 col-md-12 col-sm-12 col-12 input-group-text"
+                            id="inputGenreTab">Genre</span>
+                        <select class="form-select form-control" id="inputGenre" name="inputGenre"
+                            aria-label="Example select with button addon" onchange="newGenre()" required>
+                            <option value="" disabled selected>(Select Genre)</option>
+                            {% for genre in genres %}
+                            <option value="{{genre._id}}">{{genre.genre}}</option>
+                            {% endfor %}
+                            <option value="addNew">(add new)</option>
+                            <input class="form-control d-none" id="newGenreText" name="newGenreText" type="text"
+                                placeholder="Add a New Genre" />
+                        </select>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="input-group mb-3">
+                        <span class="col-lg-3 col-md-12 col-sm-12 col-12 input-group-text"
+                            id="inputInstrumentTab">Instrument</span>
+                        <select class="form-select form-control" id="inputInstrument" name="inputInstrument"
+                            aria-label="Example select with button addon" onchange="newInstrument()" required>
+                            <option value="" disabled selected>(Select Instrument)</option>
+                            {% for instrument in instruments %}
+                            <option value="{{instrument._id}}">{{instrument.instrument}}</option>
+                            {% endfor %}
+                            <option value="addNew">(add new)</option>
+                            <input class="form-control d-none" id="newInstrumentText" name="newInstrumentText"
+                                type="text" placeholder="Add a New Instrument" />
+                        </select>
+                    </div>
+                </div>
+                <!--Upload documents into MongoDB-->
+                <div class="row">
+                    <div class="input-group mb-3">
+                        <label class="col-lg-3 col-md-12 col-sm-12 col-12 input-group-text" for="inputSoundFile">Upload
+                            Soundfile</label>
+                        <input type="file" accept=".mp3,audio/*"
+                            class="col-lg-9 col-md-12 col-sm-12 col-12 form-control" name="inputSoundFile"
+                            id="inputSoundFile" required>
+                    </div>
+                </div>
 
-    <div class="container-fluid">
-        <div class="row d-flex text-center footer-row">
-            &nbsp;
-        </div>
+                <div class="row">
+                    <div class="input-group mb-3">
+                        <label class="col-lg-3 col-md-12 col-sm-12 col-12 input-group-text"
+                            for="inputImageArtwork">Upload Image/Artwork</label>
+                        <input type="file" accept="image/x-png,image/gif,image/jpeg"
+                            class="col-lg-9 col-md-12 col-sm-12 col-12 form-control" name="inputImageArtwork"
+                            id="inputImageArtwork" required>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="input-group mb-3">
+                        <label class="col-lg-3 col-md-12 col-sm-12 col-12 input-group-text" for="inputSheetMusic">Upload
+                            Sheet Music</label>
+                        <input type="file" accept="application/pdf"
+                            class="col-lg-9 col-md-12 col-sm-12 col-12 form-control" name="inputSheetMusic"
+                            id="inputSheetMusic" required>
+                    </div>
+                </div>
+                <!--submit-->
+                <div class="col-12">
+                    <button type="submit" class="btn btn-primary shareButton">Share Music</button>
+                </div>
+            </div>
+        </form>
     </div>
-    {% endblock %}
+</div>
+
+<div class="container-fluid">
+    <div class="row d-flex text-center footer-row">
+        &nbsp;
+    </div>
+</div>
+{% endblock %}

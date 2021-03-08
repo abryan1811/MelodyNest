@@ -4,83 +4,84 @@
 <div class="container-fluid">
     <div class="row d-flex text-center space-below-navbar">
         &nbsp;
-</div>
+    </div>
 
-<h3 class="d-flex justify-content-center">Register</h3>
+    <h3 class="d-flex justify-content-center">Register</h3>
 
-<div class="container loginCard">
-    <div class="row">
-        <form class="col d-flex justify-content-center" method="POST" action="{{ url_for('register') }}">
-            <div class="card text-center">
-                <div class="card-header">
-                    {% with messages = get_flashed_messages() %}
-                    {% if messages %}
-                    {% for message in messages %}
-                    <div class="row">
-                        <div class="col d-flex justify-content-center">
-                            <h4 class="center-align">{{ message }}</h4>
+    <div class="container loginCard">
+        <div class="row">
+            <form class="col d-flex justify-content-center" method="POST" action="{{ url_for('register') }}">
+                <div class="card text-center">
+                    <div class="card-header">
+                        {% with messages = get_flashed_messages() %}
+                        {% if messages %}
+                        {% for message in messages %}
+                        <div class="row">
+                            <div class="col d-flex justify-content-center">
+                                <h4 class="center-align">{{ message }}</h4>
+                            </div>
+                        </div>
+                        {% endfor %}
+                        {% endif %}
+                        {% endwith %}
+                    </div>
+                    <!--Registration input card-->
+                    <div class="card-body">
+                        <div>
+                            <div class="row">
+                                <div class="mb-3">
+                                    <label for="firstNameLogin" class="form-label">First Name</label>
+                                    <input type="text" name="firstName" class="form-control required"
+                                        id="firstNameLogin" pattern="^[A-Za-z]+$" aria-describedby="firstNameLogin">
+                                </div>
+                                <div class="mb-3">
+                                    <label for="surnameLogin" class="form-label">Surname</label>
+                                    <input type="text" name="surname" class="form-control required" id="surnameLogin"
+                                        pattern="^[A-Za-z]+$" aria-describedby="surnameLogin">
+                                </div>
+                            </div>
+                            <div class="mb-3">
+                                <label for="InputEmail" class="form-label">Email address</label>
+                                <input type="email" class="form-control validate" name="email" id="InputEmail"
+                                    aria-describedby="InputEmail">
+                                <div id="emailHelp" class="form-text">We'll never share your email with anyone else.
+                                </div>
+                            </div>
+                            <div class="mb-3">
+                                <label for="usernameLogin" class="form-label">Username</label>
+                                <input type="text" name="username" class="form-control validate" id="usernameLogin"
+                                    minlength="4" maxlength="15" pattern="^[a-zA-Z0-9]{5,15}$"
+                                    aria-describedby="usernameLogin">
+                            </div>
+                            <div class="mb-3">
+                                <label for="passwordLogin" class="form-label">Password</label>
+                                <input type="password" name="password" class="form-control validate" id="passwordLogin"
+                                    minlength="4" maxlength="15" pattern="^[a-zA-Z0-9]{4,15}$">
+                                <input type="checkbox" onclick="showPassword()">Show Password
+                            </div>
+                            <div class="mb-3">
+                                <label for="instrumentLogin" class="form-label">Preferred Instrument</label>
+                                <input type="text" name="instrumentLogin" class="form-control required"
+                                    id="instrumentLogin" pattern="^[A-Za-z]+$" aria-describedby="instrumentLogin">
+                            </div>
                         </div>
                     </div>
-                    {% endfor %}
-                    {% endif %}
-                    {% endwith %}
+                    <div class="card-footer text-muted">
+                        <button type="submit" class="btn btn-primary">Register</button>
+                    </div>
                 </div>
-                <!--Registration input card-->
-                <div class="card-body">
-                    <div>
-                        <div class="row">
-                            <div class="mb-3">
-                                <label for="firstNameLogin" class="form-label">First Name</label>
-                                <input type="text" name="firstName" class="form-control required" id="firstNameLogin"
-                                    pattern="^[A-Za-z]+$" aria-describedby="firstNameLogin">
-                            </div>
-                            <div class="mb-3">
-                                <label for="surnameLogin" class="form-label">Surname</label>
-                                <input type="text" name="surname" class="form-control required" id="surnameLogin"
-                                    pattern="^[A-Za-z]+$" aria-describedby="surnameLogin">
-                            </div>
-                        </div>
-                        <div class="mb-3">
-                            <label for="InputEmail" class="form-label">Email address</label>
-                            <input type="email" class="form-control validate" name="email" id="InputEmail"
-                                aria-describedby="InputEmail">
-                            <div id="emailHelp" class="form-text">We'll never share your email with anyone else.</div>
-                        </div>
-                        <div class="mb-3">
-                            <label for="usernameLogin" class="form-label">Username</label>
-                            <input type="text" name="username" class="form-control validate" id="usernameLogin"
-                                minlength="4" maxlength="15" pattern="^[a-zA-Z0-9]{5,15}$"
-                                aria-describedby="usernameLogin">
-                        </div>
-                        <div class="mb-3">
-                            <label for="passwordLogin" class="form-label">Password</label>
-                            <input type="password" name="password" class="form-control validate" id="passwordLogin"
-                                minlength="4" maxlength="15" pattern="^[a-zA-Z0-9]{4,15}$">
-                                <input type="checkbox" onclick="showPassword()">Show Password
-                        </div>
-                        <div class="mb-3">
-                                <label for="instrumentLogin" class="form-label">Preferred Instrument</label>
-                                <input type="text" name="instrumentLogin" class="form-control required" id="instrumentLogin"
-                                    pattern="^[A-Za-z]+$" aria-describedby="instrumentLogin">
-                            </div>
-                        </div>
-                </div>
-                <div class="card-footer text-muted">
-                    <button type="submit" class="btn btn-primary">Register</button>
-                </div>
-            </div>
-        </form>
+            </form>
+        </div>
     </div>
-</div>
 
-<!--Switch back to login if user isn't new-->
-<div class="row">
-    <div class="col d-flex justify-content-center">
-        <p class="center-align">
-            Already have an account?
-            <a href="{{ url_for('login')}}">Login Here</a>
-        </p>
+    <!--Switch back to login if user isn't new-->
+    <div class="row">
+        <div class="col d-flex justify-content-center">
+            <p class="center-align">
+                Already have an account?
+                <a href="{{ url_for('login')}}">Login Here</a>
+            </p>
+        </div>
     </div>
-</div>
 
-{% endblock %}
+    {% endblock %}
