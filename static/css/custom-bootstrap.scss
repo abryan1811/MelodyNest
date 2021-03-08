@@ -1,63 +1,57 @@
-$theme-colors: (
-"primary": #421319,
-"info": #433D14,
-"warning": #422513,
-"danger": #194213,
-"success": #14433D,
-"orange": #141A43,
-"gray": #707070,
-"gray-dark": #3f3f3f,
-);
-
+$theme-colors: ( "primary": #421319, "info": #433D14, "warning": #422513, "danger": #194213, "success": #14433D, "orange": #141A43, "gray": #707070, "gray-dark": #3f3f3f, "white": white);
 @import "../../node_modules/bootstrap/scss/bootstrap";
 
 /* Font */
+
 body {
-    font-family: 'Arvo', serif;
-    background-color:#707070;
-    color:white;
+	font-family: 'Arvo', serif;
+	background-color: #707070;
+	color: white;
 }
+
 
 /* Navbar */
-.navbarNavAuthentication {
-    background-color:#3f3f3f;
+
+.mainNavbarNav {
+	background-color: black;
+	font-size: 50px;
+	color: white;
 }
 
-.mainNavbarNav{
-	background-color:white;
-	font-size: 50px;
-	color:white;
-}
+
 /* All templates section styles */
-.baseContent{
+
+.baseContent {
 	max-height: 100vh;
-	left:0;
-	padding:0px;
+	left: 0;
+	padding: 0px;
 }
+
 
 /* Home page */
-.homeTitle{
-	color:white;
+
+.homeTitle {
+	color: white;
 	font-size: 20px;
 	position: absolute;
-	right:20px;
-	top:200px;
+	right: 20px;
+	top: 200px;
 }
 
-.homeTitle h1{
-	font-size: 45px;	
+.homeTitle h1 {
+	font-size: 45px;
 }
 
-.homeTitle h2{
-	font-size: 35px;	
+.homeTitle h2 {
+	font-size: 35px;
 }
 
-.main-image{
+.main-image {
 	background: url("/static/images/piano-rose.jpg");
 	background-position: center;
 	background-size: cover;
 	background-repeat: no-repeat;
-    height:750px;
+	height: 750px;
 }
 
 .info-panel {
@@ -81,19 +75,18 @@ body {
 	border-radius: 50%;
 }
 
-.navbar-home{
-	font-size:50px;
+.navbar-home {
+	font-size: 50px;
 }
 
-.navbarLinks{
-    font-size:30px;
+.navbarLinks {
+	font-size: 30px;
 }
-
 
 .card {
-    background-color:rgb(190, 190, 190);
-    margin:10px;
-    color:black;
+	background-color: rgb(190, 190, 190);
+	margin: 10px;
+	color: black;
 }
 
 
@@ -103,108 +96,115 @@ body {
 	float: left;
 	margin-top: 12px;
 }
+
 #stopButton {
 	float: left;
 	margin-top: 12px;
-	padding-left:6px;
+	padding-left: 6px;
 }
 
 .space-below-navbar {
-    height:40px;
+	height: 40px;
 }
+
 
 /* Footer */
 
-
 .footer-row {
-	height:60px;
+	height: 60px;
 }
+
 
 /* Music Cards */
 
 .card-music {
-	display:inline-block;
+	display: inline-block;
 }
+
 
 /* Profile Page */
 
 .profileText {
 	white-space: pre-line;
 }
+
+
 /* Media Queries for screen sizes */
-@media screen and (max-width: 1024px){
-	.main-image{
+
+@media screen and (max-width: 1024px) {
+	.main-image {
 		padding-right: 0px;
 		object-fit: cover;
 		height: 1200px;
 		background-position-x: 20%;
 	}
-	.homeTitle h1{
-	font-size: 35px;	
+	.homeTitle h1 {
+		font-size: 35px;
+	}
+	.homeTitle h2 {
+		font-size: 25px;
+	}
 }
 
-.homeTitle h2{
-	font-size: 25px;	
-}
-}
-@media screen and (max-width: 768px){
-	.main-image{
+@media screen and (max-width: 768px) {
+	.main-image {
 		height: 780px;
 	}
 	.homeTitle {
 		font-size: 12px;
 	}
 }
+
 @media screen and (max-width: 640px) {
-	.main-image{
+	.main-image {
 		height: 650px;
 	}
-	.homeTitle h1{
-	font-size: 25px;	
+	.homeTitle h1 {
+		font-size: 25px;
+	}
+	.homeTitle h2 {
+		font-size: 15px;
+	}
 }
 
-.homeTitle h2{
-	font-size: 15px;	
-}
-}
 @media screen and (max-width: 540px) {
-	.main-image{
+	.main-image {
 		height: 530px;
-    }
-    
+	}
 }
+
 @media screen and (max-width: 480px) {
-	.main-image{
+	.main-image {
 		height: 500px;
 	}
 }
+
 @media screen and (max-width: 411px) {
-	.main-image{
+	.main-image {
 		height: 450px;
-    }.homeTitle h1{
-	font-size: 30px;	
-}
-
-.homeTitle h2{
-	font-size: 20px;	
-}
-   
-}
-@media screen and (max-width: 320px) {
-	.main-image{
-		height: 350px;
-    }
-     .homeTitle h1{
-	font-size: 20px;	
-}
-
-.homeTitle h2{
-	font-size: 10px;	
-}
-}
-@media screen and (max-width: 280px) {
-	.main-image{
-		height: 400px;
+	}
+	.homeTitle h1 {
+		font-size: 30px;
+	}
+	.homeTitle h2 {
+		font-size: 20px;
 	}
 }
 
+@media screen and (max-width: 320px) {
+	.main-image {
+		height: 350px;
+	}
+	.homeTitle h1 {
+		font-size: 20px;
+	}
+	.homeTitle h2 {
+		font-size: 10px;
+	}
+}
+
+@media screen and (max-width: 280px) {
+	.main-image {
+		height: 400px;
+	}
+}

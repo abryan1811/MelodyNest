@@ -19,49 +19,42 @@
 
 
     <!--Authentication bar-->
-    <nav class="navbar navbar-expand-lg navbar-light bg-light py-0 px-0">
-        <div class="container-fluid navbarNavAuthentication">
-            <div class="navbar" id="navbarNavAuthentication">
-                <ul class="navbar-nav navbar-authentication ml-auto">
-                    {% if session.user %}
-                    <li class="nav-item">
-                        <a class="nav-link text-white" href="{{ url_for('user_profile') }}">{{session.user}}</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link text-white" href="{{ url_for('help') }}">Help</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link text-white" aria-current="page" href="{{ url_for('logout') }}">Logout</a>
-                    </li>
-                    {% else %}
-                    <li class="Title text-white">
-                        <a class="nav-link text-white" aria-current="page" href="{{ url_for('home') }}">Welcome to
-                            MelodyNest</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link text-white" href="{{ url_for('help') }}">Help</a>
-                    </li>
-                    {% endif %}
-                </ul>
-            </div>
-        </div>
-    </nav>
+    
     <!--NavBar-->
-    <nav class="navbar navbar-expand-lg navbar-gray bg-gray py-0 px-0">
+    <nav class="navbar navbar-expand-lg navbar-dark bg-dark py-0 px-0">
         <div class="container-fluid mainNavbarNav">
-
-            <a class="navbar-brand navbar-home" href="{{ url_for('home') }}">Home</a>
-
             <button class="navbar-toggler navbar-light" type="button" data-toggle="collapse" data-target="#navbarNav"
                 aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
                 <span class="navbar-toggler-icon"></span>
             </button>
-            <div class="collapse navbar-collapse" id="navbarNav">
-                <ul class="navbar-nav ml-auto px-5 navbarLinks">
+            <div class="collapse navbar-collapse navbar-white" id="navbarNav">
+                <ul class="navbar-nav mr-auto px-5 navbarLinks">
+                    {% if session.user %}
+                    
                     <li class="nav-item">
-                        {% if session.user %}
+                        <a class="nav-link" href="{{ url_for('user_profile') }}">{{session.user}}</a>
+                    </li>
+                    <li>
+                        <a class="nav-link" aria-current="page" href="{{ url_for('logout') }}">(Logout)</a>
+                    </li>
+                    
+                    {% else %}
+                    <li class="Title text-white">
+                        <a class="nav-link" aria-current="page" href="{{ url_for('home') }}">Welcome to
+                            MelodyNest</a>
+                    </li>
+                    
+                    {% endif %}
+                </ul>
+                <ul class="navbar-nav ml-auto px-5 navbarLinks">                    
+                    {% if session.user %}  
+                    <li class="nav-item">
+                        <a class="nav-link" href="{{ url_for('home') }}">Home</a>
+                    </li>                  
+                    <li class="nav-item">                        
                         <a class="nav-link" aria-current="page" href="{{ url_for('music_collection') }}">Music</a>
                     </li>
+                    
                     <li class="nav-item">
                         <a class="nav-link" href="{{ url_for('profiles') }}">Profiles</a>
                     </li>
@@ -72,12 +65,14 @@
                         <a class="nav-link" href="{{ url_for('review_page') }}">Reviews</a>
                     </li>
                     {% else %}
-
                     <li class="nav-item">
                         <a class="nav-link" aria-current="page" href="{{ url_for('login') }}">Login/Register</a>
-                    </li>
+                    </li>                  
 
                     {% endif %}
+                    <li class="nav-item">
+                        <a class="nav-link" href="{{ url_for('help') }}">Help</a>
+                    </li>
                 </ul>
             </div>
         </div>

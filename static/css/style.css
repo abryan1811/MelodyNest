@@ -8147,11 +8147,9 @@ body {
   color: white; }
 
 /* Navbar */
-.navbarNavAuthentication {
-  background-color: #3f3f3f; }
 
 .mainNavbarNav {
-  background-color: white;
+  background-color: black;
   font-size: 50px;
   color: white; }
 
