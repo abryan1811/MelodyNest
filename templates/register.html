@@ -32,37 +32,38 @@
                                 <div class="mb-3">
                                     <label for="firstNameLogin" class="form-label">First Name</label>
                                     <input type="text" name="firstName" class="form-control required"
-                                        id="firstNameLogin" pattern="^[A-Za-z]+$" aria-describedby="firstNameLogin">
+                                        minlength="2" maxlength="15" id="firstNameLogin" pattern="^[A-Za-z]+$" aria-describedby="firstNameLogin" required>
                                 </div>
                                 <div class="mb-3">
                                     <label for="surnameLogin" class="form-label">Surname</label>
                                     <input type="text" name="surname" class="form-control required" id="surnameLogin"
-                                        pattern="^[A-Za-z]+$" aria-describedby="surnameLogin">
+                                        minlength="2" maxlength="15" pattern="^[A-Za-z]+$" aria-describedby="surnameLogin" required>
                                 </div>
                             </div>
                             <div class="mb-3">
                                 <label for="InputEmail" class="form-label">Email address</label>
                                 <input type="email" class="form-control validate" name="email" id="InputEmail"
-                                    aria-describedby="InputEmail">
+                                    minlength="2" maxlength="15" aria-describedby="InputEmail" required>
                                 <div id="emailHelp" class="form-text">We'll never share your email with anyone else.
                                 </div>
                             </div>
                             <div class="mb-3">
                                 <label for="usernameLogin" class="form-label">Username</label>
                                 <input type="text" name="username" class="form-control validate" id="usernameLogin"
-                                    minlength="4" maxlength="15" pattern="^[a-zA-Z0-9]{5,15}$"
-                                    aria-describedby="usernameLogin">
+                                    minlength="2" maxlength="15" pattern="^[a-zA-Z0-9]{5,15}$"
+                                    aria-describedby="usernameLogin" required>
                             </div>
                             <div class="mb-3">
                                 <label for="passwordLogin" class="form-label">Password</label>
                                 <input type="password" name="password" class="form-control validate" id="passwordLogin"
-                                    minlength="4" maxlength="15" pattern="^[a-zA-Z0-9]{4,15}$">
+                                    minlength="4" maxlength="15" pattern="^[a-zA-Z0-9]{4,15}$" required>
                                 <input type="checkbox" onclick="showPassword()">Show Password
                             </div>
                             <div class="mb-3">
                                 <label for="instrumentLogin" class="form-label">Preferred Instrument</label>
                                 <input type="text" name="instrumentLogin" class="form-control required"
-                                    id="instrumentLogin" pattern="^[A-Za-z]+$" aria-describedby="instrumentLogin">
+                                    minlength="2" maxlength="15" id="instrumentLogin" pattern="^[A-Za-z]+$" aria-describedby="instrumentLogin" 
+                                    required>
                             </div>
                         </div>
                     </div>

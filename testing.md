@@ -77,6 +77,10 @@
 
 ### Fixed Bugs
 
+- New user could register with no information
+
+    - Added minlength and maxlength, and a required to every field in register
+
 - New users cannot access profiles 
 
     - This bug was solved by adding a simple if else statement on the user_profile.html. If the length of the useruploads array has 1 or more items inside it, then it loads up the users uploaded music. , else it says user hasnt uploaded any music. 
