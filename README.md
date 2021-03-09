@@ -105,29 +105,30 @@ After deciding on the main aims of the project, I considered the features that w
 
 The following is how the website will be structured, based on the scope of the project:
 
--There are two Navbars, the top Navbar is for user information and help support. The second Navbar is for navigating around the website. 
+-On the Navbar the left side Navbar is for user information, such as user profile and login. The second Navbar is for navigating around the website. 
 
-- The top Navbar will have a login/register if user isnt logged in to the site. 
-    - Home page returns the user to the home page. 
+- The Navbar will have a login/register on the left hand side if user isnt logged in to the site. 
     - login/register sends user to a login page, with option to register underneath the login form. 
     - If a new user registers, after completion it will return to the login and ask the user to login for the first time
 
-- If the user is logged in the top Navbar will say the username, which links to their profile page. It will also have a logout link next to it 
+- If the user is logged in the Navbar will say the username, which links to their profile page. It will also have a logout link next to it 
     - In the profile page, users can view their details and change their details.
-- the second navbar will have Home, music, profiles, share, reviews 
+- the right side of the navbar will have Home, music, profiles, share, reviews and help 
     - home brings the user back to the home page
     - music allows the user to view all the uploaded pieces of music, with the option to listen to them performed, and view the sheet music. Also the option to edit or delete ones they have uploaded, or review other users uploads.
     - profiles allows the user to see all the other users and link to their profiles
     - share will allow the user to upload their piece of music, including: title, artist, image, audio, genre, instrument, and sheet music pdf
     - reviews will allow users to view all reviews for all pieces of music
+    - help has some frequently asked questions for supporting users
 
-A star rating system in the review sections is something that may not be possible for this project. If there is time towards the end of the deadline, it is something I would like to fit in. 
 
 #### Skeleton Plane
 
 #### *Wireframes*
 
 Click here to see the project [Wireframes](wireframes.md) (added to seperate file due to size)
+
+The project mostly follows the wireframe, however, there is a variation from the wireframe. There is now only one navbar as it looked much better as a design point than the two navbars. 
 
 #### Surface Plane
 
