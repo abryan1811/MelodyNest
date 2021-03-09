@@ -8256,12 +8256,17 @@ body {
 
   .homeTitle h2 {
     font-size: 25px; } }
+
+  .navbarLinks{
+        font-size:20px;
+    }
 @media screen and (max-width: 768px) {
   .main-image {
     height: 780px; }
 
   .homeTitle {
     font-size: 12px; } }
+
 @media screen and (max-width: 640px) {
   .main-image {
     height: 650px; }

@@ -18,6 +18,10 @@ body {
 	color: white;
 }
 
+.navbarTitle {
+    padding-left:10px;
+}
+
 
 /* All templates section styles */
 
@@ -143,7 +147,10 @@ body {
 	}
 	.homeTitle h2 {
 		font-size: 25px;
-	}
+    }
+    .navbarLinks{
+        font-size:20px;
+    }
 }
 
 @media screen and (max-width: 768px) {
