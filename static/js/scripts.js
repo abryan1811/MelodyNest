@@ -9,12 +9,11 @@ function play() {
 
     $(".music").each(function () {
         this.pause();
-        this.currentTime = 0
-    })
+        this.currentTime = 0;
+    });
 
     var music = $("#music" + $(this).data("id"))[0];
     var playButton = $("#play" + $(this).data("id"))[0];
-    var stopButton = $("#play" + $(this).data("id"))[0];
 
     if (music.currentTime > 1) {
         music.pause();
@@ -32,13 +31,12 @@ function play() {
 function stop() {
     var music = $("#music" + $(this).data("id"))[0];
     var playButton = $("#play" + $(this).data("id"))[0];
-    var stopButton = $("#play" + $(this).data("id"))[0];
 
     if (music.stop) {
         playButton.className = "";
-        playButton.className = "playButton fas fa-play"
+        playButton.className = "playButton fas fa-play";
     }
-    music.currentTime = 0
+    music.currentTime = 0;
     music.pause();
 }
 

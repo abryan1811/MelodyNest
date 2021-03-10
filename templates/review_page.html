@@ -34,7 +34,7 @@
                     class="btn btn-small btn-orange ">Delete</a>
                 <a href="{{url_for('edit_review', review_id=review._id)}}" class="btn btn-small btn-success">Edit</a>
                 {% endif %}
-                <img src="{{ url_for('file', filename=review.image)}}" class="card-img-top border" style="height:10rem;"
+                <img src="{{ url_for('file', filename=review.image)}}" class="card-img-top border music-image"
                     alt="{{ review.image }}">
                 <!--image that belongs to the reviewed piece-->
                 <div class="card-body">

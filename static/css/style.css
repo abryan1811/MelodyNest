@@ -8233,7 +8233,21 @@ body {
 
 /* Music Cards */
 .card-music {
-  display: inline-block; }
+  display: inline-block; 
+max-width:300px;}
+
+.music-image {
+  position: relative;
+  top: 20px;
+  height: 170px;
+  width: 170px;
+  text-align: center;
+  text-decoration: none; 
+  border-width: 1px;
+  border-radius: 50%;
+  object-fit:cover;}
+
+
 
 /* Profile Page */
 .profileText {
