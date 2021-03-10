@@ -11,13 +11,17 @@ They can also write reviews on other musicians pieces and keep an up to date pro
 ---
 
 1. [UX](#ux)
-   - [User Stories](#user-stories)
-   - [Viability](#project-viability) 
-   - [Typography](#typography)
-   - [Colors](#colors)
-   - [icons](#icons)
-   - [Wireframes](#wireframes)
-   - [Logo](#logo)
+   - [Strategy Plane](#strategy-plane)
+        - [User Stories](#user-stories)
+   - [Scope Plane](#scope-plane)
+        - [Viability](#project-viability) 
+        - [Typography](#typography)
+   - [Structure Plane](#structure-plane)   
+   - [ Skeleton Plane](#skeleton-plane)
+        - [Wireframes](#wireframes)
+   - [Surface Plane](#surface-plane)
+        - [Colors](#colors)
+        - [icons](#icons)
    - [InformationArchitecture](#information-architecture)
 2. [Features](#features)
    - [Existing Features](#existing-features)
@@ -40,11 +44,11 @@ They can also write reviews on other musicians pieces and keep an up to date pro
 
 ## UX
 
----
-
 ### Design Process
 
-#### Strategy Plane
+--- 
+
+### Strategy Plane
 
 #### *Developer Stories*
 
@@ -84,7 +88,7 @@ This is created so users can share music they have arranged or composed, sharing
 
 - As a user, I want to be able to download some new music that others have shared.
 
-#### Scope Plane
+### Scope Plane
 
 After deciding on the main aims of the project, I considered the features that were realistic in the time frame of the project. I used the user stories to come up with a list of features, their importance and their viability. Anything less viable will be considered as more likely being added as a future feature (will be viewable in the features section).
 
@@ -101,7 +105,7 @@ After deciding on the main aims of the project, I considered the features that w
 |     | ---------------------------------|            |           |
 |     | Total                            |     25     |        26 |
 
-#### Structure Plane
+### Structure Plane
 
 The following is how the website will be structured, based on the scope of the project:
 
@@ -122,7 +126,7 @@ The following is how the website will be structured, based on the scope of the p
     - help has some frequently asked questions for supporting users
 
 
-#### Skeleton Plane
+### Skeleton Plane
 
 #### *Wireframes*
 
@@ -130,7 +134,7 @@ Click here to see the project [Wireframes](wireframes.md) (added to seperate fil
 
 The project mostly follows the wireframe, however, there is a variation from the wireframe. There is now only one navbar as it looked much better as a design point than the two navbars. 
 
-#### Surface Plane
+### Surface Plane
 
 #### *Typography*
 
@@ -156,13 +160,17 @@ The other colours were chosen to compliment the selected red colour. According t
 
  Main accent colour
 
+images created from [here](https://coolors.co/)
+
 <img src="static/images/darkSienna.png">
 
 Tetradic - Chosen for boldness but to compliment the red as the primary colour. Red is used for anything larger, with the smaller buttons having the tetradic colours.
 
-<img src="static/images/tetradic.png">
+<img src="static/images/tetradic.png"> 
 
-   #131942   433D14   14433D   141A43
+
+
+   #421319   433D14   14433D   141A43
 
 #### *Icons*
 
@@ -175,7 +183,7 @@ Used for the play and stop button on the music player
 - [GIMP](https://www.gimp.org/) was used to tweak the main page image so the top was plain black so title could be added without conflicting with the words on the piano. 
 Permissions for editing image ok.  
 
-#### Information Architecture
+### Information Architecture
 
 I used MongoDB to store the data that the website uses. I used the [documentation](https://docs.mongodb.com/manual/) in order to support me with the python coding. 
 
