@@ -220,7 +220,7 @@ def share():
         return redirect(url_for('music_collection'))
 
 
-# Edit the files/text in a users upload
+# Edit the files/text in a users upload when coming from the profile page
 @app.route("/edit_share/<piece_id>", methods=["GET", "POST"])
 def edit_share(piece_id):
     piece = mongo.db.music.find_one(
@@ -293,7 +293,83 @@ def edit_share(piece_id):
                 {"_id": ObjectId(
                     session["userId"])}, updateSoundFile, upsert=True)
 
-        # return render_template('music.html', piece=piece)
+        return redirect(url_for(
+            "music_collection", username=session["user"]))
+
+
+# Edit the files/text in a users upload when coming from the music page
+@app.route("/edit_share_from_music/<piece_id>", methods=["GET", "POST"])
+def edit_share_from_music(piece_id):
+    piece = mongo.db.music.find_one(
+        {"_id": ObjectId(piece_id)})
+    if request.method == "GET":
+        genres = []
+        genresDB = list(mongo.db.genres.find().sort("genre"))
+        for genre in genresDB:
+            genres.append(genre)
+        instruments = []
+        instrumentsDB = list(mongo.db.instruments.find().sort("instrument"))
+        for instrument in instrumentsDB:
+            instruments.append(instrument)
+
+        return render_template(
+            "edit_share_from_music.html", piece=piece,
+            genres=genres, instruments=instruments)
+    elif request.method == "POST":
+        musicGenreId = ""
+        if (request.form.get("inputGenre") == "addNew"):
+            genre = {
+                "genre": request.form.get("newGenreText")
+            }
+            musicGenreId = mongo.db.genres.insert(genre)
+            print("musicGenreId: ", musicGenreId)
+        else:
+            musicGenreId = request.form.get("inputGenre")
+        instrId = ""
+        if (request.form.get("inputInstrument") == "addNew"):
+            instr = {
+                "instrument": request.form.get("newInstrumentText")
+            }
+            instrId = mongo.db.instruments.insert(instr)
+            print("instrId: ", instrId)
+        else:
+            instrId = request.form.get("inputInstrument")
+        update = {"$set": {
+                "title": request.form.get("inputTitle"),
+                "artist": request.form.get("inputArtist"),
+                "instrument": ObjectId(instrId),
+                "genre": ObjectId(musicGenreId),
+            }
+        }
+        mongo.db.music.update_one(
+            {"_id": ObjectId(piece_id)}, update, upsert=True)
+
+        if request.files["inputImageArtwork"].filename != "":
+            updateImage = {"$set": {
+                "image": request.files["inputImageArtwork"].filename
+                }
+            }
+            mongo.db.users.update_one(
+                {"_id": ObjectId(session["userId"])}, updateImage, upsert=True)
+
+        if request.files["inputSheetMusic"].filename != "":
+            updateSheetMusic = {"$set": {
+                "image": request.files["inputSheetMusic"].filename
+                }
+            }
+            mongo.db.users.update_one(
+                {"_id": ObjectId(
+                    session["userId"])}, updateSheetMusic, upsert=True)
+
+        if request.files["inputSoundFile"].filename != "":
+            updateSoundFile = {"$set": {
+                "image": request.files["inputSoundFile"].filename
+                }
+            }
+            mongo.db.users.update_one(
+                {"_id": ObjectId(
+                    session["userId"])}, updateSoundFile, upsert=True)
+
         return redirect(url_for(
             "music_collection", username=session["user"]))
 
