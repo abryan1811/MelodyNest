@@ -16,13 +16,14 @@ They can also write reviews on other musicians pieces and keep an up to date pro
    - [Scope Plane](#scope-plane)
         - [Viability](#project-viability) 
         - [Typography](#typography)
-   - [Structure Plane](#structure-plane)   
+   - [Structure Plane](#structure-plane)          
    - [ Skeleton Plane](#skeleton-plane)
         - [Wireframes](#wireframes)
    - [Surface Plane](#surface-plane)
         - [Colors](#colors)
         - [icons](#icons)
    - [InformationArchitecture](#information-architecture)
+        - [Data Structure and Schema](#data-structure-and-schema) 
 2. [Features](#features)
    - [Existing Features](#existing-features)
    - [Features left to implement](#features-left-to-implement)
@@ -32,7 +33,7 @@ They can also write reviews on other musicians pieces and keep an up to date pro
 4. [Testing](#testing)
    - [Validators](#validators)
    - [Testing Methods](#testing-methods)
-5. [Deployment](#deploy)
+5. [Deployment](#deployment)
    - [Local Deployment](#local-deployment)
    - [Remote Deployment](#remote-deployment)
 6. [Credits](#credits)
@@ -185,6 +186,8 @@ Permissions for editing image ok.
 
 ### Information Architecture
 
+#### *Data Structure and Schema*
+
 I used MongoDB to store the data that the website uses. I used the [documentation](https://docs.mongodb.com/manual/) in order to support me with the python coding. 
 
 I have cluster set up called mnCluster and inside that cluster I have a group of collections
@@ -206,6 +209,7 @@ oid = objectId
 
 <img src="static/images/mongoDBSchema.png">
 
+I have used GridFS in order to have images,music and pdfs saved to MongoDB. [GridFS](https://docs.mongodb.com/manual/core/gridfs/) is used to allow us to save larger files in MongoDB. These files are saved in newly created folders called fs.chunks and fs.files.
 
 ##### Back to [top](#table-of-contents)
 ---

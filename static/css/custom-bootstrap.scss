@@ -1,6 +1,14 @@
 $theme-colors: ( "primary": #421319, "info": #433D14, "warning": #422513, "danger": #194213, "success": #14433D, "orange": #141A43, "gray": #707070, "gray-dark": #3f3f3f, "white": white);
 @import "../../node_modules/bootstrap/scss/bootstrap";
 
+/* Body */
+
+#pageContainer {
+    position: relative;
+    min-height: 100vh;
+}
+
+
 /* Font */
 
 body {
@@ -18,15 +26,10 @@ body {
 	color: white;
 }
 
-.navbarTitle {
-    padding-left:10px;
-}
-
 
 /* All templates section styles */
 
 .baseContent {
-	max-height: 100vh;
 	left: 0;
 	padding: 0px;
 }
@@ -36,10 +39,9 @@ body {
 
 .homeTitle {
 	color: white;
-	font-size: 20px;
-	position: absolute;
-	right: 20px;
-	top: 200px;
+	position: relative;
+	left: 0px;
+	top: 20px;
 }
 
 .homeTitle h1 {
@@ -55,7 +57,7 @@ body {
 	background-position: center;
 	background-size: cover;
 	background-repeat: no-repeat;
-	height: 750px;
+	height: 500px;
 }
 
 .info-panel {
@@ -88,13 +90,17 @@ body {
 }
 
 .card {
-	background-color: rgb(190, 190, 190);
+	background-color: #bebebe;
 	margin: 10px;
 	color: black;
 }
 
 
 /* Music Player */
+
+#audioplayer {
+	padding-top: 20px;
+}
 
 #playButton {
 	float: left;
@@ -114,8 +120,9 @@ body {
 
 /* Footer */
 
-.footer-row {
-	height: 60px;
+footer {
+  background-color: black;
+  color: white;
 }
 
 
@@ -123,18 +130,20 @@ body {
 
 .card-music {
 	display: inline-block;
+	max-width: 300px;
 }
 
 .music-image {
-  position: relative;
-  top: 20px;
-  height: 170px;
-  width: 170px;
-  text-align: center;
-  text-decoration: none; 
-  border-width: 1px;
-  border-radius: 50%;
-  object-fit:cover;}
+	position: relative;
+	top: 20px;
+	height: 170px;
+	width: 170px;
+	text-align: center;
+	text-decoration: none;
+	border-width: 1px;
+	border-radius: 50%;
+	object-fit: cover;
+}
 
 
 /* Profile Page */
@@ -143,14 +152,16 @@ body {
 	white-space: pre-line;
 }
 
+.card-profile {
+	margin: 0px;
+}
+
 
 /* Media Queries for screen sizes */
 
 @media screen and (max-width: 1024px) {
 	.main-image {
 		padding-right: 0px;
-		object-fit: cover;
-		height: 1200px;
 		background-position-x: 20%;
 	}
 	.homeTitle h1 {
@@ -158,10 +169,11 @@ body {
 	}
 	.homeTitle h2 {
 		font-size: 25px;
-    }
-    .navbarLinks{
-        font-size:20px;
-    }
+	}
+}
+
+.navbarLinks {
+	font-size: 20px;
 }
 
 @media screen and (max-width: 768px) {
@@ -226,3 +238,4 @@ body {
 		height: 400px;
 	}
 }
+
