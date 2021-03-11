@@ -345,7 +345,11 @@ be a contact page where users can send an email directly on the website that new
             -eet">↩    <link rel="stylesheet" href="/static/css/style.css" text="text.css">↩    <
     - This is how the code looks on base.html. <link rel="stylesheet" href="{{ url_for('static', filename= 'css/style.css')}}" text="text.css"> I believe this error is due to Jinja 
 
-    
+    The following error is found on music. This appears to be another jinja issue as it bgings up an error in white space. But this is within the jinja code as seen below 
+    <audio id="music60468335499bb598f4776ed8" class="music" preload="true">↩
+    <i id="play{{ piece._id }}" data-id="{{ piece._id }}" class="playButton fas fa-play"></i>
+
+    No other known issues when testing. 
 
 - CSS
 
@@ -354,10 +358,11 @@ be a contact page where users can send an email directly on the website that new
 - Javascript
 
   - [JSHint javascript Validator](https://jshint.com/) There are no critical errors, but there are warnings for $ used in jquery.
+    It also said there were unused variables, however, the ones left are functions and are necessary for the code to work.  
 
 - Python
   - [PEP8 online](http://pep8online.com/) "All right"
-
+    No errors found.
 
 ### Testing Methods
 
