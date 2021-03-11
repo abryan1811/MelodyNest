@@ -133,7 +133,7 @@ The following is how the website will be structured, based on the scope of the p
 
 Click here to see the project [Wireframes](wireframes.md) (added to seperate file due to size)
 
-The project mostly follows the wireframe, however, there is a variation from the wireframe. There is now only one navbar as it looked much better as a design point than the two navbars. 
+The project mostly follows the wireframe, however, there is a variation from the wireframe. There is now only one navbar as it looked much better as a design point than the two navbars. I also included a footer as I believed this finished the website off, and also included a copyright website name, and contact detail.
 
 ### Surface Plane
 
@@ -339,23 +339,13 @@ be a contact page where users can send an email directly on the website that new
 - HTML
 
   - [W3C HTML Validator](https://validator.w3.org/) More information below for each html file
-    - base.html - Only Errors are relating to Jinja
-    - edit_profile.html - Only Errors are relating to Jinja, warning for the button, being unnecessary, but without it, it doesn't work.
-    - edit_review.html - Only Errors are relating to Jinja, warning for the button, being unnecessary, but without it, it doesn't work.
-    - help.html - Only Errors are relating to Jinja
-    - index.html - Only Errors are relating to Jinja
-    - list_profiles.html - Only Errors are relating to Jinja
-    - login.html - Only Errors are relating to Jinja
-    - music.html - Only Errors are relating to Jinja
-    - register.html - Only Errors are relating to Jinja
-    - user_profile.html - Only Errors are relating to Jinja
-    - write_review.html - Only Errors are relating to Jinja, warning for the button, being unnecessary, but without it, it doesn't work.
-    - share.html - Only Errors are relating to Jinja Select and input and select error appears seemingly due to for and if statements.
-    - edit_share.html - Only Errors are relating to Jinja and input and select error appears seemingly due to for and if statements.
-    - change_password.html - Only Errors are relating to Jinja warning for the button, being unnecessary, but without it, it doesn't work.
-    - admin_change_password.html - Only Errors are relating to Jinja warning for the button, being unnecessary, but without it, it doesn't work.
-    - admin_profile_edit.html - Only Errors are relating to Jinja, warning for the button, being unnecessary, but without it, it doesn't work.
+    The following error cannot be fixed. 
+    - Error: Attribute text not allowed on element link at this point.
+        - From line 12, column 5; to line 12, column 72
+            -eet">↩    <link rel="stylesheet" href="/static/css/style.css" text="text.css">↩    <
+    - This is how the code looks on base.html. <link rel="stylesheet" href="{{ url_for('static', filename= 'css/style.css')}}" text="text.css"> I believe this error is due to Jinja 
 
+    
 
 - CSS
 

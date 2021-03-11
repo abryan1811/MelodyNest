@@ -67,7 +67,7 @@
                     <source src="{{ url_for('file', filename=piece.sound)}}">
                 </audio>
                 <!--Play and stop button-->
-                <div id="audioplayer">
+                <div class="audioplayer">
                     <i id="play{{ piece._id }}" data-id="{{ piece._id }}" class="playButton fas fa-play"></i>
                     <i id="stop{{ piece._id }}" data-id="{{ piece._id }}" class="stopButton fas fa-square"></i>
                 </div>
