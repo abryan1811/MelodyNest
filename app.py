@@ -494,7 +494,8 @@ def edit_profile():
             "edit_profile.html", userName=userName, aboutme=aboutme,
             firstname=firstname, surname=surname, email=email,
             preferredInstrument=preferredInstrument,
-            useruploads=useruploadstitle, profileImage=profileImage)
+            useruploads=useruploadstitle, profileImage=profileImage,
+            user=user)
     elif request.method == "POST":
         if "inputProfileImage" in request.files:
             inputProfileImage = request.files["inputProfileImage"]
@@ -723,6 +724,18 @@ def delete_user(profile_id):
     mongo.db.reviews.remove({"user": ObjectId(profile_id)})
     flash("The user has been deleted")
     return redirect(url_for("profiles"))
+
+
+@app.route("/delete_self/<profile_id>")
+def delete_self(profile_id):
+    mongo.db.users.remove({"_id": ObjectId(profile_id)})
+    mongo.db.music.remove({"user": ObjectId(profile_id)})
+    mongo.db.reviews.remove({"performer": ObjectId(profile_id)})
+    mongo.db.reviews.remove({"user": ObjectId(profile_id)})
+    session["user"] = ""
+    session["userId"] = ""
+    flash("Your profile has been deleted")
+    return redirect(url_for("login"))
 
 
 if __name__ == "__main__":
