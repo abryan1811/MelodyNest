@@ -93,7 +93,7 @@
                         <p class="card-text">{{ piece.username }}</p>
                         <a href="{{ url_for('file', filename=piece.sheetmusic)}}" target="_blank"
                             class="btn btn-primary">Sheet Music</a>
-                        <audio id="music{{ piece._id }}" class="music" preload="true">
+                        <audio id="music{{ piece._id }}" class="music" preload="false">
                             <source src="{{ url_for('file', filename=piece.sound)}}">
                         </audio>
                         <div class="audioplayer">
