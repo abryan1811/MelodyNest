@@ -107,6 +107,10 @@
 
     - Ongoing bug that will need fixing in the future. Cannot find out how to code in a fix to delete files as a user deletes from the system with the GridFS system. Will continue to look into. But currently a housekeeping task for developer in the meantime.
 
+- Sometimes music downloads slowly on heroku
+
+    - This would be fixed by purchasing a higher subscription, as you get access to more resources. E.G advanced gives the opportunity to "Run high traffic, low latency apps" and "autoscaling".
+
 ## User opinions
 
 
