@@ -110,9 +110,9 @@
     <div>&nbsp;</div>
     <div class="container-fluid d-flex justify-content-center align-items-center container">
         <div class="row">
-            <!--Remove Profile-->            
-            <a href="{{ url_for('delete_self', profile_id=user._id) }}" 
-                    class="btn btn-small btn-orange" type="input" id="delete_self_button" value="delete" name="delete" onclick="certainDelete()">Delete Profile</a>
+            <!--Remove Profile-->
+            <a href="{{ url_for('delete_self', profile_id=user._id) }}" class="btn btn-small btn-orange" type="input"
+                id="delete_self_button" value="delete" name="delete" onclick="certainDelete()">Delete Profile</a>
         </div>
     </div>
 </form>
@@ -128,16 +128,18 @@
 
         {% for piece in useruploads %}
         <div class="card card-music col mb-4">
-            <div>&nbsp;</div>
-            {% if session.user == userName %}
-            <a href="{{ url_for('delete_piece', piece_id=piece._id) }}" class="btn btn-small btn-orange" onclick="certainDelete()">Delete</a>
-            <a href="{{url_for('edit_share', piece_id=piece._id)}}" class="btn btn-small btn-success">Edit</a>
-            {% endif %}
-            <img src="{{ url_for('file', filename=piece.image)}}" class="card-img-top border music-image"
-                style="height:10rem;" alt="{{ piece.image }}">
-            <div class="card-body">
-                <h5 class="card-title">{{ piece.title}} </h5>
+            <div class="deleteEditButtons">
+                {% if session.user == userName %}
+                <a href="{{ url_for('delete_piece', piece_id=piece._id) }}" class="btn btn-small btn-orange"
+                    onclick="certainDelete()">Delete</a>
+                <a href="{{url_for('edit_share', piece_id=piece._id)}}" class="btn btn-small btn-success">Edit</a>
+                {% endif %}
+                <img src="{{ url_for('file', filename=piece.image)}}" class="card-img-top border music-image"
+                    style="height:10rem;" alt="{{ piece.image }}">
+                <div class="card-body">
+                    <h5 class="card-title">{{ piece.title}} </h5>
 
+                </div>
             </div>
         </div>
         {% endfor %}

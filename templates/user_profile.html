@@ -76,29 +76,34 @@
                 {% for piece in useruploads %}
                 <div class="card card-music col mb-4">
                     {% if session.user == userName %}
-                    <a href="{{ url_for('delete_piece', piece_id=piece._id) }}"
-                        class="btn btn-small btn-orange" onclick="certainDelete()">Delete</a>
-                    <a href="{{url_for('edit_share', piece_id=piece._id)}}" class="btn btn-small btn-success">Edit</a>
-                    {% else %}
-                    <a href="{{url_for('write_review', reviews_id=piece._id)}}"
-                        class="btn btn-large btn-info text-white">Write a Review</a>
-                    {% endif %}
-                    <img src="{{ url_for('file', filename=piece.image)}}" class="card-img-top border music-image"
-                        style="height:10rem;" alt="{{ piece.image }}">
-                    <div class="card-body">
-                        <h4 class="card-title">{{ piece.title }} </h4>
-                        <p class="card-text">{{ piece.artist }}</p>
-                        <p class="card-text">{{ piece.genre }}</p>
-                        <p class="card-text">{{ piece.instrument }}</p>
-                        <p class="card-text">{{ piece.username }}</p>
-                        <a href="{{ url_for('file', filename=piece.sheetmusic)}}" target="_blank"
-                            class="btn btn-primary">Sheet Music</a>
-                        <audio id="music{{ piece._id }}" class="music" preload="none">
-                            <source src="{{ url_for('file', filename=piece.sound)}}">
-                        </audio>
-                        <div class="audioplayer">
-                            <i id="play{{ piece._id }}" data-id="{{ piece._id }}" class="playButton fas fa-play"></i>
-                            <i id="stop{{ piece._id }}" data-id="{{ piece._id }}" class="stopButton fas fa-square"></i>
+                    <div class="deleteEditButtons">
+                        <a href="{{ url_for('delete_piece', piece_id=piece._id) }}" class="btn btn-small btn-orange"
+                            onclick="certainDelete()">Delete</a>
+                        <a href="{{url_for('edit_share', piece_id=piece._id)}}"
+                            class="btn btn-small btn-success">Edit</a>
+                        {% else %}
+                        <a href="{{url_for('write_review', reviews_id=piece._id)}}"
+                            class="btn btn-large btn-info text-white">Write a Review</a>
+                        {% endif %}
+                        <img src="{{ url_for('file', filename=piece.image)}}" class="card-img-top border music-image"
+                            style="height:10rem;" alt="{{ piece.image }}">
+                        <div class="card-body">
+                            <h4 class="card-title">{{ piece.title }} </h4>
+                            <p class="card-text">{{ piece.artist }}</p>
+                            <p class="card-text">{{ piece.genre }}</p>
+                            <p class="card-text">{{ piece.instrument }}</p>
+                            <p class="card-text">{{ piece.username }}</p>
+                            <a href="{{ url_for('file', filename=piece.sheetmusic)}}" target="_blank"
+                                class="btn btn-primary">Sheet Music</a>
+                            <audio id="music{{ piece._id }}" class="music" preload="none">
+                                <source src="{{ url_for('file', filename=piece.sound)}}">
+                            </audio>
+                            <div class="audioplayer">
+                                <i id="play{{ piece._id }}" data-id="{{ piece._id }}"
+                                    class="playButton fas fa-play"></i>
+                                <i id="stop{{ piece._id }}" data-id="{{ piece._id }}"
+                                    class="stopButton fas fa-square"></i>
+                            </div>
                         </div>
                     </div>
                 </div>

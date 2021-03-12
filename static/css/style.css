@@ -10691,6 +10691,10 @@ footer {
 	object-fit: cover;
 }
 
+.deleteEditButtons {
+    padding:20px;
+}
+
 
 /* Profile Page */
 
@@ -10739,6 +10743,10 @@ footer {
     border-radius: 0;
     top: 0;
     z-index:1;
+    }
+
+    .mobileBreakingSpace {
+        height:20px;
     }
 }
 

@@ -28,6 +28,7 @@
             {% for review in reviews %}
             <!--Image that belongs to the reviewed piece-->
             <div class="card card-music col mb-4">
+                <div class="deleteEditButtons">
                 {% if session.user == review.user or session.user == "admin" %}
                 <!--If this is the user that created the piece, delete or edit the piece of music-->
                 <a href="{{ url_for('delete_review', review_id=review._id) }}"
@@ -36,6 +37,7 @@
                 {% endif %}
                 <img src="{{ url_for('file', filename=review.image)}}" class="card-img-top border music-image"
                     alt="{{ review.image }}">
+                </div>
                 <!--image that belongs to the reviewed piece-->
                 <div class="card-body">
                     <h5 class="card-title">{{ review.title}} </h5>

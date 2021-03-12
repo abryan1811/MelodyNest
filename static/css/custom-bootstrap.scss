@@ -145,6 +145,10 @@ footer {
 	object-fit: cover;
 }
 
+.deleteEditButtons {
+    padding:20px;
+}
+
 
 /* Profile Page */
 
@@ -191,6 +195,10 @@ footer {
     border-radius: 0;
     top: 0;    
 }
+
+    .mobileBreakingSpace {
+        height:20px;
+    }
 }
 
 @media screen and (max-width: 640px) {
