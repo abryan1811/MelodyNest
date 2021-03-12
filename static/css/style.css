@@ -10715,12 +10715,14 @@ footer {
 	}
 	.homeTitle h2 {
 		font-size: 25px;
-	}
+    }
+    .navbarLinks {
+	font-size: 20px;
+    }
+    
 }
 
-.navbarLinks {
-	font-size: 20px;
-}
+
 
 @media screen and (max-width: 768px) {
 	.main-image {
@@ -10728,7 +10730,16 @@ footer {
 	}
 	.homeTitle {
 		font-size: 12px;
-	}
+    }
+
+  .navbar{
+    position: fixed;
+    right: 0;
+    left: 0;   
+    border-radius: 0;
+    top: 0;
+    z-index:1;
+    }
 }
 
 @media screen and (max-width: 640px) {
@@ -10784,17 +10795,3 @@ footer {
 		height: 400px;
 	}
 }
-
-
-
-
-/* 
-.Site {
-  display: flex;
-  min-height: 100vh;
-  flex-direction: column;
-}
-
-.Site-content {
-  flex: 1;
-} */
