@@ -48,7 +48,7 @@
                     rows="8">{{aboutme}}</textarea>
                 &nbsp;
                 <div class="container-fluid d-flex justify-content-center text-center">
-                    <a href="{{url_for('change_password')}}" type="button" class="btn btn-primary shareButton">Click to
+                    <a href="{{url_for('change_password')}}" type="button" class="btn btn-primary shareButton"><i class="fas fa-lock"></i> Click to
                         go to the Update Password Page</a>
                 </div>
             </div>
@@ -100,10 +100,10 @@
     <div class="container-fluid d-flex justify-content-center align-items-center container">
         <div class="row">
             <!--Go Back button-->
-            <a href="{{url_for('user_profile')}}" type="submit" class="btn btn-danger shareButton">Go Back</a>
+            <a href="{{url_for('user_profile')}}" type="submit" class="btn btn-danger shareButton"><i class="fas fa-arrow-alt-circle-left"></i> Go Back</a>
             <div>&nbsp;</div>
             <!--Update button-->
-            <button class="btn btn-success editProfile" type="submit" role="button">Update Changes</button>
+            <button class="btn btn-primary editProfile" type="submit" role="button"><i class="fas fa-check-circle"></i> Update Changes</button>
             <div>&nbsp;</div>
         </div>
     </div>
@@ -112,7 +112,7 @@
         <div class="row">
             <!--Remove Profile-->
             <a href="{{ url_for('delete_self', profile_id=user._id) }}" class="btn btn-small btn-orange" type="input"
-                id="delete_self_button" value="delete" name="delete" onclick="certainDelete()">Delete Profile</a>
+                id="delete_self_button" value="delete" name="delete" onclick="certainDelete()"><i class="fas fa-trash-alt"></i> Delete Profile</a>
         </div>
     </div>
 </form>
@@ -131,8 +131,8 @@
             <div class="deleteEditButtons">
                 {% if session.user == userName %}
                 <a href="{{ url_for('delete_piece', piece_id=piece._id) }}" class="btn btn-small btn-orange"
-                    onclick="certainDelete()">Delete</a>
-                <a href="{{url_for('edit_share', piece_id=piece._id)}}" class="btn btn-small btn-success">Edit</a>
+                    onclick="certainDelete()"><i class="fas fa-trash-alt"></i> Delete</a>
+                <a href="{{url_for('edit_share', piece_id=piece._id)}}" class="btn btn-small btn-success"><i class="fas fa-edit"></i>  Edit</a>
                 {% endif %}
                 <img src="{{ url_for('file', filename=piece.image)}}" class="card-img-top border music-image"
                     style="height:10rem;" alt="{{ piece.image }}">
