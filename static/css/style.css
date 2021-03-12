@@ -10544,14 +10544,14 @@ a.text-gray-dark:focus {
 }
 
 
-
 /* All custom created content (also viewable on custom-bootstrap.scss) */
+
 
 /* Body */
 
 #pageContainer {
-    position: relative;
-    min-height: 100vh;
+	position: relative;
+	min-height: 100vh;
 }
 
 
@@ -10667,8 +10667,8 @@ body {
 /* Footer */
 
 footer {
-  background-color: black;
-  color: white;
+	background-color: black;
+	color: white;
 }
 
 
@@ -10692,7 +10692,7 @@ footer {
 }
 
 .deleteEditButtons {
-    padding:20px;
+	padding: 20px;
 }
 
 
@@ -10719,14 +10719,11 @@ footer {
 	}
 	.homeTitle h2 {
 		font-size: 25px;
-    }
-    .navbarLinks {
-	font-size: 20px;
-    }
-    
+	}
+	.navbarLinks {
+		font-size: 20px;
+	}
 }
-
-
 
 @media screen and (max-width: 768px) {
 	.main-image {
@@ -10734,20 +10731,18 @@ footer {
 	}
 	.homeTitle {
 		font-size: 12px;
-    }
-
-  .navbar{
-    position: fixed;
-    right: 0;
-    left: 0;   
-    border-radius: 0;
-    top: 0;
-    z-index:1;
-    }
-
-    .mobileBreakingSpace {
-        height:20px;
-    }
+	}
+	.navbar {
+		position: fixed;
+		right: 0;
+		left: 0;
+		border-radius: 0;
+		top: 0;
+		z-index: 1;
+	}
+	.mobileBreakingSpace {
+		height: 20px;
+	}
 }
 
 @media screen and (max-width: 640px) {

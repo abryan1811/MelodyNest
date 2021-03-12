@@ -1,148 +1,139 @@
 {% extends "base.html" %}
 {% block content %}
-
 {% with messages = get_flashed_messages() %}
 {% if messages %}
 {% for message in messages %}
 <div class="row">
-    <div class="col d-flex justify-content-center">
-        <h4 class="center-align">{{ message }}</h4>
-    </div>
+   <div class="col d-flex justify-content-center">
+      <h4 class="center-align">{{ message }}</h4>
+   </div>
 </div>
 {% endfor %}
 {% endif %}
 {% endwith %}
-
 <div class="container-fluid">
-    <div class="row d-flex text-center space-below-navbar">
-        &nbsp;
-    </div>
-
-    <h3 class="d-flex justify-content-center text-center">Edit your upload</h3>
-
-
-    <div class="row">
-        <div class="d-flex justify-content-center align-items-center container">
-
-            <form class="col-12 card-body card" method="POST" action="{{url_for('edit_share_from_music', piece_id=piece._id)}}"
-                enctype="multipart/form-data">
-                <div class="col col-12">
-                    <!--Edit Upload information-->
-                    <div class="row">
-                        <div class="input-group mb-3">
-                            <span class="col-lg-3 col-md-12 col-sm-12 col-12 input-group-text"
-                                id="inputTitle">Title</span>
-                            <input type="text" class="col-lg-9 col-md-12 col-sm-12 col-12 form-control"
-                                name="inputTitle" aria-label="inputTitle" aria-describedby="inputTitle"
-                                value="{{piece.title}}" required>
-                        </div>
-                    </div>
-                    <div class="row">
-                        <div class="input-group mb-3">
-                            <span class="col-lg-3 col-md-12 col-sm-12 col-12 input-group-text"
-                                id="inputArtist">Artist</span>
-                            <input type="text" class="col-lg-9 col-md-12 col-sm-12 col-12 form-control"
-                                name="inputArtist" aria-label="inputArtist" aria-describedby="inputArtist"
-                                value="{{piece.artist}}" required>
-                        </div>
-                    </div>
-                    <div class="row">
-                        <div class="input-group mb-3">
-                            <span class="col-lg-3 col-md-12 col-sm-12 col-12 input-group-text"
-                                id="inputGenreTab">Genre</span>
-                            <select class="form-select form-control" id="inputGenre" name="inputGenre"
-                                aria-label="Example select with button addon" onchange="newGenre()" required>
-                                <option value="" disabled>(Select Genre)</option>
-                                {% for genre in genres %}
-                                {% if genre._id == piece.genre %}
-                                <option value="{{genre._id}}" selected>{{genre.genre}}</option>
-                                {% else %}
-                                <option value="{{genre._id}}">{{genre.genre}}</option>
-                                {% endif %}
-                                {% endfor %}
-                                <option value="addNew">(add new)</option>                                
-                            </select>
-                            <input class="form-control d-none" id="newGenreText" name="newGenreText" type="text"
-                                    placeholder="Add a New Genre">
-                        </div>
-                    </div>
-                    <div class="row">
-                        <div class="input-group mb-3">
-                            <span class="col-lg-3 col-md-12 col-sm-12 col-12 input-group-text"
-                                id="inputInstrumentTab">Instrument</span>
-                            <select class="form-select form-control" id="inputInstrument" name="inputInstrument"
-                                aria-label="Example select with button addon" onchange="newInstrument()" required>
-                                <option value="" disabled>(Select Instrument)</option>
-                                {% for instrument in instruments %}
-                                {% if instrument._id == piece.instrument %}
-                                <option value="{{instrument._id}}" selected>{{instrument.instrument}}</option>
-                                {% else %}
-                                <option value="{{instrument._id}}">{{instrument.instrument}}</option>
-                                {% endif %}
-                                {% endfor %}
-                                <option value="addNew">(add new)</option>                                
-                            </select>
-                            <input class="form-control d-none" id="newInstrumentText" name="newInstrumentText"
-                                    type="text" placeholder="Add a New Instrument">
-                        </div>
-                    </div>
-                    <div class="row">
-                        <div class="input-group mb-3">
-                            <label class="col-lg-3 col-md-12 col-sm-12 col-12 input-group-text"
-                                for="inputSoundFile">Upload Soundfile</label>
-                            <input type="file" accept=".mp3,audio/*"
-                                class="col-lg-9 col-md-12 col-sm-12 col-12 form-control" name="inputSoundFile"
-                                id="inputSoundFile">
-                        </div>
-                    </div>
-
-                    <div class="row">
-                        <div class="input-group mb-3">
-                            <label class="col-lg-3 col-md-12 col-sm-12 col-12 input-group-text"
-                                for="inputImageArtwork">Upload Image/Artwork</label>
-                            <input type="file" accept="image/x-png,image/gif,image/jpeg"
-                                class="col-lg-9 col-md-12 col-sm-12 col-12 form-control" name="inputImageArtwork"
-                                id="inputImageArtwork">
-                        </div>
-                    </div>
-                    <div class="row">
-                        <div class="input-group mb-3">
-                            <label class="col-lg-3 col-md-12 col-sm-12 col-12 input-group-text"
-                                for="inputSheetMusic">Upload Sheet Music</label>
-                            <input type="file" accept="application/pdf"
-                                class="col-lg-9 col-md-12 col-sm-12 col-12 form-control" name="inputSheetMusic"
-                                id="inputSheetMusic">
-                        </div>
-                    </div>
-                    <!--Buttons -->
-                    <div class="row d-flex justify-content-center align-items-center container">
-                        <!--Go Back-->
-                        <div class="col-lg-4 col-md-4 col-sm-12 col-12 d-flex justify-content-center align-items-center" >
-                            <a href="{{url_for('music_collection', piece_id=piece._id)}}" type="submit"
-                                class="btn btn-danger shareButton"><i class="fas fa-arrow-alt-circle-left"></i> Go back</a>
-                        </div>
-                        <div class="mobileBreakingSpace"></div>
-                        <!--Revert Changes -->
-                        <div class="col-lg-4 col-md-4 col-sm-12 col-12 d-flex justify-content-center align-items-center">
-                            <a href="{{url_for('edit_share', piece_id=piece._id)}}" type="submit"
-                                class="btn btn-orange shareButton"><i class="fas fa-times-circle"></i> Cancel Changes</a>
-                        </div>
-                        <div class="mobileBreakingSpace"></div>
-                        <!--submit-->
-                        <div class="col-lg-4 col-md-4 col-sm-12 col-12 d-flex justify-content-center align-items-center">
-                            <button type="submit" class="btn btn-primary shareButton"><i class="fas fa-check-circle"></i> Make changes</button>
-                        </div>
-
-                    </div>
-                </div>
-            </form>
-        </div>
-    </div>
+   <div class="row d-flex text-center space-below-navbar">
+      &nbsp;
+   </div>
+   <h3 class="d-flex justify-content-center text-center">Edit your upload</h3>
+   <div class="row">
+      <div class="d-flex justify-content-center align-items-center container">
+         <form class="col-12 card-body card" method="POST" action="{{url_for('edit_share_from_music', piece_id=piece._id)}}"
+            enctype="multipart/form-data">
+            <div class="col col-12">
+               <!--Edit Upload information-->
+               <div class="row">
+                  <div class="input-group mb-3">
+                     <span class="col-lg-3 col-md-12 col-sm-12 col-12 input-group-text"
+                        id="inputTitle">Title</span>
+                     <input type="text" class="col-lg-9 col-md-12 col-sm-12 col-12 form-control"
+                        name="inputTitle" aria-label="inputTitle" aria-describedby="inputTitle"
+                        value="{{piece.title}}" required>
+                  </div>
+               </div>
+               <div class="row">
+                  <div class="input-group mb-3">
+                     <span class="col-lg-3 col-md-12 col-sm-12 col-12 input-group-text"
+                        id="inputArtist">Artist</span>
+                     <input type="text" class="col-lg-9 col-md-12 col-sm-12 col-12 form-control"
+                        name="inputArtist" aria-label="inputArtist" aria-describedby="inputArtist"
+                        value="{{piece.artist}}" required>
+                  </div>
+               </div>
+               <div class="row">
+                  <div class="input-group mb-3">
+                     <span class="col-lg-3 col-md-12 col-sm-12 col-12 input-group-text"
+                        id="inputGenreTab">Genre</span>
+                     <select class="form-select form-control" id="inputGenre" name="inputGenre"
+                        aria-label="Example select with button addon" onchange="newGenre()" required>
+                        <option value="" disabled>(Select Genre)</option>
+                        {% for genre in genres %}
+                        {% if genre._id == piece.genre %}
+                        <option value="{{genre._id}}" selected>{{genre.genre}}</option>
+                        {% else %}
+                        <option value="{{genre._id}}">{{genre.genre}}</option>
+                        {% endif %}
+                        {% endfor %}
+                        <option value="addNew">(add new)</option>
+                     </select>
+                     <input class="form-control d-none" id="newGenreText" name="newGenreText" type="text"
+                        placeholder="Add a New Genre">
+                  </div>
+               </div>
+               <div class="row">
+                  <div class="input-group mb-3">
+                     <span class="col-lg-3 col-md-12 col-sm-12 col-12 input-group-text"
+                        id="inputInstrumentTab">Instrument</span>
+                     <select class="form-select form-control" id="inputInstrument" name="inputInstrument"
+                        aria-label="Example select with button addon" onchange="newInstrument()" required>
+                        <option value="" disabled>(Select Instrument)</option>
+                        {% for instrument in instruments %}
+                        {% if instrument._id == piece.instrument %}
+                        <option value="{{instrument._id}}" selected>{{instrument.instrument}}</option>
+                        {% else %}
+                        <option value="{{instrument._id}}">{{instrument.instrument}}</option>
+                        {% endif %}
+                        {% endfor %}
+                        <option value="addNew">(add new)</option>
+                     </select>
+                     <input class="form-control d-none" id="newInstrumentText" name="newInstrumentText"
+                        type="text" placeholder="Add a New Instrument">
+                  </div>
+               </div>
+               <div class="row">
+                  <div class="input-group mb-3">
+                     <label class="col-lg-3 col-md-12 col-sm-12 col-12 input-group-text"
+                        for="inputSoundFile">Upload Soundfile</label>
+                     <input type="file" accept=".mp3,audio/*"
+                        class="col-lg-9 col-md-12 col-sm-12 col-12 form-control" name="inputSoundFile"
+                        id="inputSoundFile">
+                  </div>
+               </div>
+               <div class="row">
+                  <div class="input-group mb-3">
+                     <label class="col-lg-3 col-md-12 col-sm-12 col-12 input-group-text"
+                        for="inputImageArtwork">Upload Image/Artwork</label>
+                     <input type="file" accept="image/x-png,image/gif,image/jpeg"
+                        class="col-lg-9 col-md-12 col-sm-12 col-12 form-control" name="inputImageArtwork"
+                        id="inputImageArtwork">
+                  </div>
+               </div>
+               <div class="row">
+                  <div class="input-group mb-3">
+                     <label class="col-lg-3 col-md-12 col-sm-12 col-12 input-group-text"
+                        for="inputSheetMusic">Upload Sheet Music</label>
+                     <input type="file" accept="application/pdf"
+                        class="col-lg-9 col-md-12 col-sm-12 col-12 form-control" name="inputSheetMusic"
+                        id="inputSheetMusic">
+                  </div>
+               </div>
+               <!--Buttons -->
+               <div class="row d-flex justify-content-center align-items-center container">
+                  <!--Go Back-->
+                  <div class="col-lg-4 col-md-4 col-sm-12 col-12 d-flex justify-content-center align-items-center" >
+                     <a href="{{url_for('music_collection', piece_id=piece._id)}}" type="submit"
+                        class="btn btn-danger shareButton"><i class="fas fa-arrow-alt-circle-left"></i> Go back</a>
+                  </div>
+                  <div class="mobileBreakingSpace"></div>
+                  <!--Revert Changes -->
+                  <div class="col-lg-4 col-md-4 col-sm-12 col-12 d-flex justify-content-center align-items-center">
+                     <a href="{{url_for('edit_share', piece_id=piece._id)}}" type="submit"
+                        class="btn btn-orange shareButton"><i class="fas fa-times-circle"></i> Cancel Changes</a>
+                  </div>
+                  <div class="mobileBreakingSpace"></div>
+                  <!--submit-->
+                  <div class="col-lg-4 col-md-4 col-sm-12 col-12 d-flex justify-content-center align-items-center">
+                     <button type="submit" class="btn btn-primary shareButton"><i class="fas fa-check-circle"></i> Make changes</button>
+                  </div>
+               </div>
+            </div>
+         </form>
+      </div>
+   </div>
 </div>
-
 <div class="container-fluid">
-    <div class="row d-flex text-center footer-row">
-        &nbsp;
-    </div>
+   <div class="row d-flex text-center footer-row">
+      &nbsp;
+   </div>
 </div>
 {% endblock %}

@@ -4,8 +4,8 @@ $theme-colors: ( "primary": #421319, "info": #433D14, "warning": #422513, "dange
 /* Body */
 
 #pageContainer {
-    position: relative;
-    min-height: 100vh;
+	position: relative;
+	min-height: 100vh;
 }
 
 
@@ -121,8 +121,8 @@ body {
 /* Footer */
 
 footer {
-  background-color: black;
-  color: white;
+	background-color: black;
+	color: white;
 }
 
 
@@ -146,7 +146,7 @@ footer {
 }
 
 .deleteEditButtons {
-    padding:20px;
+	padding: 20px;
 }
 
 
@@ -173,7 +173,7 @@ footer {
 	}
 	.homeTitle h2 {
 		font-size: 25px;
-    }    
+	}
 }
 
 .navbarLinks {
@@ -186,19 +186,17 @@ footer {
 	}
 	.homeTitle {
 		font-size: 12px;
-    }
-
-  .navbar{
-    position: fixed;
-    right: 0;
-    left: 0;   
-    border-radius: 0;
-    top: 0;    
-}
-
-    .mobileBreakingSpace {
-        height:20px;
-    }
+	}
+	.navbar {
+		position: fixed;
+		right: 0;
+		left: 0;
+		border-radius: 0;
+		top: 0;
+	}
+	.mobileBreakingSpace {
+		height: 20px;
+	}
 }
 
 @media screen and (max-width: 640px) {
@@ -254,4 +252,3 @@ footer {
 		height: 400px;
 	}
 }
-
