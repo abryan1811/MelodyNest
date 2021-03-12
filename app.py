@@ -222,8 +222,8 @@ def share():
 
 
 # Edit the files/text in a users upload when coming from the profile page
-@app.route("/edit_share/<piece_id>", methods=["GET", "POST"])
-def edit_share(piece_id):
+@app.route("/edit_share_from_profile/<piece_id>", methods=["GET", "POST"])
+def edit_share_from_profile(piece_id):
     piece = mongo.db.music.find_one(
         {"_id": ObjectId(piece_id)})
     if request.method == "GET":
@@ -237,7 +237,7 @@ def edit_share(piece_id):
             instruments.append(instrument)
 
         return render_template(
-            "edit_share.html", piece=piece,
+            "edit_share_from_profile.html", piece=piece,
             genres=genres, instruments=instruments)
     elif request.method == "POST":
         musicGenreId = ""
@@ -293,8 +293,9 @@ def edit_share(piece_id):
                 {"_id": ObjectId(
                     session["userId"])}, updateSoundFile, upsert=True)
 
+        flash("Your music has been updated")
         return redirect(url_for(
-            "music_collection", username=session["user"]))
+            "user_profile"))
 
 
 # Edit the files/text in a users upload when coming from the music page
@@ -369,8 +370,8 @@ def edit_share_from_music(piece_id):
                 {"_id": ObjectId(
                     session["userId"])}, updateSoundFile, upsert=True)
 
-        return redirect(url_for(
-            "music_collection", username=session["user"]))
+        flash("Your music has been updated")
+        return redirect(url_for("music_collection"))
 
 
 # View every profile set up on MongoDB
@@ -525,7 +526,7 @@ def edit_profile():
     return redirect(url_for("user_profiles"))
 
 
-# admin can edit things in users profiles (for example, if case somebody puts something offensive in their about me)
+# admin can edit things in users profiles
 @app.route("/admin_profile_edit/<profile_id>", methods=["GET", "POST"])
 def admin_profile_edit(profile_id):
     user = mongo.db.users.find_one(
@@ -744,4 +745,4 @@ def delete_self(profile_id):
 if __name__ == "__main__":
     app.run(host=os.environ.get("IP"),
             port=int(os.environ.get("PORT")),
-            debug=False)
+            debug=True)
