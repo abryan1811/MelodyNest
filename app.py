@@ -9,7 +9,19 @@ if os.path.exists("env.py"):
     import env
 
 
+class ReverseProxied(object):
+    def __init__(self, app):
+        self.app = app
+
+    def __call__(self, environ, start_response):
+        scheme = environ.get('HTTP_X_FORWARDED_PROTO')
+        if scheme:
+            environ['wsgi.url_scheme'] = scheme
+        return self.app(environ, start_response)
+
+
 app = Flask(__name__)
+app.wsgi_app = ReverseProxied(app.wsgi_app)
 
 app.config["MONGO_DBNAME"] = os.environ.get("MONGO_DBNAME")
 app.config["MONGO_URI"] = os.environ.get("MONGO_URI")
@@ -289,9 +301,8 @@ def edit_share_from_profile(piece_id):
                 "image": request.files["inputSoundFile"].filename
                 }
             }
-            mongo.db.users.update_one(
-                {"_id": ObjectId(
-                    session["userId"])}, updateSoundFile, upsert=True)
+            mongo.db.music.update_one(
+                {"_id": ObjectId(piece_id)}, updateSoundFile, upsert=True)
 
         flash("Your music has been updated")
         return redirect(url_for(
@@ -366,9 +377,8 @@ def edit_share_from_music(piece_id):
                 "image": request.files["inputSoundFile"].filename
                 }
             }
-            mongo.db.users.update_one(
-                {"_id": ObjectId(
-                    session["userId"])}, updateSoundFile, upsert=True)
+            mongo.db.music.update_one(
+                {"_id": ObjectId(piece_id)}, updateSoundFile, upsert=True)
 
         flash("Your music has been updated")
         return redirect(url_for("music_collection"))
@@ -745,4 +755,4 @@ def delete_self(profile_id):
 if __name__ == "__main__":
     app.run(host=os.environ.get("IP"),
             port=int(os.environ.get("PORT")),
-            debug=False)
+            debug=True)
