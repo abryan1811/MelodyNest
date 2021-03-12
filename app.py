@@ -25,6 +25,7 @@ def home():
     return render_template("index.html")
 
 
+# Links to help and FAQs page with accordian of questions. 
 @app.route("/help")
 def help():
     return render_template("help.html")
@@ -524,6 +525,7 @@ def edit_profile():
     return redirect(url_for("user_profiles"))
 
 
+# admin can edit things in users profiles (for example, if case somebody puts something offensive in their about me)
 @app.route("/admin_profile_edit/<profile_id>", methods=["GET", "POST"])
 def admin_profile_edit(profile_id):
     user = mongo.db.users.find_one(
@@ -576,6 +578,7 @@ def admin_profile_edit(profile_id):
     return redirect(url_for("profiles"))
 
 
+# user can change their own password
 @app.route("/change_password", methods=["GET", "POST"])
 def change_password():
     user = mongo.db.users.find_one(
@@ -603,6 +606,7 @@ def change_password():
         "change_password.html")
 
 
+# Admin can change any users password
 @app.route("/admin_change_password/<profile_id>", methods=["GET", "POST"])
 def admin_change_password(profile_id):
     user = mongo.db.users.find_one(
@@ -651,6 +655,7 @@ def write_review(reviews_id):
         "write_review.html", reviews=reviews)
 
 
+# User and admin can edit the review already written
 @app.route("/edit_review/<review_id>", methods=["GET", "POST"])
 def edit_review(review_id):
     if request.method == "POST":
