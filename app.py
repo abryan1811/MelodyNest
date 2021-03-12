@@ -519,9 +519,9 @@ def edit_profile():
                 {"_id": ObjectId(session["userId"])}, updateImage, upsert=True)
 
         flash("Your details have been updated")
-        return redirect(url_for("profiles"))
+        return redirect(url_for("user_profile"))
 
-    return redirect(url_for("profiles"))
+    return redirect(url_for("user_profiles"))
 
 
 @app.route("/admin_profile_edit/<profile_id>", methods=["GET", "POST"])
