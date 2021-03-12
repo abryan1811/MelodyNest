@@ -272,17 +272,16 @@ def edit_share(piece_id):
                 "image": request.files["inputImageArtwork"].filename
                 }
             }
-            mongo.db.users.update_one(
-                {"_id": ObjectId(session["userId"])}, updateImage, upsert=True)
+            mongo.db.music.update_one(
+                {"_id": ObjectId(piece_id)}, updateImage, upsert=True)
 
         if request.files["inputSheetMusic"].filename != "":
             updateSheetMusic = {"$set": {
                 "image": request.files["inputSheetMusic"].filename
                 }
             }
-            mongo.db.users.update_one(
-                {"_id": ObjectId(
-                    session["userId"])}, updateSheetMusic, upsert=True)
+            mongo.db.music.update_one(
+                {"_id": ObjectId(piece_id)}, updateSheetMusic, upsert=True)
 
         if request.files["inputSoundFile"].filename != "":
             updateSoundFile = {"$set": {
@@ -349,17 +348,16 @@ def edit_share_from_music(piece_id):
                 "image": request.files["inputImageArtwork"].filename
                 }
             }
-            mongo.db.users.update_one(
-                {"_id": ObjectId(session["userId"])}, updateImage, upsert=True)
+            mongo.db.music.update_one(
+                {"_id": ObjectId(piece_id)}, updateImage, upsert=True)
 
         if request.files["inputSheetMusic"].filename != "":
             updateSheetMusic = {"$set": {
                 "image": request.files["inputSheetMusic"].filename
                 }
             }
-            mongo.db.users.update_one(
-                {"_id": ObjectId(
-                    session["userId"])}, updateSheetMusic, upsert=True)
+            mongo.db.music.update_one(
+                {"_id": ObjectId(piece_id)}, updateSheetMusic, upsert=True)
 
         if request.files["inputSoundFile"].filename != "":
             updateSoundFile = {"$set": {
