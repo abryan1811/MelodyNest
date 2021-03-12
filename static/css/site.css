@@ -1,4 +1,4 @@
-/* philipwalton solved-by-flexbox  */
+/* philipwalton solved-by-flexbox 
 /* https://github.com/philipwalton/solved-by-flexbox/blob/master/assets/css/components/site.css */
 
 /**
@@ -32,18 +32,11 @@
   height: 0px;
   visibility: hidden;
 }
-@media (--break-lg) {
-  .Site-content {
-    padding-top: var(--space-lg);
-  }
-  .Site-content::after {
-    margin-top: var(--space-lg);
-  }
-}
+
 
 .Site-content--full {
   padding: 0;
 }
 .Site-content--full::after {
   content: none;
-}
+} */
