@@ -25,7 +25,7 @@ def home():
     return render_template("index.html")
 
 
-# Links to help and FAQs page with accordian of questions. 
+# Links to help and FAQs page with accordian of questions.
 @app.route("/help")
 def help():
     return render_template("help.html")
@@ -707,7 +707,7 @@ def delete_piece(piece_id):
     mongo.db.music.remove({"_id": ObjectId(piece_id)})
     mongo.db.fs.files.remove({"_id": ObjectId(piece_id)})
     mongo.db.reviews.remove({"music": ObjectId(piece_id)})
-    flash("Your music share has been deleted")
+    flash("Your piece of music has been deleted")
     return redirect(url_for("music_collection"))
 
 
@@ -745,4 +745,4 @@ def delete_self(profile_id):
 if __name__ == "__main__":
     app.run(host=os.environ.get("IP"),
             port=int(os.environ.get("PORT")),
-            debug=True)
+            debug=False)

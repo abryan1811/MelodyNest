@@ -117,7 +117,7 @@
             {% if session.user == userName %}
             <a href="{{ url_for('delete_piece', piece_id=piece._id) }}" class="btn btn-small btn-orange"
                onclick="certainDelete()"><i class="fas fa-trash-alt"></i> Delete</a>
-            <a href="{{url_for('edit_share', piece_id=piece._id)}}" class="btn btn-small btn-success"><i class="fas fa-edit"></i>  Edit</a>
+            <a href="{{url_for('edit_share_from_profile', piece_id=piece._id)}}" class="btn btn-small btn-success"><i class="fas fa-edit"></i>  Edit</a>
             {% endif %}
             <img src="{{ url_for('file', filename=piece.image)}}" class="card-img-top border music-image"
                style="height:10rem;" alt="{{ piece.image }}">
