@@ -41,10 +41,7 @@
                             <a class="nav-link" href="{{ url_for('user_profile') }}"><i class="far fa-user"></i>
                                 {{session.user}}</a>
                         </li>
-                        <li>
-                            <a class="nav-link" aria-current="page" href="{{ url_for('logout') }}"><i
-                                    class="fas fa-sign-out-alt"></i> Logout</a>
-                        </li>
+                        
                     </ul>
                     <ul class="navbar-nav ml-auto px-5 navbarLinks">
 
@@ -75,6 +72,12 @@
                             <a class="nav-link" href="{{ url_for('help') }}"><i class="far fa-question-circle"></i>
                                 Help</a>
                         </li>
+                        {% if session.user %}
+                        <li>
+                            <a class="nav-link" aria-current="page" href="{{ url_for('logout') }}"><i
+                                    class="fas fa-sign-out-alt"></i> Logout</a>
+                        </li>
+                        {% endif %}
                     </ul>
                 </div>
             </div>
