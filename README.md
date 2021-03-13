@@ -179,11 +179,13 @@ Tetradic - Chosen for boldness but to compliment the red as the primary colour. 
 
 Used for the play and stop button on the music player
 Used an icon for each item in the navbar to relate to each word. 
+Used icons throughout the entire website for buttons 
+Used a search icon to decorate the search music word on music.
   
 #### *Image modifications*
 
 - [GIMP](https://www.gimp.org/) was used to tweak the main page image so the top was plain black so title could be added without conflicting with the words on the piano. 
-Permissions for editing image ok.  
+Permissions for editing image ok as a stock image.  
 
 ### Information Architecture
 

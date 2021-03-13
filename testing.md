@@ -101,6 +101,10 @@
 
     - To fix this bug, I wrote a db.reviews.remove (with the object Id linking to the piece of music) in the delete_piece function. This means that any review associated with that piece of music will be deleted at the same time. 
 
+- Came across a bug where on edit, the piece would update profile and send nothing to the piece. 
+
+    - To fix this, I added a save file to the image, sheet music and audio update request. I also noticed id mis coded and had it send the update to the session user object Id instead of the music piece object Id.
+
 ### Ongoing Bugs
 
 - MongoDB filling up with unused data
@@ -109,14 +113,9 @@
 
 - Sometimes music downloads slowly on heroku
 
-    - It does start within 1 minute, and I believe this would be fixed by purchasing a higher subscription, as you get access to more resources. E.G advanced gives the opportunity to "Run high traffic, low latency apps" and "autoscaling" amongst many other resources.
+    - It usually does start within 1 minute, and I believe it is possible that this would be fixed by purchasing a higher subscription, as you get access to more resources. E.G advanced gives the opportunity to "Run high traffic, low latency apps" and "autoscaling" amongst many other resources.
+    However, the music does work and is loading, just slower to start. 
 
-    - This leads to another error - Uncaught (in promise) DOMException: The play() request was interrupted by a call to pause(). This is logged in the console if a user clicks all the play buttons before they are loaded. With a faster deployment service this should never be an issue.
-
-## User opinions
-
-
-
-
+    - This leads to another error - Uncaught (in promise) DOMException: The play() request was interrupted by a call to pause(). This is logged in the console if a user clicks on another play button before the previous one starts playing. With a faster deployment service this shouldn't be an issue.
 
 ##### Back to [readme](README.md)
