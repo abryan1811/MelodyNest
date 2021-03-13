@@ -8,24 +8,12 @@ from werkzeug.security import generate_password_hash, check_password_hash
 if os.path.exists("env.py"):
     import env
 
-
-class ReverseProxied(object):
-    def __init__(self, app):
-        self.app = app
-
-    def __call__(self, environ, start_response):
-        scheme = environ.get('HTTP_X_FORWARDED_PROTO')
-        if scheme:
-            environ['wsgi.url_scheme'] = scheme
-        return self.app(environ, start_response)
-
-
 app = Flask(__name__)
-app.wsgi_app = ReverseProxied(app.wsgi_app)
 
 app.config["MONGO_DBNAME"] = os.environ.get("MONGO_DBNAME")
 app.config["MONGO_URI"] = os.environ.get("MONGO_URI")
 app.secret_key = os.environ.get("SECRET_KEY")
+app.config['PREFERRED_URL_SCHEME'] = 'https'
 
 mongo = PyMongo(app)
 
@@ -281,6 +269,9 @@ def edit_share_from_profile(piece_id):
             {"_id": ObjectId(piece_id)}, update, upsert=True)
 
         if request.files["inputImageArtwork"].filename != "":
+            inputImageArtwork = request.files["inputImageArtwork"]
+            mongo.save_file(inputImageArtwork.filename, inputImageArtwork)
+
             updateImage = {"$set": {
                 "image": request.files["inputImageArtwork"].filename
                 }
@@ -289,16 +280,22 @@ def edit_share_from_profile(piece_id):
                 {"_id": ObjectId(piece_id)}, updateImage, upsert=True)
 
         if request.files["inputSheetMusic"].filename != "":
+            inputSheetMusic = request.files["inputSheetMusic"]
+            mongo.save_file(inputSheetMusic.filename, inputSheetMusic)
+
             updateSheetMusic = {"$set": {
-                "image": request.files["inputSheetMusic"].filename
+                "sheetmusic": request.files["inputSheetMusic"].filename
                 }
             }
             mongo.db.music.update_one(
                 {"_id": ObjectId(piece_id)}, updateSheetMusic, upsert=True)
 
         if request.files["inputSoundFile"].filename != "":
+            inputSoundFile = request.files["inputSoundFile"]
+            mongo.save_file(inputSoundFile.filename, inputSoundFile)
+
             updateSoundFile = {"$set": {
-                "image": request.files["inputSoundFile"].filename
+                "sound": request.files["inputSoundFile"].filename
                 }
             }
             mongo.db.music.update_one(
@@ -357,6 +354,9 @@ def edit_share_from_music(piece_id):
             {"_id": ObjectId(piece_id)}, update, upsert=True)
 
         if request.files["inputImageArtwork"].filename != "":
+            inputImageArtwork = request.files["inputImageArtwork"]
+            mongo.save_file(inputImageArtwork.filename, inputImageArtwork)
+
             updateImage = {"$set": {
                 "image": request.files["inputImageArtwork"].filename
                 }
@@ -365,16 +365,22 @@ def edit_share_from_music(piece_id):
                 {"_id": ObjectId(piece_id)}, updateImage, upsert=True)
 
         if request.files["inputSheetMusic"].filename != "":
+            inputSheetMusic = request.files["inputSheetMusic"]
+            mongo.save_file(inputSheetMusic.filename, inputSheetMusic)
+
             updateSheetMusic = {"$set": {
-                "image": request.files["inputSheetMusic"].filename
+                "sheetmusic": request.files["inputSheetMusic"].filename
                 }
             }
             mongo.db.music.update_one(
                 {"_id": ObjectId(piece_id)}, updateSheetMusic, upsert=True)
 
         if request.files["inputSoundFile"].filename != "":
+            inputSoundFile = request.files["inputSoundFile"]
+            mongo.save_file(inputSoundFile.filename, inputSoundFile)
+
             updateSoundFile = {"$set": {
-                "image": request.files["inputSoundFile"].filename
+                "sound": request.files["inputSoundFile"].filename
                 }
             }
             mongo.db.music.update_one(
