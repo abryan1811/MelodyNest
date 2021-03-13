@@ -10722,15 +10722,11 @@ footer {
 
 .profile-image {
     position: relative;
-    width: 100%;    
-	text-align: center;
-	text-decoration: none;
-	border-width: 1px;
-	object-fit: cover;
+    object-fit: scale-down;
 }
 
 .card-profile {
-    height: 400px;
+    height: 250px;
     margin: 0px;
     border: 1px solid #dee2e6 !important;
     object-fit: cover;
