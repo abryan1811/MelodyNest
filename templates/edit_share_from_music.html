@@ -108,20 +108,20 @@
                   </div>
                </div>
                <!--Buttons -->
-               <div class="row d-flex justify-content-center align-items-center container">
+               <div class="row d-flex justify-content-center align-items-center">
                   <!--Go Back-->
                   <div class="col-lg-4 col-md-4 col-sm-12 col-12 d-flex justify-content-center align-items-center" >
                      <a href="{{url_for('music_collection', piece_id=piece._id)}}" type="submit"
-                        class="btn btn-danger shareButton"><i class="fas fa-arrow-alt-circle-left"></i> Go back</a>
+                        class="btn btn-danger shareButton form-control"><i class="fas fa-arrow-alt-circle-left"></i> Go Back</a>
                   </div>
                   <!--Revert Changes -->
                   <div class="col-lg-4 col-md-4 col-sm-12 col-12 d-flex justify-content-center align-items-center">
                      <a href="{{url_for('edit_share_from_music', piece_id=piece._id)}}" type="submit"
-                        class="btn btn-orange shareButton"><i class="fas fa-times-circle"></i> Cancel Changes</a>
+                        class="btn btn-orange shareButton form-control"><i class="fas fa-times-circle"></i> Cancel Changes</a>
                   </div>
                   <!--submit-->
                   <div class="col-lg-4 col-md-4 col-sm-12 col-12 d-flex justify-content-center align-items-center">
-                     <button type="submit" class="btn btn-primary shareButton"><i class="fas fa-check-circle"></i> Make changes</button>
+                     <button type="submit" class="btn btn-primary shareButton form-control"><i class="fas fa-check-circle"></i> Make changes</button>
                   </div>
                </div>
             </div>

@@ -397,17 +397,18 @@ h2,
 
 h3,
 .h3 {
-	font-size: 1.75rem;
+    font-size: 1.75rem;
 }
 
 h4,
 .h4 {
 	font-size: 1.5rem;
+    color: rgb(221, 220, 220);
 }
 
 h5,
 .h5 {
-	font-size: 1.25rem;
+    font-size: 1.25rem;
 }
 
 h6,
@@ -5053,8 +5054,14 @@ input[type="button"].btn-block {
 }
 
 .card-title {
-	margin-bottom: 0.75rem;
+    margin-bottom: 0.75rem;
+    font-size: 1.3rem;
+    font-weight:bold;
+    padding-top:40px;
+    padding-bottom: 10px;
 }
+
+
 
 .card-subtitle {
 	margin-top: -0.375rem;
@@ -7226,7 +7233,7 @@ button.bg-gray-dark:focus {
 }
 
 .border {
-	border: 1px solid #dee2e6 !important;
+    border: 1px solid #dee2e6 !important;
 }
 
 .border-top {
@@ -10568,7 +10575,7 @@ body {
 
 .mainNavbarNav {
 	background-color: black;
-	font-size: 50px;
+	font-size: 18pt;
 	color: white;
 }
 
@@ -10591,7 +10598,9 @@ body {
 }
 
 .homeTitle h1 {
-	font-size: 45px;
+    font-size: 65px;
+    font-weight: 800;
+    text-shadow: 0px 0px 15px #A00;
 }
 
 .homeTitle h2 {
@@ -10617,14 +10626,15 @@ body {
 
 .circle-image {
 	position: relative;
-	top: 20px;
+	top: 55px;
 	text-align: center;
 	text-decoration: none;
 }
 
 .circle-image img {
 	border-width: 1px;
-	border-radius: 50%;
+    border-radius: 50%;
+    object-fit: cover;
 }
 
 .navbar-home {
@@ -10632,7 +10642,7 @@ body {
 }
 
 .navbarLinks {
-	font-size: 30px;
+	font-size: 18pt;
 }
 
 .card {
@@ -10695,6 +10705,14 @@ footer {
 	padding: 20px;
 }
 
+/* Review Cards*/
+
+.card-title-review {
+    font-size: 1.3rem;
+    font-weight:bold;
+    padding-top:40px;
+}
+
 
 /* Profile Page */
 
@@ -10702,8 +10720,25 @@ footer {
 	white-space: pre-line;
 }
 
+.profile-image {
+    position: relative;
+	height: 170px;
+	width: 70%;
+	text-align: center;
+	text-decoration: none;
+	border-width: 1px;
+	object-fit: cover;
+}
+
 .card-profile {
-	margin: 0px;
+    margin: 0px;
+    border: 1px solid #dee2e6 !important;
+    object-fit: cover;
+}
+
+.card-text {
+    font-size: 1.1em;
+    font-weight: 800;
 }
 
 
@@ -10719,7 +10754,10 @@ footer {
 	}
 	.homeTitle h2 {
 		font-size: 25px;
-	}
+    }
+    .circle-image {
+    top: 160px;
+}
 	.navbarLinks {
 		font-size: 20px;
 	}
@@ -10731,7 +10769,10 @@ footer {
 	}
 	.homeTitle {
 		font-size: 12px;
-	}
+    }
+    .circle-image {
+    top: 20px;
+}
 	.navbar {
 		position: fixed;
 		right: 0;
@@ -10739,7 +10780,12 @@ footer {
 		border-radius: 0;
 		top: 0;
 		z-index: 1;
-	}
+    }
+    
+    .homesubtitle {
+        font-size:13px;
+    }
+
 	.mobileBreakingSpace {
 		height: 20px;
 	}

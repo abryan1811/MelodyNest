@@ -24,26 +24,26 @@
          {% if data.username != "admin" %}
          <div class="card card-music col mb-4">
             {% if session.user == "admin" %}
-            <div class="deleteEditButtons">
-               <!--If this is the user that created the piece, delete or edit the piece of music-->
-               <a href="{{ url_for('delete_user', profile_id=data._id) }}" class="btn btn-small btn-orange"
-                  type="input" id="delete_user_button" value="delete" name="delete"
-                  onclick="certainDelete()"><i class="fas fa-trash-alt"></i> Delete</a>
-               <a href="{{url_for('admin_profile_edit', profile_id=data._id)}}"
-                  class="btn btn-small btn-success"><i class="fas fa-edit"></i> Edit</a>
-               <a href="{{url_for('admin_change_password', profile_id=data._id)}}"
-                  class="btn btn-small btn-primary"><i class="fas fa-lock"></i> Change Password</a>
-            </div>
+            <h5 class="card-title">
+                <div class="deleteEditButtons">
+                <!--If this is the user that created the piece, delete or edit the piece of music-->
+                <a href="{{ url_for('delete_user', profile_id=data._id) }}" class="btn btn-small btn-orange"
+                    type="input" id="delete_user_button" value="delete" name="delete"
+                    onclick="certainDelete()"><i class="fas fa-trash-alt"></i> Delete</a>
+                <a href="{{url_for('admin_profile_edit', profile_id=data._id)}}"
+                    class="btn btn-small btn-success"><i class="fas fa-edit"></i> Edit</a>
+                <a href="{{url_for('admin_change_password', profile_id=data._id)}}"
+                    class="btn btn-small btn-primary"><i class="fas fa-lock"></i> Change Password</a>
+                </div>
+            </h5>
             {% endif %}
-            <div class="row">
+            <div class="card-body">
                <!--Profile Image-->
-               <img src="{{ url_for('file', filename=data.image)}}" class="card-img-top border col-5"
-                  style="width:10rem;" alt="{{ data.image }}">
+               <img src="{{ url_for('file', filename=data.image)}}" class="card-img-top border col-5 card-profile" alt="{{ data.image }}" style="height: 80px; background-color: white;">
                <!--Username-->
                <a href="{{ url_for('view_profiles', user_id=data._id) }}" class="card-text col-7">
                {{ data.username }}</a>
             </div>
-            &nbsp;
          </div>
          {% endif %}
          {% endfor %}

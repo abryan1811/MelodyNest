@@ -24,7 +24,7 @@
    <!--Profile image-->
    <div class="row d-flex text-center">
       <div class="card card-profile col col-lg-3 col-md-6 col-sm-12 col-12 mb-4">
-         <img src="{{ url_for('file', filename=profileImage) }}" class="card-img-top border " style="height:15rem;"
+         <img src="{{ url_for('file', filename=profileImage) }}" class="card-img-top profile-image border " style="height:15rem;"
             alt="">
       </div>
       <div class="card card-profile col col-lg-3 col-md-6 col-sm-12 col-12 mb-4">
@@ -81,7 +81,7 @@
                   <img src="{{ url_for('file', filename=piece.image)}}" class="card-img-top border music-image"
                      style="height:10rem;" alt="{{ piece.image }}">
                   <div class="card-body">
-                     <h4 class="card-title">{{ piece.title }} </h4>
+                     <h5 class="card-title">{{ piece.title }} </h5>
                      <p class="card-text">{{ piece.artist }}</p>
                      <p class="card-text">{{ piece.genre }}</p>
                      <p class="card-text">{{ piece.instrument }}</p>
