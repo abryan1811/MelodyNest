@@ -10726,7 +10726,6 @@ footer {
 }
 
 .card-profile {
-    height: 250px;
     margin: 0px;
     border: 1px solid #dee2e6 !important;
     object-fit: cover;
