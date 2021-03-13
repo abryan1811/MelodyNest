@@ -10722,8 +10722,7 @@ footer {
 
 .profile-image {
     position: relative;
-	height: 170px;
-	width: 70%;
+    width: 100%;    
 	text-align: center;
 	text-decoration: none;
 	border-width: 1px;
@@ -10731,6 +10730,7 @@ footer {
 }
 
 .card-profile {
+    height: 400px;
     margin: 0px;
     border: 1px solid #dee2e6 !important;
     object-fit: cover;
